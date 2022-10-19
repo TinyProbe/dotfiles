@@ -53,7 +53,7 @@ hi LineNr guifg=#99DD99
 hi CursorLineNr guifg=#BBFFBB guibg=#343A44
 hi CursorLine guibg=#343A44
 hi Comment guifg=#559955
-hi MatchParen guifg=#A070FF guibg=none
+hi MatchParen guifg=#A070FF guibg=AA4080
 
 " Shortcuts
 "nnoremap <Tab> gt
