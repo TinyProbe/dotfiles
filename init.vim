@@ -74,8 +74,8 @@ nnoremap <Tab> :n<CR>
 nnoremap <S-Tab> :N<CR>
 xnoremap <Tab> >gv
 xnoremap <S-Tab> <gv
-vnoremap <A-j> :m'>+<CR>gv=gv
-vnoremap <A-k> :m-2<CR>gv=gv
+vnoremap <A-j> :m'>+<CR>gv
+vnoremap <A-k> :m-2<CR>gv
 nnoremap - <C-x>
 nnoremap = <C-a>
 nnoremap <C-x> <S-~>h
