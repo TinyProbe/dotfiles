@@ -26,7 +26,7 @@ set tabstop=4
 set shiftwidth=4
 
 " Cursor
-set gcr=a:block,a:blinkon0
+set gcr= "a:block,a:blinkon0
 
 " Font
 "set gfn=SauceCodePro\ NF:h14
@@ -48,12 +48,12 @@ endif
 
 " Color Modify
 "hi Normal ctermbg=none guifg=#D0D0D0 guibg=#181C24
-hi Visual guifg=none guibg=#4070B0
-hi LineNr guifg=#99DD99
-hi CursorLineNr guifg=#BBFFBB guibg=#343A44
-hi CursorLine guibg=#343A44
-hi Comment guifg=#559955
-hi MatchParen guifg=#A070FF guibg=#AA4080
+"hi Visual guifg=none guibg=#4070B0
+"hi LineNr guifg=#99DD99
+"hi CursorLineNr guifg=#BBFFBB guibg=#343A44
+"hi CursorLine guibg=#343A44
+"hi Comment guifg=#559955
+"hi MatchParen guifg=#B080FF guibg=#AA4080
 
 " Shortcuts
 "nnoremap <Tab> gt
@@ -116,10 +116,11 @@ vnoremap p pgvy
 call plug#begin()
 " Appearance
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 "Plug 'ryanoasis/vim-devicons'
 
 " Theme
-"Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
 
 " Utilities
 "Plug 'preservim/nerdtree'
@@ -135,12 +136,13 @@ Plug '907th/vim-auto-save'
 call plug#end()
 
 " Appearance
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
+let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " Theme
-"let g:onedark_termcolors=16
-"let g:onedark_hide_endofbuffer=1
+colorscheme gruvbox
 
 " Utilities
 let g:auto_save=1
