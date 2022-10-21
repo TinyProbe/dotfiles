@@ -21,9 +21,9 @@ set autoindent
 set smarttab
 set smartindent
 set expandtab
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
 
 " Cursor
 set gcr= "a:block,a:blinkon0
@@ -36,14 +36,14 @@ syntax on
 set t_Co=256
 
 augroup vimrcEx
-    au!
-    autocmd FileType text setlocal textwidth=78
+  au!
+  autocmd FileType text setlocal textwidth=78
 augroup END
 
 if exists('+termguicolors') 
-    let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
 
 " Color Modify
