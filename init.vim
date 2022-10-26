@@ -29,7 +29,7 @@ set shiftwidth=2
 set gcr= "a:block,a:blinkon0
 
 " Font
-"set gfn=SauceCodePro\ NF:h14
+set gfn= "SauceCodePro\ NF:h14
 
 " RGB
 syntax on
