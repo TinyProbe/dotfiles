@@ -66,6 +66,7 @@ endif
 "nnoremap <Leader>fb <cmd>Telescope buffers<CR>
 "nnoremap <Leader>fh <cmd>Telescope help_tags<CR>
 "nmap <Leader>pf <Plug>(Prettier)
+nnoremap <F2> :terminal<CR>i
 nnoremap <Leader>pi :PlugInstall<CR>
 nnoremap <Leader>pc :PlugClean<CR>
 nnoremap <Leader>pu :PlugUpdate<CR>
