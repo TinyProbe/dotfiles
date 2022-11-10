@@ -123,7 +123,7 @@ font:
     family: sf mono
 
     # The `style` can be specified to pick a specific face.
-    style: regular
+    style: medium
 
   # Bold font face
   bold:
@@ -134,7 +134,7 @@ font:
     family: sf mono
 
     # The `style` can be specified to pick a specific face.
-    style: medium
+    style: bold
 
   # Italic font face
   italic:
@@ -156,7 +156,7 @@ font:
     family: sf mono
 
     # The `style` can be specified to pick a specific face.
-    style: medium Italic
+    style: bold Italic
 
   # Point size
   size: 10.0
