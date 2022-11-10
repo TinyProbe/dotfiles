@@ -190,7 +190,7 @@ colors:
   # Default colors
   primary:
     background: '#000000'
-    foreground: '#cccccc'
+    foreground: '#ccccdc'
 
     # Bright and dim foreground colors
     #
@@ -282,12 +282,14 @@ colors:
   #  background: CellForeground
 
   # Normal colors
-  #normal:
+  normal:
   #  black:   '#1d1f21'
   #  red:     '#cc6666'
   #  green:   '#b5bd68'
+    green:   '#a5ff58'
   #  yellow:  '#f0c674'
   #  blue:    '#81a2be'
+    blue:    '#619cff'
   #  magenta: '#b294bb'
   #  cyan:    '#8abeb7'
   #  white:   '#c5c8c6'
