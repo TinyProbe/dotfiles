@@ -81,7 +81,7 @@ nnoremap - <C-x>
 nnoremap = <C-a>
 nnoremap <C-x> <S-~>h
 nnoremap <A-x> <S-~>
-nnoremap <C-a> ggVG
+nnoremap <C-a> GVgg
 nnoremap <C-q> :q!<CR>
 nnoremap <C-s> :w<CR>
 nmap <C-h> b
@@ -95,19 +95,19 @@ nmap <A-k> <C-u>
 nmap <Leader>d :bd<CR>
 nmap <Leader>n :bn<CR>
 nmap <Leader>p :bp<CR>
-vnoremap ( s()<esc>hpbb
-vnoremap ) s(  )<esc>hhpbb
-vnoremap { s{}<esc>hpbb
-vnoremap } s{  }<esc>hhpbb
-vnoremap <A-[> s[]<esc>hpbb
-vnoremap <A-]> s[  ]<esc>hhpbb
-vnoremap < s<><esc>hpbb
-vnoremap > s<  ><esc>hhpbb
-vnoremap ' s''<esc>hpbb
-vnoremap " s""<esc>hpbb
+vnoremap ( s()<esc>hp%
+vnoremap ) s(  )<esc>hhpl%
+vnoremap { s{}<esc>hp%
+vnoremap } s{  }<esc>hhpl%
+vnoremap <A-[> s[]<esc>hp%
+vnoremap <A-]> s[  ]<esc>hhpl%
+vnoremap < s<><esc>hp
+vnoremap > s<  ><esc>hhp
+vnoremap ' s''<esc>hp
+vnoremap " s""<esc>hp
 vnoremap / :norm i//<CR>
 vnoremap ? :norm 2x<CR>
-vnoremap <A-/> s/*  */<esc>hhhpbb
+vnoremap <A-/> s/*  */<esc>hhhp
 vnoremap <A-?> :s/\/\* //<CR>gv:s/ \*\//<CR>
 nnoremap yy Vdu
 vnoremap y du
