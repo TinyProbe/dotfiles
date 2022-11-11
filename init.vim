@@ -1,4 +1,4 @@
-" Options
+" Option
 set background=dark
 set clipboard=unnamed,unnamedplus
 set completeopt=noinsert,menuone,noselect
@@ -18,18 +18,18 @@ set noshowmode
 set noswapfile
 set autoread
 set autoindent
-set smarttab
 set smartindent
+set smarttab
 set expandtab
-set softtabstop=2
-set tabstop=2
-set shiftwidth=2
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
 
 " Cursor
-set gcr= "a:block,a:blinkon0
+set gcr= "a:hor25-blinkwait300
 
 " Font
-set gfn= "SauceCodePro\ NF:h14
+set gfn= "SF\ Mono:h10
 
 " RGB
 syntax on
@@ -40,7 +40,7 @@ augroup vimrcEx
   autocmd FileType text setlocal textwidth=78
 augroup END
 
-if exists('+termguicolors') 
+if exists('+termguicolors')
   let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
@@ -75,8 +75,8 @@ nnoremap <Tab> :n<CR>
 nnoremap <S-Tab> :N<CR>
 xnoremap <Tab> >gv
 xnoremap <S-Tab> <gv
-vnoremap <A-j> :m'>+<CR>gv
-vnoremap <A-k> :m-2<CR>gv
+vnoremap <C-j> :m'>+<CR>gv
+vnoremap <C-k> :m-2<CR>gv
 nnoremap - <C-x>
 nnoremap = <C-a>
 nnoremap <C-x> <S-~>h
@@ -95,19 +95,19 @@ nmap <A-k> <C-u>
 nmap <Leader>d :bd<CR>
 nmap <Leader>n :bn<CR>
 nmap <Leader>p :bp<CR>
-vnoremap ( s()<esc>hp
-vnoremap ) s(  )<esc>hhp
-vnoremap { s{}<esc>hp
-vnoremap } s{  }<esc>hhp
-vnoremap <A-[> s[]<esc>hp
-vnoremap <A-]> s[  ]<esc>hhp
-vnoremap < s<><esc>hp
-vnoremap > s<  ><esc>hhp
-vnoremap ' s''<esc>hp
-vnoremap " s""<esc>hp
+vnoremap ( s()<esc>hpbb
+vnoremap ) s(  )<esc>hhpbb
+vnoremap { s{}<esc>hpbb
+vnoremap } s{  }<esc>hhpbb
+vnoremap <A-[> s[]<esc>hpbb
+vnoremap <A-]> s[  ]<esc>hhpbb
+vnoremap < s<><esc>hpbb
+vnoremap > s<  ><esc>hhpbb
+vnoremap ' s''<esc>hpbb
+vnoremap " s""<esc>hpbb
 vnoremap / :norm i//<CR>
 vnoremap ? :norm 2x<CR>
-vnoremap <A-/> s/*  */<esc>hhhp
+vnoremap <A-/> s/*  */<esc>hhhpbb
 vnoremap <A-?> :s/\/\* //<CR>gv:s/ \*\//<CR>
 nnoremap yy Vdu
 vnoremap y du
