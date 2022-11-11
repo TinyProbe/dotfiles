@@ -71,8 +71,8 @@ nnoremap <Leader>pi :PlugInstall<CR>
 nnoremap <Leader>pc :PlugClean<CR>
 nnoremap <Leader>pu :PlugUpdate<CR>
 nnoremap <Leader>sc :source ~/.config/nvim/init.vim<CR>
-nnoremap <Tab> :n<CR>
-nnoremap <S-Tab> :N<CR>
+nnoremap <Tab> :n<CR>zz
+nnoremap <S-Tab> :N<CR>zz
 xnoremap <Tab> >gv
 xnoremap <S-Tab> <gv
 vnoremap <C-j> :m'>+<CR>gvzz
