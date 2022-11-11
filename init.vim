@@ -91,6 +91,9 @@ map b bzz
 map w wzz
 map gg ggzz
 map G Gzz
+map n nzz
+map N Nzz
+map # #zz
 map <BackSpace> <BackSpace>zz
 map <Space> <Space>zz
 map <CR> <CR>zz
