@@ -56,69 +56,54 @@ endif
 "hi MatchParen guifg=#B080FF guibg=#AA4080
 
 " Shortcuts
-"nnoremap <Tab> gt
-"nnoremap <S-Tab> gT
-"nnoremap <F5> :NERDTreeToggle<CR>
-"nnoremap <silent><S-t> :tabnew<CR>
-"nnoremap <Leader>rt :%retab<CR>
-"nnoremap <Leader>ff <cmd>Telescope find_files<CR>
-"nnoremap <Leader>fg <cmd>Telescope live_grep<CR>
-"nnoremap <Leader>fb <cmd>Telescope buffers<CR>
-"nnoremap <Leader>fh <cmd>Telescope help_tags<CR>
-"nmap <Leader>pf <Plug>(Prettier)
-nnoremap <F2> :terminal<CR>i
-nnoremap <Leader>pi :PlugInstall<CR>
-nnoremap <Leader>pc :PlugClean<CR>
-nnoremap <Leader>pu :PlugUpdate<CR>
-nnoremap <Leader>sc :source ~/.config/nvim/init.vim<CR>
-nnoremap <Tab> :n<CR>zz
-nnoremap <S-Tab> :N<CR>zz
-xnoremap <Tab> >gv
-xnoremap <S-Tab> <gv
-vnoremap <C-j> :m'>+<CR>gv
-vnoremap <C-k> :m-2<CR>gv
-nnoremap - <C-x>
-nnoremap = <C-a>
-nnoremap <C-x> <S-~>h
-nnoremap <A-x> <S-~>
-nnoremap <C-q> :q!<CR>
-nnoremap <C-s> :w<CR>
-nnoremap dw diw
-nnoremap df db
-nnoremap dc dw
-map <C-e> <C-e><S-m>
-map <C-y> <C-y><S-m>
-map <C-d> <C-d><S-m>
-map <C-u> <C-u><S-m>
-nmap <C-a> ggVG
-nmap <C-h> b
-nmap <C-l> w
-nmap <A-h> ^
-nmap <A-l> $
-nmap <C-j> <C-e>
-nmap <C-k> <C-y>
-nmap <A-j> <C-d>
-nmap <A-k> <C-u>
-nmap <Leader>d :bd<CR>
-nmap <Leader>n :bn<CR>
-nmap <Leader>p :bp<CR>
-vnoremap ( s()<esc>hp%
-vnoremap ) s(  )<esc>hhpl%
-vnoremap { s{}<esc>hp%
-vnoremap } s{  }<esc>hhpl%
-vnoremap <A-[> s[]<esc>hp%
-vnoremap <A-]> s[  ]<esc>hhpl%
-vnoremap < s<><esc>hp
-vnoremap > s<  ><esc>hhp
-vnoremap ' s''<esc>hp
-vnoremap " s""<esc>hp
-vnoremap / :norm i//<CR>
-vnoremap ? :norm 2x<CR>
-vnoremap <A-/> s/*  */<esc>hhhp
-vnoremap <A-?> :s/\/\* //<CR>gv:s/ \*\//<CR>
-nnoremap yy Vdu
-vnoremap y du
-vnoremap p pgvy
+"nnoremap    <Tab> gt
+"nnoremap    <S-Tab> gT
+"nnoremap    <F5> :NERDTreeToggle<CR>
+"nnoremap    <silent><S-t> :tabnew<CR>
+"nnoremap    <Leader>rt :%retab<CR>
+"nnoremap    <Leader>ff <cmd>Telescope find_files<CR>
+"nnoremap    <Leader>fg <cmd>Telescope live_grep<CR>
+"nnoremap    <Leader>fb <cmd>Telescope buffers<CR>
+"nnoremap    <Leader>fh <cmd>Telescope help_tags<CR>
+"nmap        <Leader>pf <Plug>(Prettier)
+nnoremap    <Leader>d :bd<CR>
+nnoremap    <Leader>n :bn<CR>
+nnoremap    <Leader>p :bp<CR>
+nnoremap    <F2> :terminal<CR>i
+nnoremap    <Leader>pi :PlugInstall<CR>
+nnoremap    <Leader>pc :PlugClean<CR>
+nnoremap    <Leader>pu :PlugUpdate<CR>
+nnoremap    <Leader>sc :source ~/.config/nvim/init.vim<CR>
+nnoremap    <Tab> :n<CR>zz
+nnoremap    <S-Tab> :N<CR>zz
+nnoremap    - <C-x>
+nnoremap    = <C-a>
+nnoremap    <C-q> :q!<CR>
+nnoremap    <C-s> :w<CR>
+nnoremap    <C-a> ggVG
+nnoremap    <C-j> jzz
+nnoremap    <C-k> kzz
+xnoremap    <Tab> >gv
+xnoremap    <S-Tab> <gv
+vnoremap    <C-j> :m'>+<CR>gv
+vnoremap    <C-k> :m-2<CR>gv
+vnoremap    ( s()<esc>hp%
+vnoremap    ) s(  )<esc>hhpl%
+vnoremap    { s{}<esc>hp%
+vnoremap    } s{  }<esc>hhpl%
+vnoremap    <A-[> s[]<esc>hp%
+vnoremap    <A-]> s[  ]<esc>hhpl%
+vnoremap    < s<><esc>hp
+vnoremap    > s<  ><esc>hhp
+vnoremap    ' s''<esc>hp
+vnoremap    " s""<esc>hp
+vnoremap    / :norm i//<CR>
+vnoremap    ? :norm 2x<CR>
+vnoremap    <A-/> s/*  */<esc>hhhp
+vnoremap    <A-?> :s/\/\* //<CR>gv:s/ \*\//<CR>
+nnoremap    yy Vdugv<esc>
+vnoremap    y dugv<esc>
+vnoremap    p pgvy
 
 " Vim Plug
 call plug#begin()
