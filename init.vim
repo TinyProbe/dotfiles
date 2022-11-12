@@ -1,7 +1,6 @@
 " Option
 set background=dark
 set clipboard=unnamed,unnamedplus
-set completeopt=noinsert,menuone,noselect
 set hidden
 set hlsearch
 set incsearch
@@ -56,33 +55,33 @@ endif
 "hi MatchParen guifg=#B080FF guibg=#AA4080
 
 " Shortcuts
-"nnoremap    <Tab> gt
-"nnoremap    <S-Tab> gT
-"nnoremap    <F5> :NERDTreeToggle<CR>
-"nnoremap    <silent><S-t> :tabnew<CR>
 "nnoremap    <Leader>rt :%retab<CR>
 "nnoremap    <Leader>ff <cmd>Telescope find_files<CR>
 "nnoremap    <Leader>fg <cmd>Telescope live_grep<CR>
 "nnoremap    <Leader>fb <cmd>Telescope buffers<CR>
 "nnoremap    <Leader>fh <cmd>Telescope help_tags<CR>
 "nmap        <Leader>pf <Plug>(Prettier)
+nnoremap    <F2> :terminal<CR>i
+nnoremap    <F5> :NERDTreeToggle<CR>
 nnoremap    <Leader>d :bd<CR>
 nnoremap    <Leader>n :bn<CR>
 nnoremap    <Leader>p :bp<CR>
-nnoremap    <F2> :terminal<CR>i
 nnoremap    <Leader>pi :PlugInstall<CR>
 nnoremap    <Leader>pc :PlugClean<CR>
 nnoremap    <Leader>pu :PlugUpdate<CR>
 nnoremap    <Leader>sc :source ~/.config/nvim/init.vim<CR>
-nnoremap    <Tab> :n<CR>zz
-nnoremap    <S-Tab> :N<CR>zz
 nnoremap    - <C-x>
 nnoremap    = <C-a>
-nnoremap    <C-q> :q!<CR>
-nnoremap    <C-s> :w<CR>
 nnoremap    <C-a> ggVG
-nnoremap    <C-j> jzz
-nnoremap    <C-k> kzz
+nnoremap    <C-s> :w<CR>
+nnoremap    <C-w> :q!<CR>
+nnoremap    <C-t> :tabnew<CR>
+nnoremap    <Tab> :tabnext<CR>
+nnoremap    <S-Tab> :tabprevious<CR>
+nnoremap    <C-h> <C-w>h
+nnoremap    <C-j> <C-w>j
+nnoremap    <C-k> <C-w>k
+nnoremap    <C-l> <C-w>l
 xnoremap    <Tab> >gv
 xnoremap    <S-Tab> <gv
 vnoremap    <C-j> :m'>+<CR>gv
@@ -116,8 +115,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 
 " Utilities
-"Plug 'preservim/nerdtree'
 "Plug 'sheerun/vim-polyglot'
+Plug 'preservim/nerdtree'
 Plug '907th/vim-auto-save'
 
 " Completion/Linters/Formatters
@@ -132,6 +131,7 @@ call plug#end()
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#fnamemod=':t'
 let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " Theme
@@ -139,7 +139,7 @@ colorscheme gruvbox
 
 " Utilities
 let g:auto_save=1
-"let NERDTreeShowHidden=1
+let NERDTreeShowHidden=1
 
 " NERD Commenter
 " Add spaces after comment delimiters by default
