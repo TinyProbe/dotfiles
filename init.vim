@@ -20,9 +20,9 @@ set autoindent
 set smartindent
 set smarttab
 set expandtab
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
 
 " Cursor
 set gcr= "a:hor25-blinkwait300
@@ -61,7 +61,6 @@ endif
 "nnoremap    <Leader>fb <cmd>Telescope buffers<CR>
 "nnoremap    <Leader>fh <cmd>Telescope help_tags<CR>
 "nmap        <Leader>pf <Plug>(Prettier)
-nmap        <F2> <C-t>:terminal<CR>i
 nnoremap    <F5> :NERDTreeToggle<CR>
 nnoremap    <Leader>d :bd<CR>
 nnoremap    <Leader>n :bn<CR>
@@ -72,36 +71,40 @@ nnoremap    <Leader>pu :PlugUpdate<CR>
 nnoremap    <Leader>sc :source ~/.config/nvim/init.vim<CR>
 nnoremap    - <C-x>
 nnoremap    = <C-a>
-nnoremap    <C-a> ggVG
-nnoremap    <C-s> :w<CR>
-nnoremap    <C-w> :q!<CR>
-nnoremap    <C-t> :tabnew<CR>
-nnoremap    <Tab> :tabnext<CR>
-nnoremap    <S-Tab> :tabprevious<CR>
-nnoremap    <C-h> <C-w>h
-nnoremap    <C-j> <C-w>j
-nnoremap    <C-k> <C-w>k
-nnoremap    <C-l> <C-w>l
+nmap        <A-a> GVggy
+nnoremap    <C-b>d :bdelete<CR>
+nnoremap    <C-b>b :buffers<CR>
+nnoremap    <C-b>h :bprevious<CR>
+nnoremap    <C-b>l :bnext<CR>
+nnoremap    <C-b>j :blast<CR>
+nnoremap    <C-b>k :bfirst<CR>
+nnoremap    <C-t>c :tabclose<CR>
+nnoremap    <C-t>h :tabprevious<CR>
+nnoremap    <C-t>l :tabnext<CR>
+nnoremap    <C-t>j :tablast<CR>
+nnoremap    <C-t>k :tabfirst<CR>
+nnoremap    <C-t>t :tabnew<CR>:terminal<CR>i
+nnoremap    <C-w>t :new<CR>:terminal<CR>i
 xnoremap    <Tab> >gv
 xnoremap    <S-Tab> <gv
 vnoremap    <C-j> :m'>+<CR>gv
 vnoremap    <C-k> :m-2<CR>gv
-vnoremap    ( s()<esc>hp%
-vnoremap    ) s(  )<esc>hhpl%
-vnoremap    { s{}<esc>hp%
-vnoremap    } s{  }<esc>hhpl%
-vnoremap    <A-[> s[]<esc>hp%
-vnoremap    <A-]> s[  ]<esc>hhpl%
-vnoremap    < s<><esc>hp
-vnoremap    > s<  ><esc>hhp
-vnoremap    ' s''<esc>hp
-vnoremap    " s""<esc>hp
+vnoremap    ( s()<ESC>hp%
+vnoremap    ) s(  )<ESC>hhpl%
+vnoremap    { s{}<ESC>hp%
+vnoremap    } s{  }<ESC>hhpl%
+vnoremap    <A-[> s[]<ESC>hp%
+vnoremap    <A-]> s[  ]<ESC>hhpl%
+vnoremap    < s<><ESC>hp
+vnoremap    > s<  ><ESC>hhp
+vnoremap    ' s''<ESC>hp
+vnoremap    " s""<ESC>hp
 vnoremap    / :norm i//<CR>
 vnoremap    ? :norm 2x<CR>
-vnoremap    <A-/> s/*  */<esc>hhhp
+vnoremap    <A-/> s/*  */<ESC>hhhp
 vnoremap    <A-?> :s/\/\* //<CR>gv:s/ \*\//<CR>
-nnoremap    yy Vdugv<esc>
-vnoremap    y dugv<esc>
+nnoremap    yy Vdugv<ESC>
+vnoremap    y dugv<ESC>
 vnoremap    p pgvy
 
 " Vim Plug
@@ -140,6 +143,9 @@ colorscheme gruvbox
 " Utilities
 let g:auto_save=1
 let NERDTreeShowHidden=1
+
+" Additional config
+let g:rust_recommended_style=0
 
 " NERD Commenter
 " Add spaces after comment delimiters by default
