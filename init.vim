@@ -72,12 +72,13 @@ nnoremap    <Leader>sc :source ~/.config/nvim/init.vim<CR>
 nnoremap    - <C-x>
 nnoremap    = <C-a>
 nnoremap    <C-a> GVgg
-nnoremap    <C-b>d :bdelete<CR>
 nnoremap    <C-b>b :buffers<CR>
+nnoremap    <C-b>d :bdelete<CR>
 nnoremap    <C-b>h :bprevious<CR>
 nnoremap    <C-b>l :bnext<CR>
 nnoremap    <C-b>j :blast<CR>
 nnoremap    <C-b>k :bfirst<CR>
+nnoremap    <C-t>b :tabs<CR>
 nnoremap    <C-t>c :tabclose<CR>
 nnoremap    <C-t>h :tabprevious<CR>
 nnoremap    <C-t>l :tabnext<CR>
@@ -131,11 +132,13 @@ Plug '907th/vim-auto-save'
 call plug#end()
 
 " Appearance
+let g:lightline = { 'colorscheme': 'gruvbox' }
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#fnamemod=':t'
-let g:lightline = { 'colorscheme': 'gruvbox' }
+let g:airline#extensions#tabline#enabled = 1              " vim-airline 버퍼 목록 켜기
+let g:airline#extensions#tabline#fnamemod = ':t'          " vim-airline 버퍼 목록 파일명만 출력
+let g:airline#extensions#tabline#buffer_nr_show = 1       " buffer number를 보여준다
+let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
 
 " Theme
 colorscheme gruvbox
