@@ -71,7 +71,7 @@ nnoremap    <Leader>pu :PlugUpdate<CR>
 nnoremap    <Leader>sc :source ~/.config/nvim/init.vim<CR>
 nnoremap    - <C-x>
 nnoremap    = <C-a>
-nmap        <A-a> GVggy
+nnoremap    <C-a> GVgg
 nnoremap    <C-b>d :bdelete<CR>
 nnoremap    <C-b>b :buffers<CR>
 nnoremap    <C-b>h :bprevious<CR>
