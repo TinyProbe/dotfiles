@@ -108,7 +108,7 @@ vnoremap    <A-/> s/*  */<ESC>hhhp
 vnoremap    <A-?> :s/\/\* //<CR>gv:s/ \*\//<CR>
 nnoremap    yy Vdugv<ESC>
 vnoremap    y dugv<ESC>
-vnoremap    p pgvy
+vnoremap    p P
 
 " Vim Plug
 call plug#begin()
