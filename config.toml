@@ -14,7 +14,7 @@ right = ["position", "position-percentage", "diagnostics", "selections", "file-e
 separator = "│"
 
 [editor.lsp]
-display-messages = false
+display-messages = true
 
 [editor.file-picker]
 hidden = false
