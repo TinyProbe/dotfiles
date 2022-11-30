@@ -1,0 +1,88 @@
+theme = "catppuccin_mocha"
+
+[editor]
+cursorline = true
+true-color = true
+color-modes = true
+scrolloff = 0
+scroll-lines = 3
+
+[editor.statusline]
+left = ["mode", "file-name"]
+center = ["spinner"]
+right = ["position", "position-percentage", "diagnostics", "selections", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+
+[editor.lsp]
+display-messages = false
+
+[editor.file-picker]
+hidden = false
+
+[editor.whitespace.render]
+tab = "all"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+tabpad = "·" # Tabs will look like "→···" (depending on tab width)
+
+[editor.indent-guides]
+render = false
+character = "│"
+
+[keys.normal]
+"\\" = { "c" = { "o" = ":config-open", "r" = ":config-reload" } }
+C-s = ":wa"
+C-q = { "b" = [ ":w", ":bc" ], "q" = ":xa" }
+C-e = "scroll_down"
+C-y = "scroll_up"
+C-j = [ "move_line_down", "align_view_center" ]
+C-k = [ "move_line_up", "align_view_center" ]
+C-a = [ "select_all", "select_mode" ]
+C-r = "redo"
+# C-h = "goto_previous_buffer"
+# C-l = "goto_next_buffer"
+"$" = "goto_line_end"
+"^" = "goto_first_nonwhitespace"
+"0" = "goto_line_start"
+"G" = "goto_last_line"
+"M" = "goto_window_center"
+"V" = [ "extend_to_line_bounds", "select_mode" ]
+"D" = [ "select_mode", "goto_line_end", "yank_main_selection_to_clipboard", "delete_selection_noyank" ]
+"d" = { "d" = [ "extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection_noyank" ], "i" = { "w" = [ "move_prev_word_start", "move_next_word_end", "yank_main_selection_to_clipboard", "delete_selection_noyank" ] } }
+"x" = [ "yank_main_selection_to_clipboard", "delete_selection_noyank" ]
+"y" = { "y" = [ "extend_to_line_bounds", "yank_main_selection_to_clipboard" ], "i" = { "w" = [ "move_prev_word_start", "move_next_word_end", "yank_main_selection_to_clipboard" ] } }
+"t" = [ "yank_main_selection_to_clipboard" ]
+"c" = { "c" = [ "extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection_noyank", "open_above" ], "i" = { "w" = [ "move_prev_word_start", "move_next_word_end", "yank_main_selection_to_clipboard", "delete_selection_noyank", "insert_mode" ] } }
+"s" = [ "yank_main_selection_to_clipboard", "delete_selection_noyank", "insert_mode" ]
+"?" = "select_regex"
+"p" = "paste_clipboard_after"
+"P" = "paste_clipboard_before"
+
+[keys.select]
+"\\" = { "c" = { "o" = ":config-open", "r" = ":config-reload" } }
+C-s = ":wa"
+C-q = { "b" = [ ":w", ":bc" ], "q" = ":xa" }
+C-e = "scroll_down"
+C-y = "scroll_up"
+C-r = [ "redo", "normal_mode" ]
+# C-h = "goto_previous_buffer"
+# C-l = "goto_next_buffer"
+"$" = "goto_line_end"
+"^" = "goto_first_nonwhitespace"
+"0" = "goto_line_start"
+"G" = "goto_last_line"
+"M" = "goto_window_center"
+"V" = [ "extend_to_line_bounds", "select_mode" ]
+"d" = { "d" = [ "extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection_noyank" ] }
+"x" = [ "yank_main_selection_to_clipboard", "delete_selection_noyank" ]
+"y" = { "y" = [ "extend_to_line_bounds", "yank_main_selection_to_clipboard", "normal_mode" ] }
+"t" = [ "yank_main_selection_to_clipboard", "normal_mode" ]
+"c" = { "c" = [ "extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection_noyank", "open_above" ] }
+"s" = [ "yank_main_selection_to_clipboard", "delete_selection_noyank", "insert_mode" ]
+"?" = "select_regex"
+"p" = [ "paste_clipboard_before", "delete_selection_noyank" ]
+"P" = [ "paste_clipboard_before", "yank_main_selection_to_clipboard", "delete_selection_noyank" ]
