@@ -4,6 +4,7 @@ theme = "catppuccin_mocha"
 cursorline = true
 true-color = true
 color-modes = true
+auto-pairs = false
 scrolloff = 0
 scroll-lines = 3
 
