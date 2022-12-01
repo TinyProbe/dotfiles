@@ -8,9 +8,9 @@ scrolloff = 0
 scroll-lines = 3
 
 [editor.statusline]
-left = ["mode", "file-name"]
-center = ["spinner"]
-right = ["position", "position-percentage", "diagnostics", "selections", "file-encoding", "file-line-ending", "file-type"]
+left = [ "mode", "file-name" ]
+center = [ "spinner" ]
+right = [ "position", "position-percentage", "diagnostics", "selections", "file-encoding", "file-line-ending", "file-type" ]
 separator = "│"
 
 [editor.lsp]
