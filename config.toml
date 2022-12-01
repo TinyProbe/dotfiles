@@ -39,10 +39,10 @@ C-s = ":wa"
 C-q = { "b" = [ ":w", ":bc" ], "q" = ":xa" }
 C-e = "scroll_down"
 C-y = "scroll_up"
+C-r = "redo"
 C-j = [ "move_line_down", "align_view_center" ]
 C-k = [ "move_line_up", "align_view_center" ]
 C-a = [ "select_all", "select_mode" ]
-C-r = "redo"
 # C-h = "goto_previous_buffer"
 # C-l = "goto_next_buffer"
 "$" = "goto_line_end"
