@@ -19,10 +19,10 @@ set autoread
 set autoindent
 set smartindent
 set smarttab
-set expandtab
-set softtabstop=2
-set tabstop=2
-set shiftwidth=2
+"set expandtab
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
 
 " Cursor
 set gcr= "a:hor25-blinkwait300
@@ -35,14 +35,14 @@ syntax on
 set t_Co=256
 
 augroup vimrcEx
-  au!
-  autocmd FileType text setlocal textwidth=78
+	au!
+	autocmd FileType text setlocal textwidth=78
 augroup END
 
 if exists('+termguicolors')
-  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
+	let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+	set termguicolors
 endif
 
 " Color Modify
@@ -72,6 +72,10 @@ nnoremap    <Leader>sc :source ~/.config/nvim/init.vim<CR>
 nnoremap    - <C-x>
 nnoremap    = <C-a>
 nnoremap    <C-a> GVgg
+nnoremap    <C-j> jzz
+nnoremap    <C-k> kzz
+nnoremap    <C-s> :wa<CR>
+nnoremap    <C-q>q :xa<CR>
 nnoremap    <C-b>s :buffers<CR>
 nnoremap    <C-b>d :bdelete<CR>
 nnoremap    <C-b>l :bnext<CR>
@@ -106,9 +110,9 @@ vnoremap    / :norm i//<CR>
 vnoremap    ? :norm 2x<CR>
 vnoremap    <A-/> s/*  */<ESC>hhhp
 vnoremap    <A-?> :s/\/\* //<CR>gv:s/ \*\//<CR>
-nnoremap    yy Vdugv<ESC>
-vnoremap    y dugv<ESC>
 vnoremap    p P
+"nnoremap    yy Vdugv<ESC>
+"vnoremap    y dugv<ESC>
 
 " Vim Plug
 call plug#begin()
@@ -119,31 +123,26 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Theme
 Plug 'morhetz/gruvbox'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " Utilities
-"Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug '907th/vim-auto-save'
 
-" Completion/Linters/Formatters
-"Plug 'tpope/vim-surround'
-"Plug 'preservim/nerdcommenter'
-
-" Git
-"Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " Appearance
-let g:lightline = { 'colorscheme': 'gruvbox' }
-let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts=1
+let g:lightline = { 'colorscheme': 'catppuccin' }
+let g:airline_theme='catppuccin'
+let g:airline_powerline_fonts=0
 let g:airline#extensions#tabline#enabled = 1              " vim-airline 버퍼 목록 켜기
 let g:airline#extensions#tabline#fnamemod = ':t'          " vim-airline 버퍼 목록 파일명만 출력
 let g:airline#extensions#tabline#buffer_nr_show = 1       " buffer number를 보여준다
 let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
 
 " Theme
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme catppuccin-mocha
 
 " Utilities
 let g:auto_save=1
