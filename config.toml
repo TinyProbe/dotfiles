@@ -127,7 +127,8 @@ character = "│"
 "y"."y" = [
   "extend_to_line_bounds", "yank_main_selection_to_clipboard",
   "normal_mode", ]
-"s" = [ "yank_main_selection_to_clipboard", "delete_selection_noyank",
+"s" = [
+  "yank_main_selection_to_clipboard", "delete_selection_noyank",
   "insert_mode", ]
 "c"."c" = [
   "extend_to_line_bounds", "yank_main_selection_to_clipboard",
