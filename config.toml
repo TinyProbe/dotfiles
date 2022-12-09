@@ -22,9 +22,9 @@ separator = "│"
 display-messages = true
 
 [editor.cursor-shape]
-insert = "block"
-normal = "block"
-select = "block"
+insert = "underline"
+normal = "underline"
+select = "underline"
 
 [editor.file-picker]
 hidden = false
@@ -106,15 +106,16 @@ character = "│"
 "C-e" = [ "scroll_down", ]
 "C-y" = [ "scroll_up", ]
 "C-r" = [ "redo", "normal_mode", ]
-# Helix doesn't support line move?
-# C-j = [
-#   "extend_to_line_bounds", "delete_selection", "paste_after",
-#   "move_line_down", "select_mode", "goto_last_modification",
-#   "move_char_left", ]
-# C-k = [
-#   "extend_to_line_bounds", "delete_selection", "move_line_up",
-#   "move_line_up", "paste_after", "move_line_down",
-#   "select_mode", "goto_last_modification", "move_char_left", ]
+"C-j" = [
+  "ensure_selections_forward", "extend_to_line_bounds",
+  "extend_char_right", "extend_char_left", "delete_selection",
+  "add_newline_below", "move_line_down", "replace_with_yanked",
+  "select_mode", ]
+"C-k" = [
+  "ensure_selections_forward", "extend_to_line_bounds",
+  "extend_char_right", "extend_char_left", "delete_selection",
+  "move_line_up", "add_newline_above", "move_line_up",
+  "replace_with_yanked", "select_mode", ]
 "$" = [ "goto_line_end", ]
 "^" = [ "goto_first_nonwhitespace", ]
 "0" = [ "goto_line_start", ]
