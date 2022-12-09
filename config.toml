@@ -72,12 +72,12 @@ character = "│"
   "extend_to_line_bounds", "yank_main_selection_to_clipboard",
   "delete_selection_noyank", ]
 "d"."i"."w" = [
-  "move_prev_word_start", "move_next_word_end",
+  "move_char_right", "move_prev_word_start", "move_next_word_end",
   "yank_main_selection_to_clipboard", "delete_selection_noyank", ]
 "t" = [ "yank_main_selection_to_clipboard", ]
 "y"."y" = [ "extend_to_line_bounds", "yank_main_selection_to_clipboard", ]
 "y"."i"."w" = [
-  "move_prev_word_start", "move_next_word_end",
+  "move_char_right", "move_prev_word_start", "move_next_word_end",
   "yank_main_selection_to_clipboard", ]
 "s" = [
   "yank_main_selection_to_clipboard", "delete_selection_noyank",
@@ -86,7 +86,7 @@ character = "│"
   "extend_to_line_bounds", "yank_main_selection_to_clipboard",
   "delete_selection_noyank", "open_above", ]
 "c"."i"."w" = [
-  "move_prev_word_start", "move_next_word_end",
+  "move_char_right", "move_prev_word_start", "move_next_word_end",
   "yank_main_selection_to_clipboard", "delete_selection_noyank",
   "insert_mode", ]
 "?" = [ "select_regex", ]
@@ -106,6 +106,15 @@ character = "│"
 "C-e" = [ "scroll_down", ]
 "C-y" = [ "scroll_up", ]
 "C-r" = [ "redo", "normal_mode", ]
+# Helix doesn't support line move?
+# C-j = [
+#   "extend_to_line_bounds", "delete_selection", "paste_after",
+#   "move_line_down", "select_mode", "goto_last_modification",
+#   "move_char_left", ]
+# C-k = [
+#   "extend_to_line_bounds", "delete_selection", "move_line_up",
+#   "move_line_up", "paste_after", "move_line_down",
+#   "select_mode", "goto_last_modification", "move_char_left", ]
 "C-j" = [
   "ensure_selections_forward", "extend_to_line_bounds",
   "extend_char_right", "extend_char_left", "delete_selection",
