@@ -28,7 +28,7 @@ set shiftwidth=4
 set gcr= "a:hor25-blinkwait300
 
 " Font
-set gfn= "SF\ Mono:h10
+set gfn= "SF\ Mono\ Powerline:h14
 
 " RGB
 syntax on
@@ -61,10 +61,10 @@ endif
 "nnoremap    <Leader>fb <cmd>Telescope buffers<CR>
 "nnoremap    <Leader>fh <cmd>Telescope help_tags<CR>
 "nmap        <Leader>pf <Plug>(Prettier)
+"nnoremap    <Leader>d :bd<CR>
+"nnoremap    <Leader>n :bn<CR>
+"nnoremap    <Leader>p :bp<CR>
 nnoremap    <F5> :NERDTreeToggle<CR>
-nnoremap    <Leader>d :bd<CR>
-nnoremap    <Leader>n :bn<CR>
-nnoremap    <Leader>p :bp<CR>
 nnoremap    <Leader>pi :PlugInstall<CR>
 nnoremap    <Leader>pc :PlugClean<CR>
 nnoremap    <Leader>pu :PlugUpdate<CR>
@@ -111,6 +111,7 @@ vnoremap    ? :norm 2x<CR>
 vnoremap    <A-/> s/*  */<ESC>hhhp
 vnoremap    <A-?> :s/\/\* //<CR>gv:s/ \*\//<CR>
 vnoremap    p P
+vnoremap    P p
 "nnoremap    yy Vdugv<ESC>
 "vnoremap    y dugv<ESC>
 
@@ -119,11 +120,13 @@ call plug#begin()
 " Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 "Plug 'ryanoasis/vim-devicons'
 
 " Theme
 Plug 'morhetz/gruvbox'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'sainnhe/everforest'
 
 " Utilities
 Plug 'preservim/nerdtree'
@@ -132,17 +135,28 @@ Plug '907th/vim-auto-save'
 call plug#end()
 
 " Appearance
-let g:lightline = { 'colorscheme': 'catppuccin' }
-let g:airline_theme='catppuccin'
-let g:airline_powerline_fonts=0
-let g:airline#extensions#tabline#enabled = 1              " vim-airline 버퍼 목록 켜기
-let g:airline#extensions#tabline#fnamemod = ':t'          " vim-airline 버퍼 목록 파일명만 출력
-let g:airline#extensions#tabline#buffer_nr_show = 1       " buffer number를 보여준다
-let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
-
+let g:lightline = { 'colorscheme': 'everforest' }
+let g:airline_theme='everforest'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1              " vim-airline 버퍼 목록 켜기
+let g:airline#extensions#tabline#fnamemod=':t'          " vim-airline 버퍼 목록 파일명만 출력
+let g:airline#extensions#tabline#buffer_nr_show=1       " buffer number를 보여준다
+let g:airline#extensions#tabline#buffer_nr_format='%s:' " buffer number format
+let g:everforest_background='medium'
+let g:everforest_better_performance=1
+let g:everforest_disable_italic_comment=1
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = true,
+	},
+}
+EOF
 " Theme
 "colorscheme gruvbox
-colorscheme catppuccin-mocha
+"colorscheme catppuccin-mocha
+colorscheme everforest
 
 " Utilities
 let g:auto_save=1
