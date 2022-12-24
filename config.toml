@@ -1,13 +1,17 @@
 # Editor Config
-theme = "catppuccin_mocha"
+# theme = "catppuccin_frappe"
+theme = "everforest_dark"
 
 [editor]
 cursorline = true
+cursorcolumn = false
 true-color = true
 color-modes = true
 auto-pairs = false
+auto-save = false
 scrolloff = 0
 scroll-lines = 3
+bufferline = "always"
 
 [editor.statusline]
 left = [ "mode", "file-name", ]
@@ -17,14 +21,17 @@ right = [
   "selections", "file-encoding", "file-line-ending",
   "file-type", ]
 separator = "│"
+mode.normal = "NORMAL"
+mode.select = "SELECT"
+mode.insert = "INSERT"
 
 [editor.lsp]
 display-messages = true
 
-[editor.cursor-shape]
-insert = "underline"
-normal = "underline"
-select = "underline"
+# [editor.cursor-shape]
+# insert = "underline"
+# normal = "underline"
+# select = "underline"
 
 [editor.file-picker]
 hidden = false
@@ -106,15 +113,6 @@ character = "│"
 "C-e" = [ "scroll_down", ]
 "C-y" = [ "scroll_up", ]
 "C-r" = [ "redo", "normal_mode", ]
-# Helix doesn't support line move?
-# C-j = [
-#   "extend_to_line_bounds", "delete_selection", "paste_after",
-#   "move_line_down", "select_mode", "goto_last_modification",
-#   "move_char_left", ]
-# C-k = [
-#   "extend_to_line_bounds", "delete_selection", "move_line_up",
-#   "move_line_up", "paste_after", "move_line_down",
-#   "select_mode", "goto_last_modification", "move_char_left", ]
 "C-j" = [
   "ensure_selections_forward", "extend_to_line_bounds",
   "extend_char_right", "extend_char_left", "delete_selection",
@@ -125,6 +123,10 @@ character = "│"
   "extend_char_right", "extend_char_left", "delete_selection",
   "move_line_up", "add_newline_above", "move_line_up",
   "replace_with_yanked", "select_mode", ]
+# "H" = [ "select_mode", "move_char_left", "extend_to_line_bounds", ]
+# "J" = [ "select_mode", "move_line_down", "extend_to_line_bounds", ]
+# "K" = [ "select_mode", "move_line_up", "extend_to_line_bounds", ]
+# "L" = [ "select_mode", "move_char_right", "extend_to_line_bounds", ]
 "$" = [ "goto_line_end", ]
 "^" = [ "goto_first_nonwhitespace", ]
 "0" = [ "goto_line_start", ]
