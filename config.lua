@@ -59,7 +59,7 @@ vim.opt.list = true
 vim.opt.listchars = "tab:→·"
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = false
-lvim.colorscheme = "PaperColor"
+lvim.colorscheme = "everforest"
 lvim.builtin.lualine.style = "default"
 lvim.builtin.lualine.sections.lualine_a = { "mode" }
 lvim.builtin.bufferline.options.always_show_bufferline = true
@@ -68,34 +68,6 @@ lvim.builtin.bufferline.highlights.buffer_selected.bold = true
 lvim.builtin.bufferline.highlights.buffer_selected.italic = false
 lvim.builtin.indentlines.options.enabled = false
 lvim.builtin.autopairs.active = true
-
--- local colors = {
--- 	color2 = "#0f1419",
--- }
--- lvim.builtin.lualine.options.theme = {
--- 	normal = {
--- 		a = { fg = "", bg = "", gui = "bold" },
--- 	},
--- 	insert = {
--- 		a = { fg = "", bg = "", gui = "bold" },
--- 	},
--- 	command = {
--- 		a = { fg = "", bg = "", gui = "bold" },
--- 	},
--- 	-- visual = {
--- 	-- 	a = { fg = colors.color2, bg = colors.color3, gui = "bold" },
--- 	-- 	b = { fg = colors.color4, bg = colors.color5 },
--- 	-- },
--- 	-- replace = {
--- 	-- 	a = { fg = colors.color2, bg = colors.color8, gui = "bold" },
--- 	-- 	b = { fg = colors.color4, bg = colors.color5 },
--- 	-- },
--- 	-- inactive = {
--- 	-- 	a = { fg = colors.color4, bg = colors.color5, gui = "bold" },
--- 	-- 	b = { fg = colors.color4, bg = colors.color5 },
--- 	-- 	c = { fg = colors.color4, bg = colors.color2 },
--- 	-- },
--- }
 
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -239,18 +211,6 @@ lvim.builtin.treesitter = {
 	},
 }
 
--- require("catppuccin").setup {
--- 	custom_highlights = function()
--- 		return {
--- 			["@comment"] = { style = { "italic" } },
--- 			["@functions"] = { style = { "italic" } },
--- 			["@keywords"] = { style = { "italic" } },
--- 			["@strings"] = { style = { "italic" } },
--- 			["@variables"] = { style = { "italic" } },
--- 		}
--- 	end
--- }
-
 -- generic LSP settings
 
 -- -- make sure server will always be installed even if the server is in skipped_servers list
@@ -328,9 +288,10 @@ lvim.builtin.treesitter = {
 
 -- Additional Plugins
 lvim.plugins = {
-  { "catppuccin/nvim", as = "catppuccin" },
-  { "olimorris/onedarkpro.nvim", as = "onedarkpro" },
-  { "NLKNguyen/papercolor-theme", as = "papercolor" },
+	{ "catppuccin/nvim", as = "catppuccin" },
+	{ "olimorris/onedarkpro.nvim", as = "onedarkpro" },
+	{ "NLKNguyen/papercolor-theme", as = "papercolor" },
+	{ "sainnhe/everforest", as = "everforest" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
