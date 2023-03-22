@@ -1,24 +1,36 @@
 # Editor Config
 theme = "catppuccin_frappe"
-#theme = "everforest"
 
 [editor]
+scrolloff = 8
+mouse = true
+middle-click-paste = true
+scroll-lines = 3
+shell = [ "sh", "-c" ]
+line-number = "absolute"
 cursorline = true
 cursorcolumn = false
+# gutters = [ "diagnostics", "spacer", "line-numbers", "spacer", "diff" ]
+auto-completion = true
+auto-format = true
+auto-save = false
+idle-timeout = 0
+completion-trigger-len = 2
+auto-info = true
 true-color = true
+rulers = []
+bufferline = "always"
 color-modes = true
 auto-pairs = false
-auto-save = false
-scrolloff = 8
-scroll-lines = 3
-bufferline = "always"
 
 [editor.statusline]
-left = [ "mode", "file-name", ]
-center = [ "spinner", ]
+left = [ "mode", "file-name" ]
+center = []
 right = [
-  "position", "position-percentage", "diagnostics",
-  "selections", "file-encoding", "file-line-ending",
+  "position", "separator", 
+  "spacer", "position-percentage", "spacer", "separator", 
+  "total-line-numbers", "separator", 
+  "file-line-ending", "separator", 
   "file-type", ]
 separator = "│"
 mode.normal = "NORMAL"
@@ -26,7 +38,9 @@ mode.select = "SELECT"
 mode.insert = "INSERT"
 
 [editor.lsp]
-display-messages = true
+display-messages = false
+auto-signature-help = true
+display-signature-help-docs = true
 
 # [editor.cursor-shape]
 # insert = "underline"
@@ -49,18 +63,19 @@ tabpad = "·" # Tabs will look like "→···" (depending on tab width)
 [editor.indent-guides]
 render = false
 character = "│"
+skip-levels = 0
 
 # Key Remapping
 [keys.normal]
 "\\"."c"."o" = [ ":config-open", ]
 "\\"."c"."r" = [ ":config-reload", ]
-#"esc" = [ "keep_primary_selection", "normal_mode", ]
+# "esc" = [ "keep_primary_selection", "normal_mode", ]
 "C-s" = [ ":wa", ]
 "C-q"."q" = [ ":xa", ]
 "C-q"."b" = [ ":w", ":bc", ]
 "C-q"."w" = [ ":w", "wclose", ]
-"C-e" = [ "scroll_down", ]
-"C-y" = [ "scroll_up", ]
+"C-e" = [ "move_line_down", "scroll_down", ]
+"C-y" = [ "move_line_up", "scroll_up", ]
 "C-r" = [ "redo", ]
 "C-j" = [ "move_line_down", "align_view_center", ]
 "C-k" = [ "move_line_up", "align_view_center", ]
@@ -81,7 +96,6 @@ character = "│"
 "d"."i"."w" = [
   "move_char_right", "move_prev_word_start", "move_next_word_end",
   "yank_main_selection_to_clipboard", "delete_selection", ]
-"t" = "yank"
 "y"."y" = [ "extend_to_line_bounds", "yank", "yank_main_selection_to_clipboard", ]
 "y"."i"."w" = [
   "move_char_right", "move_prev_word_start", "move_next_word_end",
@@ -97,21 +111,21 @@ character = "│"
   "yank_main_selection_to_clipboard", "delete_selection",
   "insert_mode", ]
 "?" = [ "select_regex", ]
-#"p" = [ "paste_clipboard_after", ]
-#"P" = [ "paste_clipboard_before", ]
+# "p" = [ "paste_clipboard_after", ]
+# "P" = [ "paste_clipboard_before", ]
 
 [keys.select]
 "\\"."c"."o" = [ ":config-open", ]
 "\\"."c"."r" = [ ":config-reload", ]
-#"esc" = [ "keep_primary_selection", "normal_mode", ]
+# "esc" = [ "keep_primary_selection", "normal_mode", ]
 "tab" = [ "extend_to_line_bounds", "indent", ]
 "S-tab" = [ "extend_to_line_bounds", "unindent", ]
 "C-s" = [ ":wa", ]
 "C-q"."q" = [ ":xa", ]
 "C-q"."b" = [ ":w", ":bc", ]
 "C-q"."w" = [ ":w", "wclose", ]
-"C-e" = [ "scroll_down", ]
-"C-y" = [ "scroll_up", ]
+"C-e" = [ "move_line_down", "scroll_down", ]
+"C-y" = [ "move_line_up", "scroll_up", ]
 "C-r" = [ "redo", "normal_mode", ]
 "C-j" = [
   "ensure_selections_forward", "extend_to_line_bounds",
@@ -123,6 +137,8 @@ character = "│"
   "extend_char_right", "extend_char_left", "delete_selection",
   "move_line_up", "add_newline_above", "move_line_up",
   "replace_with_yanked", "select_mode", ]
+"J" = [ "extend_visual_line_down", "extend_to_line_bounds", ]
+"K" = [ "extend_visual_line_up", "extend_to_line_bounds", ]
 "$" = [ "goto_line_end", ]
 "^" = [ "goto_first_nonwhitespace", ]
 "0" = [ "goto_line_start", ]
@@ -130,26 +146,15 @@ character = "│"
 "M" = [ "goto_window_center", ]
 "V" = [ "extend_to_line_bounds", "select_mode", ]
 "x" = [ "yank_main_selection_to_clipboard", "delete_selection", ]
-"d"."d" = [
-  "extend_to_line_bounds", "yank_main_selection_to_clipboard",
-  "delete_selection", ]
-"t" = [ "yank_main_selection_to_clipboard", "yank", "normal_mode", ]
-"y"."y" = [
-  "extend_to_line_bounds", "yank_main_selection_to_clipboard",
-  "yank", "normal_mode", ]
-"s" = [
-  "yank_main_selection_to_clipboard", "delete_selection",
-  "insert_mode", ]
-"c"."c" = [
-  "extend_to_line_bounds", "yank_main_selection_to_clipboard",
-  "delete_selection", "open_above", ]
+"d" = [ "yank_main_selection_to_clipboard", "delete_selection", ]
+"y" = [ "yank_main_selection_to_clipboard", "yank", "normal_mode", ]
+"s" = [ "yank_main_selection_to_clipboard", "delete_selection", "insert_mode", ]
+"c" = [ "yank_main_selection_to_clipboard", "delete_selection", "open_above", ]
 "?" = [ "select_regex", ]
 "p" = [ "paste_before", "delete_selection_noyank", ]
-"P" = [
-  "paste_before", "yank_main_selection_to_clipboard",
-  "delete_selection", ]
+"P" = [ "paste_before", "yank_main_selection_to_clipboard", "delete_selection", ]
 
 [keys.insert]
-#"esc" = [ "keep_primary_selection", "normal_mode", ]
+# "esc" = [ "keep_primary_selection", "normal_mode", ]
 
 # If copy/paste doesn't work properly, install xclip.
