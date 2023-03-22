@@ -1,6 +1,6 @@
 # Editor Config
-# theme = "catppuccin_frappe"
-theme = "everforest_dark"
+theme = "catppuccin_frappe"
+#theme = "everforest"
 
 [editor]
 cursorline = true
@@ -9,7 +9,7 @@ true-color = true
 color-modes = true
 auto-pairs = false
 auto-save = false
-scrolloff = 0
+scrolloff = 8
 scroll-lines = 3
 bufferline = "always"
 
@@ -54,7 +54,7 @@ character = "│"
 [keys.normal]
 "\\"."c"."o" = [ ":config-open", ]
 "\\"."c"."r" = [ ":config-reload", ]
-"esc" = [ "keep_primary_selection", "normal_mode", ]
+#"esc" = [ "keep_primary_selection", "normal_mode", ]
 "C-s" = [ ":wa", ]
 "C-q"."q" = [ ":xa", ]
 "C-q"."b" = [ ":w", ":bc", ]
@@ -73,37 +73,37 @@ character = "│"
 "V" = [ "extend_to_line_bounds", "select_mode", ]
 "D" = [
   "select_mode", "goto_line_end",
-  "yank_main_selection_to_clipboard", "delete_selection_noyank", ]
-"x" = [ "yank_main_selection_to_clipboard", "delete_selection_noyank", ]
+  "yank_main_selection_to_clipboard", "delete_selection", ]
+"x" = [ "yank_main_selection_to_clipboard", "delete_selection", ]
 "d"."d" = [
   "extend_to_line_bounds", "yank_main_selection_to_clipboard",
-  "delete_selection_noyank", ]
+  "delete_selection", ]
 "d"."i"."w" = [
   "move_char_right", "move_prev_word_start", "move_next_word_end",
-  "yank_main_selection_to_clipboard", "delete_selection_noyank", ]
-"t" = [ "yank_main_selection_to_clipboard", ]
-"y"."y" = [ "extend_to_line_bounds", "yank_main_selection_to_clipboard", ]
+  "yank_main_selection_to_clipboard", "delete_selection", ]
+"t" = "yank"
+"y"."y" = [ "extend_to_line_bounds", "yank", "yank_main_selection_to_clipboard", ]
 "y"."i"."w" = [
   "move_char_right", "move_prev_word_start", "move_next_word_end",
-  "yank_main_selection_to_clipboard", ]
+  "yank", "yank_main_selection_to_clipboard", ]
 "s" = [
-  "yank_main_selection_to_clipboard", "delete_selection_noyank",
+  "yank_main_selection_to_clipboard", "delete_selection",
   "insert_mode", ]
 "c"."c" = [
   "extend_to_line_bounds", "yank_main_selection_to_clipboard",
-  "delete_selection_noyank", "open_above", ]
+  "delete_selection", "open_above", ]
 "c"."i"."w" = [
   "move_char_right", "move_prev_word_start", "move_next_word_end",
-  "yank_main_selection_to_clipboard", "delete_selection_noyank",
+  "yank_main_selection_to_clipboard", "delete_selection",
   "insert_mode", ]
 "?" = [ "select_regex", ]
-"p" = [ "paste_clipboard_after", ]
-"P" = [ "paste_clipboard_before", ]
+#"p" = [ "paste_clipboard_after", ]
+#"P" = [ "paste_clipboard_before", ]
 
 [keys.select]
 "\\"."c"."o" = [ ":config-open", ]
 "\\"."c"."r" = [ ":config-reload", ]
-"esc" = [ "keep_primary_selection", "normal_mode", ]
+#"esc" = [ "keep_primary_selection", "normal_mode", ]
 "tab" = [ "extend_to_line_bounds", "indent", ]
 "S-tab" = [ "extend_to_line_bounds", "unindent", ]
 "C-s" = [ ":wa", ]
@@ -123,37 +123,33 @@ character = "│"
   "extend_char_right", "extend_char_left", "delete_selection",
   "move_line_up", "add_newline_above", "move_line_up",
   "replace_with_yanked", "select_mode", ]
-# "H" = [ "select_mode", "move_char_left", "extend_to_line_bounds", ]
-# "J" = [ "select_mode", "move_line_down", "extend_to_line_bounds", ]
-# "K" = [ "select_mode", "move_line_up", "extend_to_line_bounds", ]
-# "L" = [ "select_mode", "move_char_right", "extend_to_line_bounds", ]
 "$" = [ "goto_line_end", ]
 "^" = [ "goto_first_nonwhitespace", ]
 "0" = [ "goto_line_start", ]
 "G" = [ "goto_last_line", ]
 "M" = [ "goto_window_center", ]
 "V" = [ "extend_to_line_bounds", "select_mode", ]
-"x" = [ "yank_main_selection_to_clipboard", "delete_selection_noyank", ]
+"x" = [ "yank_main_selection_to_clipboard", "delete_selection", ]
 "d"."d" = [
   "extend_to_line_bounds", "yank_main_selection_to_clipboard",
-  "delete_selection_noyank", ]
-"t" = [ "yank_main_selection_to_clipboard", "normal_mode", ]
+  "delete_selection", ]
+"t" = [ "yank_main_selection_to_clipboard", "yank", "normal_mode", ]
 "y"."y" = [
   "extend_to_line_bounds", "yank_main_selection_to_clipboard",
-  "normal_mode", ]
+  "yank", "normal_mode", ]
 "s" = [
-  "yank_main_selection_to_clipboard", "delete_selection_noyank",
+  "yank_main_selection_to_clipboard", "delete_selection",
   "insert_mode", ]
 "c"."c" = [
   "extend_to_line_bounds", "yank_main_selection_to_clipboard",
-  "delete_selection_noyank", "open_above", ]
+  "delete_selection", "open_above", ]
 "?" = [ "select_regex", ]
-"p" = [ "paste_clipboard_before", "delete_selection_noyank", ]
+"p" = [ "paste_before", "delete_selection_noyank", ]
 "P" = [
-  "paste_clipboard_before", "yank_main_selection_to_clipboard",
-  "delete_selection_noyank", ]
+  "paste_before", "yank_main_selection_to_clipboard",
+  "delete_selection", ]
 
 [keys.insert]
-"esc" = [ "keep_primary_selection", "normal_mode", ]
+#"esc" = [ "keep_primary_selection", "normal_mode", ]
 
 # If copy/paste doesn't work properly, install xclip.
