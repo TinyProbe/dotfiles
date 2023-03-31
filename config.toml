@@ -24,7 +24,7 @@ color-modes = true
 auto-pairs = false
 
 [editor.statusline]
-left = [ "mode", "file-name" ]
+left = [ "mode", "file-name", "separator", ]
 center = []
 right = [
   "position", "separator", 
@@ -32,7 +32,7 @@ right = [
   "total-line-numbers", "separator", 
   "file-line-ending", "separator", 
   "file-type", ]
-separator = "│"
+separator = "\ue0b3"
 mode.normal = "NORMAL"
 mode.select = "SELECT"
 mode.insert = "INSERT"
