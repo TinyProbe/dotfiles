@@ -10,7 +10,7 @@ shell = [ "sh", "-c" ]
 line-number = "absolute"
 cursorline = true
 cursorcolumn = false
-# gutters = [ "diagnostics", "spacer", "line-numbers", "spacer", "diff" ]
+gutters = [ "diff", "line-numbers", "spacer", ]
 auto-completion = true
 auto-format = true
 auto-save = false
@@ -24,7 +24,8 @@ color-modes = true
 auto-pairs = false
 
 [editor.statusline]
-left = [ "mode", "file-name", "separator", "diagnostics", ]
+left = [ "mode", "file-name", "separator",
+  "spacer", "diagnostics", ]
 center = []
 right = [
   "position", "separator", 
@@ -32,7 +33,7 @@ right = [
   "total-line-numbers", "separator", 
   "file-line-ending", "separator", 
   "file-type", ]
-separator = "\ue0b3"
+separator = "\uE0B3"
 mode.normal = "NORMAL"
 mode.select = "SELECT"
 mode.insert = "INSERT"
@@ -69,16 +70,14 @@ skip-levels = 0
 [keys.normal]
 "\\"."c"."o" = [ ":config-open", ]
 "\\"."c"."r" = [ ":config-reload", ]
-# "esc" = [ "keep_primary_selection", "normal_mode", ]
+"esc" = [ "keep_primary_selection", ]
 "C-s" = [ ":wa", ]
 "C-q"."q" = [ ":xa", ]
 "C-q"."b" = [ ":w", ":bc", ]
 "C-q"."w" = [ ":w", "wclose", ]
-"C-e" = [ "move_line_down", "scroll_down", ]
-"C-y" = [ "move_line_up", "scroll_up", ]
+"C-e" = [ "scroll_down", ]
+"C-y" = [ "scroll_up", ]
 "C-r" = [ "redo", ]
-"C-j" = [ "move_line_down", "align_view_center", ]
-"C-k" = [ "move_line_up", "align_view_center", ]
 "C-a" = [ "select_all", "select_mode", ]
 "$" = [ "goto_line_end", ]
 "^" = [ "goto_first_nonwhitespace", ]
@@ -111,21 +110,18 @@ skip-levels = 0
   "yank_main_selection_to_clipboard", "delete_selection",
   "insert_mode", ]
 "?" = [ "select_regex", ]
-# "p" = [ "paste_clipboard_after", ]
-# "P" = [ "paste_clipboard_before", ]
 
 [keys.select]
 "\\"."c"."o" = [ ":config-open", ]
 "\\"."c"."r" = [ ":config-reload", ]
-# "esc" = [ "keep_primary_selection", "normal_mode", ]
 "tab" = [ "extend_to_line_bounds", "indent", ]
 "S-tab" = [ "extend_to_line_bounds", "unindent", ]
 "C-s" = [ ":wa", ]
 "C-q"."q" = [ ":xa", ]
 "C-q"."b" = [ ":w", ":bc", ]
 "C-q"."w" = [ ":w", "wclose", ]
-"C-e" = [ "move_line_down", "scroll_down", ]
-"C-y" = [ "move_line_up", "scroll_up", ]
+"C-e" = [ "scroll_down", ]
+"C-y" = [ "scroll_up", ]
 "C-r" = [ "redo", "normal_mode", ]
 "C-j" = [
   "ensure_selections_forward", "extend_to_line_bounds",
@@ -155,6 +151,5 @@ skip-levels = 0
 "P" = [ "paste_before", "yank_main_selection_to_clipboard", "delete_selection", ]
 
 [keys.insert]
-# "esc" = [ "keep_primary_selection", "normal_mode", ]
 
 # If copy/paste doesn't work properly, install xclip.
