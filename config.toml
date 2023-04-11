@@ -24,15 +24,11 @@ color-modes = true
 auto-pairs = false
 
 [editor.statusline]
-left = [ "mode", "file-name", "separator",
-  "spacer", "diagnostics", ]
+left = [ "mode", "file-name", "separator", "spacer", "diagnostics", ]
 center = []
 right = [
-  "position", "separator", 
-  "spacer", "position-percentage", "spacer", "separator", 
-  "total-line-numbers", "separator", 
-  "file-line-ending", "separator", 
-  "file-type", ]
+  "position", "separator",  "spacer", "position-percentage", "spacer", "separator", 
+  "total-line-numbers", "separator",  "file-line-ending", "separator",  "file-type", ]
 separator = "\uE0B3"
 mode.normal = "NORMAL"
 mode.select = "SELECT"
@@ -85,30 +81,15 @@ skip-levels = 0
 "G" = [ "goto_last_line", ]
 "M" = [ "goto_window_center", ]
 "V" = [ "extend_to_line_bounds", "select_mode", ]
-"D" = [
-  "select_mode", "goto_line_end",
-  "yank_main_selection_to_clipboard", "delete_selection", ]
+"D" = [ "select_mode", "goto_line_end", "yank_main_selection_to_clipboard", "delete_selection", ]
 "x" = [ "yank_main_selection_to_clipboard", "delete_selection", ]
-"d"."d" = [
-  "extend_to_line_bounds", "yank_main_selection_to_clipboard",
-  "delete_selection", ]
-"d"."i"."w" = [
-  "move_char_right", "move_prev_word_start", "move_next_word_end",
-  "yank_main_selection_to_clipboard", "delete_selection", ]
+"d"."d" = [ "extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection", ]
+"d"."i"."w" = [ "move_char_right", "move_prev_word_start", "move_next_word_end", "yank_main_selection_to_clipboard", "delete_selection", ]
 "y"."y" = [ "extend_to_line_bounds", "yank", "yank_main_selection_to_clipboard", ]
-"y"."i"."w" = [
-  "move_char_right", "move_prev_word_start", "move_next_word_end",
-  "yank", "yank_main_selection_to_clipboard", ]
-"s" = [
-  "yank_main_selection_to_clipboard", "delete_selection",
-  "insert_mode", ]
-"c"."c" = [
-  "extend_to_line_bounds", "yank_main_selection_to_clipboard",
-  "delete_selection", "open_above", ]
-"c"."i"."w" = [
-  "move_char_right", "move_prev_word_start", "move_next_word_end",
-  "yank_main_selection_to_clipboard", "delete_selection",
-  "insert_mode", ]
+"y"."i"."w" = [ "move_char_right", "move_prev_word_start", "move_next_word_end", "yank", "yank_main_selection_to_clipboard", ]
+"s" = [ "yank_main_selection_to_clipboard", "delete_selection", "insert_mode", ]
+"c"."c" = [ "extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection", "open_above", ]
+"c"."i"."w" = [ "move_char_right", "move_prev_word_start", "move_next_word_end", "yank_main_selection_to_clipboard", "delete_selection", "insert_mode", ]
 "?" = [ "select_regex", ]
 
 [keys.select]
@@ -124,15 +105,11 @@ skip-levels = 0
 "C-y" = [ "scroll_up", ]
 "C-r" = [ "redo", "normal_mode", ]
 "C-j" = [
-  "ensure_selections_forward", "extend_to_line_bounds",
-  "extend_char_right", "extend_char_left", "delete_selection",
-  "add_newline_below", "move_line_down", "replace_with_yanked",
-  "select_mode", ]
+  "ensure_selections_forward", "extend_to_line_bounds", "extend_char_right", "extend_char_left", "delete_selection",
+  "add_newline_below", "move_line_down", "replace_with_yanked", "select_mode", ]
 "C-k" = [
-  "ensure_selections_forward", "extend_to_line_bounds",
-  "extend_char_right", "extend_char_left", "delete_selection",
-  "move_line_up", "add_newline_above", "move_line_up",
-  "replace_with_yanked", "select_mode", ]
+  "ensure_selections_forward", "extend_to_line_bounds", "extend_char_right", "extend_char_left", "delete_selection",
+  "move_line_up", "add_newline_above", "move_line_up", "replace_with_yanked", "select_mode", ]
 "J" = [ "extend_visual_line_down", "extend_to_line_bounds", ]
 "K" = [ "extend_visual_line_up", "extend_to_line_bounds", ]
 "$" = [ "goto_line_end", ]
