@@ -87,6 +87,8 @@ lvim.keys.normal_mode["<Tab>"] = ">>"
 lvim.keys.normal_mode["<S-Tab>"] = "<<"
 lvim.keys.visual_mode["<Tab>"] = ">gv"
 lvim.keys.visual_mode["<S-Tab>"] = "<gv"
+lvim.keys.visual_mode["H"] = "<gv"
+lvim.keys.visual_mode["L"] = ">gv"
 
 lvim.keys.normal_mode["<C-q>"] = false
 lvim.keys.normal_mode["<C-q>q"] = ":xa<CR>"
