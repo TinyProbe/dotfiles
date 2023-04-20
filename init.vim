@@ -162,6 +162,7 @@ set listchars=tab:→·
 
 highlight Cursorline ctermbg=DarkBlue
 highlight Visual ctermbg=Blue
+highlight NonText ctermfg=Black
 
 nnoremap \co <Cmd>edit ~/.myvimrc<CR>
 nnoremap \cr <Cmd>source ~/.myvimrc<CR>
