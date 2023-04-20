@@ -166,6 +166,7 @@ highlight Cursorline ctermbg=DarkBlue
 highlight Visual ctermbg=Blue
 highlight NonText ctermfg=Black
 highlight MatchParen ctermfg=DarkRed ctermbg=None
+highlight SpecialKey ctermfg=DarkGrey
 
 nnoremap \co <Cmd>edit ~/.myvimrc<CR>
 nnoremap \cr <Cmd>source ~/.myvimrc<CR>
@@ -248,7 +249,7 @@ vnoremap ms] s[  ]<ESC>hhpll%
 vnoremap ms< s<><ESC>hp
 vnoremap ms> s<  ><ESC>hhp
 vnoremap ms' s''<ESC>hp
-vnoremap ms\ s\"\"<ESC>hp
+vnoremap ms" s\"\"<ESC>hp
 vnoremap / :norm i// <CR>
 vnoremap ? :norm 3x<CR>
 vnoremap p P
