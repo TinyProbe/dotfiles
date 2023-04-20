@@ -171,8 +171,8 @@ nnoremap < <<
 nnoremap > >>
 vnoremap < <gv
 vnoremap > >gv
-nnoremap H <gv
-nnoremap L >gv
+vnoremap H <gv
+vnoremap L >gv
 
 nnoremap h <BackSpace>
 nnoremap l <Space>
