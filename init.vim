@@ -139,6 +139,7 @@ endif
 set title
 set number
 set cursorline
+set laststatus=2
 set mouse=a
 set clipboard=unnamed,unnamedplus
 set hidden
