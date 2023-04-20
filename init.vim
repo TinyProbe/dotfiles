@@ -2,8 +2,11 @@
 set background=dark
 set clipboard=unnamed,unnamedplus
 set hidden
-set hlsearch
+set ignorecase
+set smartcase
 set incsearch
+set showmatch
+set hlsearch
 set inccommand=split
 set mouse=a
 set number
