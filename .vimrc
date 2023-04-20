@@ -249,7 +249,7 @@ vnoremap ms] s[  ]<ESC>hhpll%
 vnoremap ms< s<><ESC>hp
 vnoremap ms> s<  ><ESC>hhp
 vnoremap ms' s''<ESC>hp
-vnoremap ms" s\"\"<ESC>hp
+vnoremap ms" s""<ESC>hp
 vnoremap / :norm i// <CR>
 vnoremap ? :norm 3x<CR>
 vnoremap p P
