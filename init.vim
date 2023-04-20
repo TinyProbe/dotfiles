@@ -160,6 +160,8 @@ set sidescrolloff=12
 set list
 set listchars=tab:→·
 
+autocmd BufEnter *.cpp :setlocal cindent cino=j1,(0,ws,Ws
+
 highlight Cursorline ctermbg=DarkBlue
 highlight Visual ctermbg=Blue
 highlight NonText ctermfg=Black
