@@ -85,7 +85,9 @@ set clipboard=unnamed,unnamedplus
 set hidden
 set hlsearch
 set incsearch
+set nowrap
 set nobackup
+set noundofile
 set noswapfile
 set softtabstop=4
 set tabstop=4
@@ -95,8 +97,11 @@ set sidescrolloff=12
 set list
 set listchars=tab:→·
 
-nnoremap \co <Cmd>edit /Users/tiny/.vimrc<CR>
-nnoremap \cr <Cmd>source /Users/tiny/.vimrc<CR>
+highlight Cursorline ctermbg=DarkBlue
+highlight Visual ctermbg=Blue
+
+nnoremap \co <Cmd>edit ~/.myvimrc<CR>
+nnoremap \cr <Cmd>source ~/.myvimrc<CR>
 
 nnoremap < <<
 nnoremap > >>
@@ -104,6 +109,9 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap H <gv
 nnoremap L >gv
+
+nnoremap h <BackSpace>
+nnoremap l <Space>
 
 nnoremap <C-q>q :xa<CR>
 nnoremap <C-q>c :qa!<CR>
@@ -132,14 +140,14 @@ vnoremap gl $
 vnoremap gn :bnext<CR>zz
 vnoremap gp :bprevious<CR>zz
 
-nnoremap <C-h> 3h
-nnoremap <C-l> 3l
-nnoremap <C-j> 3<C-e>
-nnoremap <C-k> 3<C-y>
-vnoremap <C-h> 3h
-vnoremap <C-l> 3l
-vnoremap <C-j> 3<C-e>
-vnoremap <C-k> 3<C-y>
+nmap <C-h> 3h
+nmap <C-l> 3l
+nmap <C-j> 3<C-e>
+nmap <C-k> 3<C-y>
+vmap <C-h> 3h
+vmap <C-l> 3l
+vmap <C-j> 3<C-e>
+vmap <C-k> 3<C-y>
 
 nnoremap piw lbveP
 nnoremap pp p
