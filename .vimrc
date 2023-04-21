@@ -162,9 +162,6 @@ set listchars=tab:→·
 
 autocmd BufEnter *.cpp :setlocal cindent cino=j1,(0,ws,Ws
 
-syntax on
-syntax match Operator display '[* +-/%<>|&^~!?:]'
-syntax match Brace display '[(){}\[\]]'
 highlight Operator ctermfg=Cyan
 highlight Brace ctermfg=LightYellow
 highlight Cursorline ctermbg=DarkBlue
