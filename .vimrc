@@ -159,10 +159,10 @@ set scrolloff=8
 set sidescrolloff=12
 set list
 set listchars=tab:→·
-syntax on
 
 autocmd BufEnter *.cpp :setlocal cindent cino=j1,(0,ws,Ws
 
+syntax on
 syntax match Operator display '[* +-/%<>|&^~!?:]'
 syntax match Brace display '[(){}\[\]]'
 highlight Operator ctermfg=Cyan
