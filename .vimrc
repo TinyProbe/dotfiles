@@ -162,8 +162,6 @@ set listchars=tab:→·
 
 autocmd BufEnter *.cpp :setlocal cindent cino=j1,(0,ws,Ws
 
-highlight Operator ctermfg=Cyan
-highlight Brace ctermfg=LightYellow
 highlight Cursorline ctermbg=DarkBlue
 highlight Visual ctermbg=Blue
 highlight NonText ctermfg=Black
@@ -182,6 +180,8 @@ vnoremap L >gv
 
 nnoremap h <BackSpace>
 nnoremap l <Space>
+vnoremap h <BackSpace>
+vnoremap l <Space>
 
 nnoremap <C-q>q :xa<CR>
 nnoremap <C-q>c :qa!<CR>
