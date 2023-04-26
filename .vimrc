@@ -155,8 +155,8 @@ set noswapfile
 set softtabstop=4
 set tabstop=4
 set shiftwidth=4
-set scrolloff=8
-set sidescrolloff=12
+set scrolloff=6
+set sidescrolloff=9
 set list
 set listchars=tab:→·
 
@@ -168,8 +168,21 @@ highlight NonText ctermfg=Black
 highlight MatchParen ctermfg=DarkRed ctermbg=None
 highlight SpecialKey ctermfg=DarkGrey
 
-nnoremap \co <Cmd>edit ~/.myvimrc<CR>
-nnoremap \cr <Cmd>source ~/.myvimrc<CR>
+nnoremap <Space>co <Cmd>edit ~/.config/nvim/init.vim<CR>
+nnoremap <Space>cr <Cmd>source ~/.config/nvim/init.vim<CR>
+nnoremap <Space>bs :buffers<CR>
+nnoremap <Space>bd :bdelete<CR>
+nnoremap <Space>bl :bnext<CR>
+nnoremap <Space>bh :bprevious<CR>
+nnoremap <Space>bj :blast<CR>
+nnoremap <Space>bk :bfirst<CR>
+nnoremap <Space>ts :tabs<CR>
+nnoremap <Space>tc :tabclose<CR>
+nnoremap <Space>tl :tabnext<CR>
+nnoremap <Space>th :tabprevious<CR>
+nnoremap <Space>tj :tablast<CR>
+nnoremap <Space>tk :tabfirst<CR>
+nnoremap <Space>tt :tabnew<CR>:terminal<CR>i
 
 nnoremap < <<
 nnoremap > >>
@@ -226,20 +239,6 @@ nnoremap - <C-x>
 nnoremap = <C-a>
 nnoremap <C-a> GVgg
 nnoremap <C-s> :wa<CR>
-nnoremap <C-b>s :buffers<CR>
-nnoremap <C-b>d :bdelete<CR>
-nnoremap <C-b>l :bnext<CR>
-nnoremap <C-b>h :bprevious<CR>
-nnoremap <C-b>j :blast<CR>
-nnoremap <C-b>k :bfirst<CR>
-nnoremap <C-t>s :tabs<CR>
-nnoremap <C-t>c :tabclose<CR>
-nnoremap <C-t>l :tabnext<CR>
-nnoremap <C-t>h :tabprevious<CR>
-nnoremap <C-t>j :tablast<CR>
-nnoremap <C-t>k :tabfirst<CR>
-nnoremap <C-t>t :tabnew<CR>:terminal<CR>i
-nnoremap <C-w>t :new<CR>:terminal<CR>i
 vnoremap J :m'>+<CR>gv
 vnoremap K :m-2<CR>gv
 vnoremap ms( s()<ESC>hpl%
