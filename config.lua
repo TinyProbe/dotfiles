@@ -2,60 +2,59 @@
  THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
  `lvim` is the global options object
 ]]
-
 -- vim options
-vim.opt.backup = false -- creates a backup file
-vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
-vim.opt.colorcolumn = "99999" -- fixes indentline for now
+vim.opt.backup = false                     -- creates a backup file
+vim.opt.clipboard = "unnamedplus"          -- allows neovim to access the system clipboard
+vim.opt.cmdheight = 1                      -- more space in the neovim command line for displaying messages
+vim.opt.colorcolumn = "99999"              -- fixes indentline for now
 vim.opt.completeopt = { "menuone", "noselect" }
-vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
-vim.opt.fileencoding = "utf-8" -- the encoding written to a file
-vim.opt.foldmethod = "manual" -- folding set to "expr" for treesitter based folding
-vim.opt.foldexpr = "" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
--- vim.opt.guifont = "monaco:h17" -- the font used in graphical neovim applications
+vim.opt.conceallevel = 0                   -- so that `` is visible in markdown files
+vim.opt.fileencoding = "utf-8"             -- the encoding written to a file
+vim.opt.foldmethod = "manual"              -- folding set to "expr" for treesitter based folding
+vim.opt.foldexpr = ""                      -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
+-- vim.opt.guifont = "sf\ mono\ powerline:h18" -- the font used in graphical neovim applications
 vim.opt.guicursor = "a:hor25-blinkwait300" -- the cursor shape's definitions
-vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
-vim.opt.hlsearch = true -- highlight all matches on previous search pattern
-vim.opt.ignorecase = true -- ignore case in search patterns
-vim.opt.mouse = "a" -- allow the mouse to be used in neovim
-vim.opt.pumheight = 10 -- pop up menu height
-vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
-vim.opt.showtabline = 0 -- always show tabs
-vim.opt.smartcase = true -- smart case
-vim.opt.smartindent = true -- make indenting smarter again
-vim.opt.smarttab = true -- make tab smarter again
+vim.opt.hidden = true                      -- required to keep multiple buffers and open multiple buffers
+vim.opt.hlsearch = true                    -- highlight all matches on previous search pattern
+vim.opt.ignorecase = true                  -- ignore case in search patterns
+vim.opt.mouse = "a"                        -- allow the mouse to be used in neovim
+vim.opt.pumheight = 10                     -- pop up menu height
+vim.opt.showmode = false                   -- we don't need to see things like -- INSERT -- anymore
+vim.opt.showtabline = 0                    -- always show tabs
+vim.opt.smartcase = true                   -- smart case
+vim.opt.smartindent = true                 -- make indenting smarter again
+vim.opt.smarttab = true                    -- make tab smarter again
 vim.opt.autoindent = true
-vim.opt.splitbelow = true -- force all horizontal splits to go below current window
-vim.opt.splitright = true -- force all vertical splits to go to the right of current window
-vim.opt.swapfile = false -- creates a swapfile
-vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 0 -- time to wait for a mapped sequence to complete (in milliseconds)
-vim.opt.title = true -- set the title of window to the value of the titlestring
+vim.opt.splitbelow = true                  -- force all horizontal splits to go below current window
+vim.opt.splitright = true                  -- force all vertical splits to go to the right of current window
+vim.opt.swapfile = false                   -- creates a swapfile
+vim.opt.ttyfast = true
+vim.opt.termguicolors = true               -- set term gui colors (most terminals support this)
+vim.opt.timeoutlen = 0                     -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.title = true                       -- set the title of window to the value of the titlestring
 vim.opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
 vim.opt.undodir = vim.fn.stdpath "cache" .. "/undo"
-vim.opt.undofile = true -- enable persistent undo
-vim.opt.updatetime = 0 -- faster completion
-vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
-vim.opt.expandtab = false -- convert tabs to spaces
-vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 4 -- insert 2 spaces for a tab
+vim.opt.undofile = true                    -- enable persistent undo
+vim.opt.updatetime = 0                     -- faster completion
+vim.opt.writebackup = false                -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
+vim.opt.expandtab = false                  -- convert tabs to spaces
+vim.opt.shiftwidth = 4                     -- the number of spaces inserted for each indentation
+vim.opt.tabstop = 4                        -- insert 2 spaces for a tab
 vim.opt.softtabstop = 4
-vim.opt.cursorline = true -- highlight the current line
-vim.opt.number = true -- set numbered lines
-vim.opt.relativenumber = false -- set relative numbered lines
-vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
-vim.opt.signcolumn = "yes" -- always show the sign column otherwise it would shift the text each time
-vim.opt.wrap = false -- display lines as one long line
+vim.opt.cursorline = true                  -- highlight the current line
+vim.opt.number = true                      -- set numbered lines
+vim.opt.relativenumber = false             -- set relative numbered lines
+vim.opt.numberwidth = 4                    -- set number column width to 2 {default 4}
+vim.opt.signcolumn = "yes"                 -- always show the sign column otherwise it would shift the text each time
+vim.opt.wrap = false                       -- display lines as one long line
 vim.opt.spell = false
 vim.opt.spelllang = "en"
-vim.opt.scrolloff = 8 -- is one of my fav
-vim.opt.sidescrolloff = 12
+vim.opt.scrolloff = 6
+vim.opt.sidescrolloff = 9
 vim.opt.list = true
 vim.opt.listchars = "tab:→·"
-lvim.log.level = "warn"
 lvim.format_on_save.enabled = false
-lvim.colorscheme = "catppuccin-frappe"
+lvim.colorscheme = "catppuccin-macchiato"
 lvim.builtin.lualine.style = "default"
 lvim.builtin.lualine.sections.lualine_a = { "mode" }
 lvim.builtin.bufferline.options.always_show_bufferline = true
@@ -68,9 +67,9 @@ lvim.builtin.autopairs.active = true
 -- general
 lvim.log.level = "info"
 lvim.format_on_save = {
-  enabled = true,
-  pattern = "*.lua",
-  timeout = 1000,
+	enabled = true,
+	pattern = "*.lua",
+	timeout = 1000,
 }
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -78,19 +77,12 @@ lvim.format_on_save = {
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
 -- add your own keymapping
-lvim.keys.normal_mode["\\lt"] = ":LspStop<CR>"
-lvim.keys.normal_mode["\\ls"] = ":LspStart<CR>"
-lvim.keys.normal_mode["\\lr"] = ":LspRestart<CR>"
-lvim.keys.normal_mode["\\co"] = "<Cmd>edit /Users/tiny/.config/lvim/config.lua<CR>"
+lvim.keys.normal_mode["<Space>lt"] = ":LspStop<CR>"
 
 lvim.keys.normal_mode["<"] = "<<"
 lvim.keys.normal_mode[">"] = ">>"
 lvim.keys.visual_mode["<"] = "<gv"
 lvim.keys.visual_mode[">"] = ">gv"
-lvim.keys.normal_mode["<Tab>"] = ">>"
-lvim.keys.normal_mode["<S-Tab>"] = "<<"
-lvim.keys.visual_mode["<Tab>"] = ">gv"
-lvim.keys.visual_mode["<S-Tab>"] = "<gv"
 lvim.keys.visual_mode["H"] = "<gv"
 lvim.keys.visual_mode["L"] = ">gv"
 
@@ -141,20 +133,6 @@ lvim.keys.normal_mode["-"] = "<C-x>"
 lvim.keys.normal_mode["="] = "<C-a>"
 lvim.keys.normal_mode["<C-a>"] = "GVgg"
 lvim.keys.normal_mode["<C-s>"] = ":wa<CR>"
-lvim.keys.normal_mode["<C-b>s"] = ":buffers<CR>"
-lvim.keys.normal_mode["<C-b>d"] = ":bdelete<CR>"
-lvim.keys.normal_mode["<C-b>l"] = ":bnext<CR>"
-lvim.keys.normal_mode["<C-b>h"] = ":bprevious<CR>"
-lvim.keys.normal_mode["<C-b>j"] = ":blast<CR>"
-lvim.keys.normal_mode["<C-b>k"] = ":bfirst<CR>"
-lvim.keys.normal_mode["<C-t>s"] = ":tabs<CR>"
-lvim.keys.normal_mode["<C-t>c"] = ":tabclose<CR>"
-lvim.keys.normal_mode["<C-t>l"] = ":tabnext<CR>"
-lvim.keys.normal_mode["<C-t>h"] = ":tabprevious<CR>"
-lvim.keys.normal_mode["<C-t>j"] = ":tablast<CR>"
-lvim.keys.normal_mode["<C-t>k"] = ":tabfirst<CR>"
-lvim.keys.normal_mode["<C-t>t"] = ":tabnew<CR>:terminal<CR>i"
-lvim.keys.normal_mode["<C-w>t"] = ":new<CR>:terminal<CR>i"
 lvim.keys.visual_mode["J"] = ":m'>+<CR>gv"
 lvim.keys.visual_mode["K"] = ":m-2<CR>gv"
 lvim.keys.visual_mode["ms("] = "s()<ESC>hpl%"
@@ -167,8 +145,8 @@ lvim.keys.visual_mode["ms<"] = "s<><ESC>hp"
 lvim.keys.visual_mode["ms>"] = "s<  ><ESC>hhp"
 lvim.keys.visual_mode["ms'"] = "s''<ESC>hp"
 lvim.keys.visual_mode["ms\""] = "s\"\"<ESC>hp"
-lvim.keys.visual_mode["/"] = ":norm i//<CR>"
-lvim.keys.visual_mode["?"] = ":norm 2x<CR>"
+lvim.keys.visual_mode["/"] = ":norm i// <CR>"
+lvim.keys.visual_mode["?"] = ":norm 2x <CR>"
 lvim.keys.visual_mode["p"] = "P"
 lvim.keys.visual_mode["P"] = "p"
 lvim.keys.visual_mode["u"] = "<ESC>u"
@@ -197,32 +175,6 @@ lvim.builtin.treesitter.auto_install = true
 
 -- -- always installed on startup, useful for parsers without a strict filetype
 -- lvim.builtin.treesitter.ensure_installed = { "comment", "markdown_inline", "regex" }
-
-lvim.builtin.treesitter = {
-	ensure_installed = "all",
-	sync_install = true,
-	ignore_install = { "", },
-	highlight = {
-		enable = true,
-		disable = { "", },
-		additional_vim_regex_highlighting = true,
-	},
-	indent = {
-		enable = false,
-		disable = { "yaml", "make", "toml", },
-	},
-	rainbow = {
-		enable = true,
-		extended_mode = true,
-		max_file_lines = nil,
-	},
-	playground = {
-		enable = true,
-		disable = { "", },
-		updatetime = 0,
-		persist_queries = false,
-	},
-}
 
 -- -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>
 
@@ -272,10 +224,10 @@ lvim.builtin.treesitter = {
 
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
-	{ "catppuccin/nvim", name = "catppuccin" },
-	{ "olimorris/onedarkpro.nvim", name = "onedarkpro" },
+	{ "catppuccin/nvim",            name = "catppuccin" },
+	{ "olimorris/onedarkpro.nvim",  name = "onedarkpro" },
 	{ "NLKNguyen/papercolor-theme", name = "papercolor" },
-	{ "sainnhe/everforest", name = "everforest" },
+	{ "sainnhe/everforest",         name = "everforest" },
 }
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
