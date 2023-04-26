@@ -159,6 +159,7 @@ set scrolloff=6
 set sidescrolloff=9
 set list
 set listchars=tab:→·
+set colorcolumn=81
 
 autocmd BufEnter *.cpp :setlocal cindent cino=j1,(0,ws,Ws
 
@@ -168,8 +169,8 @@ highlight NonText ctermfg=Black
 highlight MatchParen ctermfg=DarkRed ctermbg=None
 highlight SpecialKey ctermfg=DarkGrey
 
-nnoremap <Space>co <Cmd>edit ~/.config/nvim/init.vim<CR>
-nnoremap <Space>cr <Cmd>source ~/.config/nvim/init.vim<CR>
+nnoremap <Space>co <Cmd>edit ~/.vimrc<CR>
+nnoremap <Space>cr <Cmd>source ~/.vimrc<CR>
 nnoremap <Space>bs :buffers<CR>
 nnoremap <Space>bd :bdelete<CR>
 nnoremap <Space>bl :bnext<CR>
@@ -182,7 +183,6 @@ nnoremap <Space>tl :tabnext<CR>
 nnoremap <Space>th :tabprevious<CR>
 nnoremap <Space>tj :tablast<CR>
 nnoremap <Space>tk :tabfirst<CR>
-nnoremap <Space>tt :tabnew<CR>:terminal<CR>i
 
 nnoremap < <<
 nnoremap > >>
