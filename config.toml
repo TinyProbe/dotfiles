@@ -1,8 +1,8 @@
 # Editor Config
-theme = "catppuccin_frappe"
+theme = "catppuccin_macchiato"
 
 [editor]
-scrolloff = 8
+scrolloff = 6
 mouse = true
 middle-click-paste = true
 scroll-lines = 3
@@ -21,7 +21,7 @@ true-color = true
 rulers = []
 bufferline = "always"
 color-modes = true
-auto-pairs = false
+auto-pairs = true
 
 [editor.statusline]
 left = [ "mode", "file-name", "separator", "spacer", "diagnostics", ]
@@ -66,13 +66,16 @@ skip-levels = 0
 [keys.normal]
 "\\"."c"."o" = [ ":config-open", ]
 "\\"."c"."r" = [ ":config-reload", ]
-"esc" = [ "keep_primary_selection", ]
+# "esc" = [ "keep_primary_selection", ]
 "C-s" = [ ":wa", ]
 "C-q"."q" = [ ":xa", ]
 "C-q"."b" = [ ":w", ":bc", ]
 "C-q"."w" = [ ":w", "wclose", ]
+"C-q"."c" = [ ":qa!" ]
 "C-e" = [ "scroll_down", ]
 "C-y" = [ "scroll_up", ]
+"C-j" = [ "scroll_down", "scroll_down", "scroll_down", ]
+"C-k" = [ "scroll_up", "scroll_up", "scroll_up", ]
 "C-r" = [ "redo", ]
 "C-a" = [ "select_all", "select_mode", ]
 "$" = [ "goto_line_end", ]
@@ -90,28 +93,36 @@ skip-levels = 0
 "s" = [ "yank_main_selection_to_clipboard", "delete_selection", "insert_mode", ]
 "c"."c" = [ "extend_to_line_bounds", "yank_main_selection_to_clipboard", "delete_selection", "open_above", ]
 "c"."i"."w" = [ "move_char_right", "move_prev_word_start", "move_next_word_end", "yank_main_selection_to_clipboard", "delete_selection", "insert_mode", ]
+"p"."p" = [ "paste_after", ]
+"p"."P" = [ "paste_before", ]
+"p"."i"."w" = [ "move_char_right", "move_prev_word_start", "move_next_word_end", "select_mode", "paste_before", "delete_selection_noyank", ]
+"P"."p" = [ "paste_clipboard_after", ]
+"P"."P" = [ "paste_clipboard_before", ]
+"P"."i"."w" = [ "move_char_right", "move_prev_word_start", "move_next_word_end", "select_mode", "paste_clipboard_before", "delete_selection_noyank", ]
 "?" = [ "select_regex", ]
 
 [keys.select]
 "\\"."c"."o" = [ ":config-open", ]
 "\\"."c"."r" = [ ":config-reload", ]
-"tab" = [ "extend_to_line_bounds", "indent", ]
-"S-tab" = [ "extend_to_line_bounds", "unindent", ]
+"esc" = [ "normal_mode", "move_char_left", "move_char_right", ]
 "C-s" = [ ":wa", ]
 "C-q"."q" = [ ":xa", ]
 "C-q"."b" = [ ":w", ":bc", ]
 "C-q"."w" = [ ":w", "wclose", ]
+"C-q"."c" = [ ":qa!" ]
 "C-e" = [ "scroll_down", ]
 "C-y" = [ "scroll_up", ]
 "C-r" = [ "redo", "normal_mode", ]
-"C-j" = [
+"J" = [
   "ensure_selections_forward", "extend_to_line_bounds", "extend_char_right", "extend_char_left", "delete_selection",
   "add_newline_below", "move_line_down", "replace_with_yanked", "select_mode", ]
-"C-k" = [
+"K" = [
   "ensure_selections_forward", "extend_to_line_bounds", "extend_char_right", "extend_char_left", "delete_selection",
   "move_line_up", "add_newline_above", "move_line_up", "replace_with_yanked", "select_mode", ]
-"J" = [ "extend_visual_line_down", "extend_to_line_bounds", ]
-"K" = [ "extend_visual_line_up", "extend_to_line_bounds", ]
+"H" = [ "unindent", ]
+"L" = [ "indent", ]
+"C-j" = [ "scroll_down", "scroll_down", "scroll_down", ]
+"C-k" = [ "scroll_up", "scroll_up", "scroll_up", ]
 "$" = [ "goto_line_end", ]
 "^" = [ "goto_first_nonwhitespace", ]
 "0" = [ "goto_line_start", ]
@@ -128,5 +139,6 @@ skip-levels = 0
 "P" = [ "paste_before", "yank_main_selection_to_clipboard", "delete_selection", ]
 
 [keys.insert]
+"esc" = [ "normal_mode", "move_char_left", ]
 
 # If copy/paste doesn't work properly, install xclip.
