@@ -137,11 +137,11 @@ syntax on
 
 autocmd BufEnter *.cpp :setlocal cindent cino=j1,(0,ws,Ws
 
-highlight Cursorline ctermbg=Black
-highlight Visual ctermbg=DarkBlue
-highlight NonText ctermfg=Black
-highlight MatchParen ctermfg=DarkRed ctermbg=None
-highlight SpecialKey ctermfg=DarkGrey
+"highlight Cursorline ctermbg=Black
+"highlight Visual ctermbg=DarkBlue
+"highlight NonText ctermfg=Black
+"highlight MatchParen ctermfg=DarkRed ctermbg=None
+"highlight SpecialKey ctermfg=DarkGrey
 
 nnoremap <Space>co <Cmd>edit ~/.vimrc<CR>
 nnoremap <Space>cr <Cmd>source ~/.vimrc<CR>
