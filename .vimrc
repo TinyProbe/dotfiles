@@ -130,6 +130,10 @@ set sidescrolloff=9
 set list
 set listchars=tab:→·
 set colorcolumn=81
+set termguicolors
+
+color onehalfdark
+syntax on
 
 autocmd BufEnter *.cpp :setlocal cindent cino=j1,(0,ws,Ws
 
