@@ -68,8 +68,8 @@ call s:h("Cursor", s:bg, s:blue, "")
 call s:h("CursorColumn", "", s:cursor_line, "")
 call s:h("CursorLine", "", s:cursor_line, "")
 
-call s:h("LineNr", s:gutter_fg, s:gutter_bg, "")
-call s:h("CursorLineNr", s:white, "", "")
+call s:h("LineNr", s:comment_fg, s:bg, "")
+call s:h("CursorLineNr", s:white, s:cursor_line, "")
 
 call s:h("DiffAdd", s:green, "", "")
 call s:h("DiffChange", s:yellow, "", "")
@@ -80,7 +80,7 @@ call s:h("IncSearch", s:bg, s:yellow, "")
 call s:h("Search", s:bg, s:yellow, "")
 
 call s:h("ErrorMsg", s:comment_fg, "", "")
-call s:h("ModeMsg", s:comment_fg, "", "")
+call s:h("ModeMsg", s:yellow, "", "reverse")
 call s:h("MoreMsg", s:fg, "", "")
 call s:h("WarningMsg", s:red, "", "")
 call s:h("Question", s:purple, "", "")
@@ -113,7 +113,7 @@ call s:h("FoldColumn", s:fg, "", "")
 call s:h("SignColumn", s:fg, "", "")
 
 call s:h("MatchParen", s:blue, "", "underline")
-call s:h("SpecialKey", s:comment_fg, "", "")
+call s:h("SpecialKey", s:fg, "", "")
 call s:h("Title", s:green, "", "")
 call s:h("WildMenu", s:fg, "", "")
 " }
@@ -122,7 +122,7 @@ call s:h("WildMenu", s:fg, "", "")
 " Syntax colors {
 " Whitespace is defined in Neovim, not Vim.
 " See :help hl-Whitespace and :help hl-SpecialKey
-call s:h("Whitespace", s:non_text, "", "")
+call s:h("Whitespace", s:comment_fg, "", "")
 call s:h("NonText", s:bg, "", "")
 call s:h("Comment", s:comment_fg, "", "italic")
 call s:h("Constant", s:cyan, "", "")
