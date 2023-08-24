@@ -226,8 +226,8 @@ vnoremap ms< s<><ESC>hp
 vnoremap ms> s<  ><ESC>hhp
 vnoremap ms' s''<ESC>hp
 vnoremap ms" s""<ESC>hp
-vnoremap / :norm i// <CR>
-vnoremap ? :norm 3x<CR>
+vnoremap / :norm I// <CR>
+vnoremap ? :norm gs3x<CR>
 vnoremap p P
 vnoremap P p
 vnoremap u <ESC>u
