@@ -113,7 +113,10 @@ set smarttab
 set expandtab
 set title
 set number
+set relativenumber
+set colorcolumn=80
 set cursorline
+set cursorcolumn
 set mouse=a
 set hlsearch
 set incsearch
@@ -129,7 +132,6 @@ set scrolloff=6
 set sidescrolloff=9
 set list
 set listchars=tab:→·
-set colorcolumn=80
 set termguicolors
 
 color onehalfdark
@@ -145,7 +147,6 @@ autocmd BufEnter *.cpp :setlocal cindent cino=j1,(0,ws,Ws
 
 nnoremap <Space>co <Cmd>edit ~/.vimrc<CR>
 nnoremap <Space>cr <Cmd>source ~/.vimrc<CR>
-nnoremap <Space>fe :edit .<CR>
 nnoremap <Space>bs :buffers<CR>
 nnoremap <Space>bd :bdelete<CR>
 nnoremap <Space>bl :bnext<CR>
@@ -158,6 +159,7 @@ nnoremap <Space>tl :tabnext<CR>
 nnoremap <Space>th :tabprevious<CR>
 nnoremap <Space>tj :tablast<CR>
 nnoremap <Space>tk :tabfirst<CR>
+nnoremap <Space>fb :open .<CR>
 
 nnoremap < <<
 nnoremap > >>
