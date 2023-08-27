@@ -121,15 +121,15 @@ set nowrap
 set nobackup
 set noundofile
 set noswapfile
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
-set noexpandtab
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
+set expandtab
 set scrolloff=6
 set sidescrolloff=9
 set list
 set listchars=tab:→·
-set colorcolumn=81
+set colorcolumn=80
 set termguicolors
 
 color onehalfdark
