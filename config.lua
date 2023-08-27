@@ -37,12 +37,12 @@ vim.opt.undodir = vim.fn.stdpath "cache" .. "/undo"
 vim.opt.undofile = true                    -- enable persistent undo
 vim.opt.updatetime = 0                     -- faster completion
 vim.opt.writebackup = false                -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
-vim.opt.expandtab = false                  -- convert tabs to spaces
-vim.opt.shiftwidth = 4                     -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 4                        -- insert 2 spaces for a tab
-vim.opt.softtabstop = 4
+vim.opt.expandtab = true                   -- convert tabs to spaces
+vim.opt.shiftwidth = 2                     -- the number of spaces inserted for each indentation
+vim.opt.tabstop = 2                        -- insert 2 spaces for a tab
+vim.opt.softtabstop = 2                    -- ...
 vim.opt.cursorline = true                  -- highlight the current line
-vim.opt.cursorcolumn = true                -- highlight the current column
+vim.opt.cursorcolumn = false               -- highlight the current column
 vim.opt.number = true                      -- set numbered lines
 vim.opt.relativenumber = true              -- set relative numbered lines
 vim.opt.numberwidth = 4                    -- set number column width to 2 {default 4}
@@ -54,6 +54,7 @@ vim.opt.scrolloff = 6
 vim.opt.sidescrolloff = 9
 vim.opt.list = true
 vim.opt.listchars = "tab:→·"
+
 lvim.format_on_save.enabled = false
 lvim.colorscheme = "catppuccin-macchiato"
 lvim.builtin.lualine.style = "default"
@@ -68,9 +69,9 @@ lvim.builtin.autopairs.active = true
 -- general
 lvim.log.level = "info"
 lvim.format_on_save = {
-	enabled = true,
-	pattern = "*.lua",
-	timeout = 1000,
+  enabled = true,
+  pattern = "*.lua",
+  timeout = 1000,
 }
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -225,10 +226,10 @@ lvim.builtin.treesitter.auto_install = true
 
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
-	{ "catppuccin/nvim",            name = "catppuccin" },
-	{ "olimorris/onedarkpro.nvim",  name = "onedarkpro" },
-	{ "NLKNguyen/papercolor-theme", name = "papercolor" },
-	{ "sainnhe/everforest",         name = "everforest" },
+  { "catppuccin/nvim",            name = "catppuccin" },
+  { "olimorris/onedarkpro.nvim",  name = "onedarkpro" },
+  { "NLKNguyen/papercolor-theme", name = "papercolor" },
+  { "sainnhe/everforest",         name = "everforest" },
 }
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
