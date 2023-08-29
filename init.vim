@@ -146,13 +146,13 @@ highlight StatusLine guifg=#080c14 guibg=#418fcf
 augroup StatusLineCmd
   autocmd!
   autocmd ModeChanged *:n :set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:v :set statusline=\ VISUAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\
-  autocmd ModeChanged *:s :set statusline=\ SELECT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\
-  autocmd ModeChanged *:r :set statusline=\ REPLACE\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\
-  autocmd ModeChanged *:o :set statusline=\ O-Pending\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\
-  autocmd ModeChanged *:i :set statusline=\ INSERT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\
-  autocmd ModeChanged *:c :set statusline=\ COMMAND\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\
-  autocmd ModeChanged *:t :set statusline=\ TERMINAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\
+  autocmd ModeChanged *:v :set statusline=\ VISUAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
+  autocmd ModeChanged *:s :set statusline=\ SELECT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
+  autocmd ModeChanged *:r :set statusline=\ REPLACE\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
+  autocmd ModeChanged *:o :set statusline=\ O-Pending\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
+  autocmd ModeChanged *:i :set statusline=\ INSERT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
+  autocmd ModeChanged *:c :set statusline=\ COMMAND\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
+  autocmd ModeChanged *:t :set statusline=\ TERMINAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:n :highlight StatusLine guibg=#418fcf
   autocmd ModeChanged *:v :highlight StatusLine guibg=#a658bd
   autocmd ModeChanged *:s :highlight StatusLine guibg=#a658bd
