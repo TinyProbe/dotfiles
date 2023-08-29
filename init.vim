@@ -1,3 +1,4 @@
+" Vim Default Setting {{{
 " Useful settings
 set background=dark
 set clipboard=unnamed,unnamedplus
@@ -40,16 +41,11 @@ set showmatch
 set hlsearch
 
 "Prevent backups when editing system files
-augroup PrivateProtect
+augroup PreventPrivate
   autocmd!
   autocmd BufWrite /private/tmp/crontab.* set nowritebackup
   autocmd BufWrite /private/etc/pw.* set nowritebackup
 augroup end
-
-"Source user configuration
-if filereadable(expand("~/.myvimrc"))
-  source ~/.myvimrc
-endif
 
 " Latest version .vimrc base file.
 " An example for a vimrc file.
@@ -104,8 +100,9 @@ augroup END
 if has('syntax') && has('eval')
   packadd! matchit
 endif
+" }}}
 
-" My configs.
+" Options {{{
 set splitbelow splitright
 set ttimeoutlen=0
 set wildmenu
@@ -125,7 +122,9 @@ set hlsearch
 set incsearch
 set nowrap
 set nobackup
-set noundofile
+set undofile
+set undodir=~/.cache/nvim/undo
+set undolevels=4096
 set noswapfile
 set softtabstop=2
 set tabstop=2
@@ -133,58 +132,63 @@ set shiftwidth=2
 set expandtab
 set scrolloff=6
 set sidescrolloff=9
+set termguicolors
 set list
 set listchars=tab:→·
 set fillchars=eob:\ 
-set termguicolors
+set foldmethod=marker
 
-color onehalfdark
 syntax on
+colorscheme onehalfdark
+" }}}
 
+" Status-Line {{{
 set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
 highlight StatusLine guifg=#080c14 guibg=#418fcf
 augroup StatusLineCmd
   autocmd!
   autocmd ModeChanged *:n :set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:v :set statusline=\ VISUAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
+  autocmd ModeChanged *:i :set statusline=\ INSERT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
+  autocmd ModeChanged *:[vV\x16]* :set statusline=\ VISUAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:s :set statusline=\ SELECT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:r :set statusline=\ REPLACE\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:o :set statusline=\ O-Pending\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:i :set statusline=\ INSERT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
+  autocmd ModeChanged *:o :set statusline=\ O-PENDING\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:c :set statusline=\ COMMAND\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:t :set statusline=\ TERMINAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:n :highlight StatusLine guibg=#418fcf
-  autocmd ModeChanged *:v :highlight StatusLine guibg=#a658bd
+  autocmd ModeChanged *:i :highlight StatusLine guibg=#78a359
+  autocmd ModeChanged *:[vV\x16]* :highlight StatusLine guibg=#a658bd
   autocmd ModeChanged *:s :highlight StatusLine guibg=#a658bd
   autocmd ModeChanged *:r :highlight StatusLine guibg=#c5a05b
   autocmd ModeChanged *:o :highlight StatusLine guibg=#c04c55
-  autocmd ModeChanged *:i :highlight StatusLine guibg=#78a359
-  autocmd ModeChanged *:c :highlight StatusLine guibg=none
+  " autocmd ModeChanged *:c :highlight StatusLine guibg=#3696c2
   autocmd ModeChanged *:t :highlight StatusLine guibg=#3696c2
 augroup end
+" }}}
 
+" Auto-Commands {{{
 augroup BufDefault
   autocmd!
   autocmd BufNewFile * :write
-  autocmd BufEnter *.cpp :setlocal cindent cino=j1,(0,ws,Ws
+  autocmd BufEnter *.cpp :setlocal cindent cino=j1,l1,g0,(0,:0,ws,Ws
 augroup end
+" }}}
 
+" Key Mappings {{{
 let mapleader = " "
 let maplocalleader = "\\"
 
+mapclear
+noremap <C-q> <NOP>
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 nnoremap p <NOP>
 nnoremap P <NOP>
-nnoremap gg <NOP>
-vnoremap gg <NOP>
-nnoremap G <NOP>
-vnoremap G <NOP>
 
-nnoremap <Leader>co <Cmd>edit ~/.config/nvim/init.vim<CR>
-nnoremap <Leader>cr <Cmd>source ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>co :edit ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>cr :source ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>fe :edit .<CR>
 nnoremap <Leader>bs :buffers<CR>
 nnoremap <Leader>bd :bdelete<CR>
@@ -226,6 +230,8 @@ nnoremap gs _
 nnoremap ge g_
 nnoremap gh 0
 nnoremap gl $
+nnoremap gm gM
+nnoremap gM gm
 nnoremap gn :bnext<CR>zz
 nnoremap gp :bprevious<CR>zz
 vnoremap gk gg0
@@ -237,17 +243,19 @@ vnoremap gs _
 vnoremap ge g_
 vnoremap gh 0
 vnoremap gl $
+vnoremap gm gM
+vnoremap gM gm
 vnoremap gn :bnext<CR>zz
 vnoremap gp :bprevious<CR>zz
 
 nmap <C-h> 3h
 nmap <C-l> 3l
-nmap <C-j> 3<C-e>
-nmap <C-k> 3<C-y>
+nnoremap <C-j> 3<C-e>
+nnoremap <C-k> 3<C-y>
 vmap <C-h> 3h
 vmap <C-l> 3l
-vmap <C-j> 3<C-e>
-vmap <C-k> 3<C-y>
+vnoremap <C-j> 3<C-e>
+vnoremap <C-k> 3<C-y>
 
 nnoremap piw viwP
 nnoremap pp p
@@ -266,109 +274,35 @@ vnoremap K :m-2<CR>gv
 vnoremap / :norm I// <CR>
 vnoremap ? :norm ^3x<CR>
 
+onoremap ie :<C-u>normal lBvE<CR>
+vnoremap ie :<C-u>normal lBvE<CR>
+
 vnoremap ms( s()<ESC>hpl%
-vnoremap ms) s(  )<ESC>hhpll%
+vmap ms) ms(
 vnoremap ms{ s{}<ESC>hpl%
-vnoremap ms} s{  }<ESC>hhpll%
+vmap ms} ms{
 vnoremap ms[ s[]<ESC>hpl%
-vnoremap ms] s[  ]<ESC>hhpll%
+vmap ms] ms[
 vnoremap ms< s<><ESC>hp
-vnoremap ms> s<  ><ESC>hhp
+vmap ms> ms<
 vnoremap ms' s''<ESC>hp
 vnoremap ms" s""<ESC>hp
+vnoremap ms<Space> s  <ESC>hp
 
-nmap mr({ di(vhpgvms{
-nmap mr(} di(vhpgvms}
-nmap mr([ di(vhpgvms[
-nmap mr(] di(vhpgvms]
-nmap mr(< di(vhpgvms<
-nmap mr(> di(vhpgvms>
-nmap mr(' di(vhpgvms'
-nmap mr(" di(vhpgvms"
+nmap mr( di(v%pgvms
+nmap mr) mr(
+nmap mr{ di{v%pgvms
+nmap mr} mr{
+nmap mr[ di[v%pgvms
+nmap mr] mr[
+nmap mr< di<vhpgvms
+nmap mr> mr<
+nmap mr' di'vhpgvms
+nmap mr" di"vhpgvms
+nmap mr<Space> dievhpgvms
+" }}}
 
-nmap mr{( di{vhpgvms(
-nmap mr{) di{vhpgvms)
-nmap mr{[ di{vhpgvms[
-nmap mr{] di{vhpgvms]
-nmap mr{< di{vhpgvms<
-nmap mr{> di{vhpgvms>
-nmap mr{' di{vhpgvms'
-nmap mr{" di{vhpgvms"
-
-nmap mr[( di[vhpgvms(
-nmap mr[) di[vhpgvms)
-nmap mr[{ di[vhpgvms{
-nmap mr[} di[vhpgvms}
-nmap mr[< di[vhpgvms<
-nmap mr[> di[vhpgvms>
-nmap mr[' di[vhpgvms'
-nmap mr[" di[vhpgvms"
-
-nmap mr<( di<vhpgvms(
-nmap mr<) di<vhpgvms)
-nmap mr<{ di<vhpgvms{
-nmap mr<} di<vhpgvms}
-nmap mr<[ di<vhpgvms[
-nmap mr<] di<vhpgvms]
-nmap mr<' di<vhpgvms'
-nmap mr<" di<vhpgvms"
-
-nmap mr'( di'vhpgvms(
-nmap mr') di'vhpgvms)
-nmap mr'{ di'vhpgvms{
-nmap mr'} di'vhpgvms}
-nmap mr'[ di'vhpgvms[
-nmap mr'] di'vhpgvms]
-nmap mr'< di'vhpgvms<
-nmap mr'> di'vhpgvms>
-nmap mr'" di'vhpgvms"
-
-nmap mr"( di"vhpgvms(
-nmap mr") di"vhpgvms)
-nmap mr"{ di"vhpgvms{
-nmap mr"} di"vhpgvms}
-nmap mr"[ di"vhpgvms[
-nmap mr"] di"vhpgvms]
-nmap mr"< di"vhpgvms<
-nmap mr"> di"vhpgvms>
-nmap mr"' di"vhpgvms'
-
-nmap mr){ mr({
-nmap mr)} mr(}
-nmap mr)[ mr([
-nmap mr)] mr(]
-nmap mr)< mr(<
-nmap mr)> mr(>
-nmap mr)' mr('
-nmap mr)" mr("
-         
-nmap mr}( mr{(
-nmap mr}) mr{)
-nmap mr}[ mr{[
-nmap mr}] mr{]
-nmap mr}< mr{<
-nmap mr}> mr{>
-nmap mr}' mr{'
-nmap mr}" mr{"
-         
-nmap mr]( mr[(
-nmap mr]) mr[)
-nmap mr]{ mr[{
-nmap mr]} mr[}
-nmap mr]< mr[<
-nmap mr]> mr[>
-nmap mr]' mr['
-nmap mr]" mr["
-         
-nmap mr>( mr<(
-nmap mr>) mr<)
-nmap mr>{ mr<{
-nmap mr>} mr<}
-nmap mr>[ mr<[
-nmap mr>] mr<]
-nmap mr>' mr<'
-nmap mr>" mr<"
-
+" Abbreviations {{{
 iabbrev $<tiny> 
   \template <class T>
   \<CR>T const &min(T const &a, T const &b) {
@@ -390,3 +324,4 @@ iabbrev $<html>
   \<CR><h1>Hello World!</h1>
   \<CR></body>
   \<CR></html>
+" }}}
