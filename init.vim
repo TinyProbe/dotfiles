@@ -137,9 +137,6 @@ set list
 set listchars=tab:→·
 set fillchars=eob:\ 
 set foldmethod=marker
-set cindent
-set cinoptions=b1,j1,l1,(s,m1,g0,t0,U1,w1,W4,(0,:0,ws,Ws
-" set cinkeys="0=break"
 
 syntax on
 colorscheme onehalfdark
@@ -173,7 +170,8 @@ augroup end
 augroup BufDefault
   autocmd!
   autocmd BufNewFile * :write
-  " autocmd BufEnter *.cpp :setlocal cindent cino=j1,l1,g0,(0,:0,ws,Ws
+  autocmd BufEnter *.c :setlocal cindent cinoptions=b1,j1,l1,(s,m1,g0,t0,U1,w1,W4,(0,:0,ws,Ws cinkeys+=0break,0(,0[
+  autocmd BufEnter *.cpp :setlocal cindent cinoptions=b1,j1,l1,(s,m1,g0,t0,U1,w1,W4,(0,:0,ws,Ws cinkeys+=0break,0(0[
 augroup end
 " }}}
 
