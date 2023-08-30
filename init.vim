@@ -143,7 +143,7 @@ colorscheme onehalfdark
 
 " Status-Line {{{
 set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-highlight StatusLine guifg=#dcdfe4 guibg=#317fbf
+highlight StatusLine guifg=#cbcbcd guibg=#116faf
 augroup StatusLineCmd
   autocmd!
   autocmd ModeChanged *:n :set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
@@ -154,14 +154,14 @@ augroup StatusLineCmd
   autocmd ModeChanged *:o :set statusline=\ O-PENDING\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:c :set statusline=\ COMMAND\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:t :set statusline=\ TERMINAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:n :highlight StatusLine guibg=#317fbf
-  autocmd ModeChanged *:i :highlight StatusLine guibg=#689349
-  autocmd ModeChanged *:[vV\x16]* :highlight StatusLine guibg=#96488d
-  autocmd ModeChanged *:s :highlight StatusLine guibg=#9648ad
-  autocmd ModeChanged *:R :highlight StatusLine guibg=#b5904b
-  autocmd ModeChanged *:o :highlight StatusLine guibg=#b03c45
-  " autocmd ModeChanged *:c :highlight StatusLine guibg=#2686b2
-  autocmd ModeChanged *:t :highlight StatusLine guibg=#2686b2
+  autocmd ModeChanged *:n :highlight StatusLine guibg=#116faf
+  autocmd ModeChanged *:i :highlight StatusLine guibg=#588339
+  autocmd ModeChanged *:[vV\x16]* :highlight StatusLine guibg=#86389d
+  autocmd ModeChanged *:s :highlight StatusLine guibg=#86388d
+  autocmd ModeChanged *:R :highlight StatusLine guibg=#a5803b
+  autocmd ModeChanged *:o :highlight StatusLine guibg=#a02c35
+  " autocmd ModeChanged *:c :highlight StatusLine guibg=#1676a2
+  autocmd ModeChanged *:t :highlight StatusLine guibg=#1676a2
 augroup end
 " }}}
 
@@ -311,23 +311,27 @@ nmap mr<Space> dievhpgvms
 " Abbreviations {{{
 iabbrev $<tiny> 
   \template <class T>
-  \<CR>T const &min(T const &a, T const &b) {
-  \<CR>return (a<b ? a : b);
-  \<CR>}
-  \<CR>template <class T>
-  \<CR>T const &max(T const &a, T const &b) {
-  \<CR>return (a>b ? a : b);
-  \<CR>}
-
+  \<NL>T const &min(T const &a, T const &b) {
+  \<NL>return (a<b ? a : b);
+  \<NL>}
+  \<NL>template <class T>
+  \<NL>T const &max(T const &a, T const &b) {
+  \<NL>return (a>b ? a : b);
+  \<NL>}
+  \<NL>template <class T>
+  \<NL>T __rand(T minimum, T maximum) {
+  \<NL>static std::mt19937 generator((std::random_device())());
+  \<NL>return (std::uniform_int_distribution<T>(minimum, maximum))(generator);
+  \<NL>}
 iabbrev $<html> 
   \<!DOCTYPE html>
-  \<CR><html>
-  \<CR><head>
-  \<CR><charset="utf-8">
-  \<CR><title>Hello World!</title>
-  \<CR></head>
-  \<CR><body>
-  \<CR><h1>Hello World!</h1>
-  \<CR></body>
-  \<CR></html>
+  \<NL><html>
+  \<NL><head>
+  \<NL><charset="utf-8">
+  \<NL><title>Hello World!</title>
+  \<NL></head>
+  \<NL><body>
+  \<NL><h1>Hello World!</h1>
+  \<NL></body>
+  \<NL></html>
 " }}}
