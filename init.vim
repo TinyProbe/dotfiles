@@ -170,16 +170,22 @@ augroup end
 augroup BufDefault
   autocmd!
   autocmd BufNewFile * :write
-  autocmd BufEnter *.c :setlocal cindent cinoptions=b1,j1,l1,(s,m1,g0,t0,U1,w1,W4,(0,:0,ws,Ws cinkeys+=0break,0(,0[
-  autocmd BufEnter *.cpp :setlocal cindent cinoptions=b1,j1,l1,(s,m1,g0,t0,U1,w1,W4,(0,:0,ws,Ws cinkeys+=0break,0(0[
+  autocmd BufEnter *.c
+        \:setlocal cindent
+        \cinoptions=b1,j1,l1,m2,g0,t0,U1,ws,Ws,:0,(0
+        \cinkeys+=*<ESC>,*<CR>
+  autocmd BufEnter *.cpp
+        \:setlocal cindent
+        \cinoptions=b1,j1,l1,m2,g0,t0,U1,ws,Ws,:0,(0
+        \cinkeys+=*<ESC>,*<CR>
 augroup end
 " }}}
 
 " Key Mappings {{{
+mapclear
 let mapleader = " "
 let maplocalleader = "\\"
 
-mapclear
 noremap <C-q> <NOP>
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -223,7 +229,7 @@ nnoremap <C-q>w <C-w>c
 nnoremap <C-q>t :tabclose<CR>
 
 nnoremap gk gg0
-nnoremap gj G0zz16<C-y>
+nnoremap gj G0zz<C-y>
 nnoremap gt H0
 nnoremap gc M0
 nnoremap gb L0
@@ -236,7 +242,7 @@ nnoremap gM gm
 nnoremap gn :bnext<CR>zz
 nnoremap gp :bprevious<CR>zz
 vnoremap gk gg0
-vnoremap gj G0zz16<C-y>
+vnoremap gj G0zz<C-y>
 vnoremap gt H0
 vnoremap gc M0
 vnoremap gb L0
