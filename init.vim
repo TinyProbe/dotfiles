@@ -129,7 +129,6 @@ set noswapfile
 set softtabstop=2
 set tabstop=2
 set shiftwidth=2
-set expandtab
 set scrolloff=6
 set sidescrolloff=9
 set termguicolors
