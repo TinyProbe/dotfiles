@@ -172,11 +172,11 @@ augroup BufDefault
   autocmd BufNewFile * :write
   autocmd BufEnter *.c
         \:setlocal cindent
-        \cinoptions=b1,j1,l1,m2,g0,t0,U1,ws,Ws,:0,(0
+        \cinoptions=b1,j1,l1,m2,g0,t0,U1,ws,Ws,:0,(s
         \cinkeys+=*<ESC>,*<CR>
   autocmd BufEnter *.cpp
         \:setlocal cindent
-        \cinoptions=b1,j1,l1,m2,g0,t0,U1,ws,Ws,:0,(0
+        \cinoptions=b1,j1,l1,m2,g0,t0,U1,ws,Ws,:0,(s
         \cinkeys+=*<ESC>,*<CR>
 augroup end
 " }}}
