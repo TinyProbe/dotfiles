@@ -137,6 +137,9 @@ set list
 set listchars=tab:→·
 set fillchars=eob:\ 
 set foldmethod=marker
+set cindent
+set cinoptions=b1,j1,l1,(s,m1,g0,t0,U1,w1,W4,(0,:0,ws,Ws
+" set cinkeys="0=break"
 
 syntax on
 colorscheme onehalfdark
@@ -144,25 +147,25 @@ colorscheme onehalfdark
 
 " Status-Line {{{
 set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-highlight StatusLine guifg=#080c14 guibg=#418fcf
+highlight StatusLine guifg=#dcdfe4 guibg=#317fbf
 augroup StatusLineCmd
   autocmd!
   autocmd ModeChanged *:n :set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:i :set statusline=\ INSERT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:[vV\x16]* :set statusline=\ VISUAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:s :set statusline=\ SELECT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:r :set statusline=\ REPLACE\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
+  autocmd ModeChanged *:R :set statusline=\ REPLACE\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:o :set statusline=\ O-PENDING\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:c :set statusline=\ COMMAND\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
   autocmd ModeChanged *:t :set statusline=\ TERMINAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:n :highlight StatusLine guibg=#418fcf
-  autocmd ModeChanged *:i :highlight StatusLine guibg=#78a359
-  autocmd ModeChanged *:[vV\x16]* :highlight StatusLine guibg=#a658bd
-  autocmd ModeChanged *:s :highlight StatusLine guibg=#a658bd
-  autocmd ModeChanged *:r :highlight StatusLine guibg=#c5a05b
-  autocmd ModeChanged *:o :highlight StatusLine guibg=#c04c55
-  " autocmd ModeChanged *:c :highlight StatusLine guibg=#3696c2
-  autocmd ModeChanged *:t :highlight StatusLine guibg=#3696c2
+  autocmd ModeChanged *:n :highlight StatusLine guibg=#317fbf
+  autocmd ModeChanged *:i :highlight StatusLine guibg=#689349
+  autocmd ModeChanged *:[vV\x16]* :highlight StatusLine guibg=#96488d
+  autocmd ModeChanged *:s :highlight StatusLine guibg=#9648ad
+  autocmd ModeChanged *:R :highlight StatusLine guibg=#b5904b
+  autocmd ModeChanged *:o :highlight StatusLine guibg=#b03c45
+  " autocmd ModeChanged *:c :highlight StatusLine guibg=#2686b2
+  autocmd ModeChanged *:t :highlight StatusLine guibg=#2686b2
 augroup end
 " }}}
 
@@ -170,7 +173,7 @@ augroup end
 augroup BufDefault
   autocmd!
   autocmd BufNewFile * :write
-  autocmd BufEnter *.cpp :setlocal cindent cino=j1,l1,g0,(0,:0,ws,Ws
+  " autocmd BufEnter *.cpp :setlocal cindent cino=j1,l1,g0,(0,:0,ws,Ws
 augroup end
 " }}}
 
@@ -222,7 +225,7 @@ nnoremap <C-q>w <C-w>c
 nnoremap <C-q>t :tabclose<CR>
 
 nnoremap gk gg0
-nnoremap gj G0zz10<C-y>
+nnoremap gj G0zz16<C-y>
 nnoremap gt H0
 nnoremap gc M0
 nnoremap gb L0
@@ -235,7 +238,7 @@ nnoremap gM gm
 nnoremap gn :bnext<CR>zz
 nnoremap gp :bprevious<CR>zz
 vnoremap gk gg0
-vnoremap gj G0zz10<C-y>
+vnoremap gj G0zz16<C-y>
 vnoremap gt H0
 vnoremap gc M0
 vnoremap gb L0
