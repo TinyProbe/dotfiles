@@ -280,8 +280,8 @@ vnoremap K :m-2<CR>gv
 vnoremap / :norm I// <CR>
 vnoremap ? :norm ^3x<CR>
 
-onoremap ie :<C-u>normal lBvE<CR>
-vnoremap ie :<C-u>normal lBvE<CR>
+onoremap i<Space> :<C-u>normal lBvE<CR>
+vnoremap i<Space> :<C-u>normal lBvE<CR>
 
 vnoremap ms( s()<ESC>hpl%
 vmap ms) ms(
@@ -305,7 +305,7 @@ nmap mr< di<vhpgvms
 nmap mr> mr<
 nmap mr' di'vhpgvms
 nmap mr" di"vhpgvms
-nmap mr<Space> dievhpgvms
+nmap mr<Space> di<Space>vhpgvms
 " }}}
 
 " Abbreviations {{{
