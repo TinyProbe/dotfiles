@@ -169,15 +169,7 @@ augroup end
 augroup BufDefault
   autocmd!
   autocmd BufNewFile * :write
-  autocmd BufEnter *.c
-        \ :setlocal cindent
-        \ cinoptions=:s,l1,b1,g0,(s,us,U1,Ws,m1,j1,J1
-        \ cinkeys+=*<ESC>,*<CR>,0=break;
-        \|:nnoremap <Leader>/ mq0i//<ESC>`q
-        \|:nnoremap <Leader>? mq^2xV=`q
-        \|:vnoremap <Leader>/ mq:normal! 0i//<CR>`q
-        \|:vnoremap <Leader>? mq:normal! ^2x<CR>gv=`q
-  autocmd BufEnter *.cpp
+  autocmd BufEnter *.c,*.cpp
         \ :setlocal cindent
         \ cinoptions=:s,l1,b1,g0,(s,us,U1,Ws,m1,j1,J1
         \ cinkeys+=*<ESC>,*<CR>,0=break;
