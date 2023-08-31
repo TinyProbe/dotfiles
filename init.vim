@@ -315,29 +315,29 @@ nmap mr<Space> di<Space>vhpgvms
 " }}}
 
 " Abbreviations {{{
-iabbrev $<tiny> 
-  \template <class T>
-  \<NL>T const &min(T const &a, T const &b) {
-  \<NL>return (a<b ? a : b);
-  \<NL>}
-  \<NL>template <class T>
-  \<NL>T const &max(T const &a, T const &b) {
-  \<NL>return (a>b ? a : b);
-  \<NL>}
-  \<NL>template <class T>
-  \<NL>T __rand(T minimum, T maximum) {
-  \<NL>static std::mt19937 generator((std::random_device())());
-  \<NL>return (std::uniform_int_distribution<T>(minimum, maximum))(generator);
-  \<NL>}
-iabbrev $<html> 
-  \<!DOCTYPE html>
-  \<NL><html>
-  \<NL><head>
-  \<NL><charset="utf-8">
-  \<NL><title>Hello World!</title>
-  \<NL></head>
-  \<NL><body>
-  \<NL><h1>Hello World!</h1>
-  \<NL></body>
-  \<NL></html>
+iabbrev $<tiny>
+      \ template <class T>
+      \<NL>T const &min(T const &a, T const &b) {
+      \<NL>return (a<b ? a : b);
+      \<NL>}
+      \<NL>template <class T>
+      \<NL>T const &max(T const &a, T const &b) {
+      \<NL>return (a>b ? a : b);
+      \<NL>}
+      \<NL>template <class T>
+      \<NL>T __rand(T minimum, T maximum) {
+      \<NL>static std::mt19937 generator((std::random_device())());
+      \<NL>return (std::uniform_int_distribution<T>(minimum, maximum))(generator);
+      \<NL>}
+iabbrev $<html>
+      \ <!DOCTYPE html>
+      \<NL><html>
+      \<NL><head>
+      \<NL><charset="utf-8">
+      \<NL><title>Hello World!</title>
+      \<NL></head>
+      \<NL><body>
+      \<NL><h1>Hello World!</h1>
+      \<NL></body>
+      \<NL></html>
 " }}}
