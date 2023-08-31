@@ -172,7 +172,7 @@ augroup BufDefault
   autocmd BufEnter *.c
         \ :setlocal cindent
         \ cinoptions=:s,l1,b1,g0,(s,us,U1,Ws,m1,j1,J1
-        \ cinkeys+=*<ESC>,*<CR>
+        \ cinkeys+=*<ESC>,*<CR>,0=break;
         \|:nnoremap <Leader>/ mq0i//<ESC>`q
         \|:nnoremap <Leader>? mq^2xV=`q
         \|:vnoremap <Leader>/ mq:normal! 0i//<CR>`q
@@ -180,7 +180,7 @@ augroup BufDefault
   autocmd BufEnter *.cpp
         \ :setlocal cindent
         \ cinoptions=:s,l1,b1,g0,(s,us,U1,Ws,m1,j1,J1
-        \ cinkeys+=*<ESC>,*<CR>
+        \ cinkeys+=*<ESC>,*<CR>,0=break;
         \|:nnoremap <Leader>/ mq0i//<ESC>`q
         \|:nnoremap <Leader>? mq^2xV=`q
         \|:vnoremap <Leader>/ mq:normal! 0i//<CR>`q
@@ -206,16 +206,16 @@ nnoremap <Leader>cr :source ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>fe :edit .<CR>
 nnoremap <Leader>bs :buffers<CR>
 nnoremap <Leader>bd :bdelete<CR>
-nnoremap <Leader>bl :bnext<CR>
-nnoremap <Leader>bh :bprevious<CR>
-nnoremap <Leader>bj :blast<CR>
-nnoremap <Leader>bk :bfirst<CR>
+nnoremap <Leader>bn :bnext<CR>
+nnoremap <Leader>bp :bprevious<CR>
+nnoremap <Leader>bh :bfirst<CR>
+nnoremap <Leader>bl :blast<CR>
 nnoremap <Leader>ts :tabs<CR>
 nnoremap <Leader>tc :tabclose<CR>
-nnoremap <Leader>tl :tabnext<CR>
-nnoremap <Leader>th :tabprevious<CR>
-nnoremap <Leader>tj :tablast<CR>
-nnoremap <Leader>tk :tabfirst<CR>
+nnoremap <Leader>tn :tabnext<CR>
+nnoremap <Leader>tp :tabprevious<CR>
+nnoremap <Leader>th :tabfirst<CR>
+nnoremap <Leader>tl :tablast<CR>
 
 nnoremap < <<
 nnoremap > >>
@@ -288,6 +288,8 @@ vnoremap K :m-2<CR>gv
 
 onoremap i<Space> :<C-u>normal lBvE<CR>
 vnoremap i<Space> :<C-u>normal lBvE<CR>
+onoremap il :<C-u>normal _vg_<CR>
+vnoremap il :<C-u>normal _vg_<CR>
 
 vnoremap ms( s()<ESC>hpl%
 vmap ms) ms(
@@ -329,6 +331,7 @@ iabbrev $<tiny>
       \<NL>static std::mt19937 generator((std::random_device())());
       \<NL>return (std::uniform_int_distribution<T>(minimum, maximum))(generator);
       \<NL>}
+
 iabbrev $<html>
       \ <!DOCTYPE html>
       \<NL><html>
@@ -340,4 +343,4 @@ iabbrev $<html>
       \<NL><h1>Hello World!</h1>
       \<NL></body>
       \<NL></html>
-" }}}
+" }}
