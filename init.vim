@@ -108,7 +108,7 @@ set ttimeoutlen=0
 set wildmenu
 set noshowmode
 set autoread
-set autoindent
+set noautoindent
 set smarttab
 set expandtab
 set title
@@ -170,13 +170,13 @@ augroup BufDefault
   autocmd!
   autocmd BufNewFile * :write
   autocmd BufEnter *.c
-        \:setlocal cindent
-        \cinoptions=b1,j1,l1,m2,g0,t0,U1,ws,Ws,:0,(s
-        \cinkeys+=*<ESC>,*<CR>
+        \ :setlocal cindent
+        \ cinoptions=:s,l1,b1,g0,(s,us,U1,Ws,m1,j1,J1
+        \ cinkeys+=*<ESC>,*<CR>
   autocmd BufEnter *.cpp
-        \:setlocal cindent
-        \cinoptions=b1,j1,l1,m2,g0,t0,U1,ws,Ws,:0,(s
-        \cinkeys+=*<ESC>,*<CR>
+        \ :setlocal cindent
+        \ cinoptions=:s,l1,b1,g0,(s,us,U1,Ws,m1,j1,J1
+        \ cinkeys+=*<ESC>,*<CR>
 augroup end
 " }}}
 
