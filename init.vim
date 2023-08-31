@@ -142,18 +142,18 @@ colorscheme onehalfdark
 " }}}
 
 " Status-Line {{{
-set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
+set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
 highlight StatusLine guifg=#cbcbcd guibg=#116faf
 augroup StatusLineCmd
   autocmd!
-  autocmd ModeChanged *:n :set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:i :set statusline=\ INSERT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:[vV\x16]* :set statusline=\ VISUAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:s :set statusline=\ SELECT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:R :set statusline=\ REPLACE\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:o :set statusline=\ O-PENDING\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:c :set statusline=\ COMMAND\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
-  autocmd ModeChanged *:t :set statusline=\ TERMINAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %y\ 
+  autocmd ModeChanged *:n :set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:i :set statusline=\ INSERT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:[vV\x16]* :set statusline=\ VISUAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:s :set statusline=\ SELECT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:R :set statusline=\ REPLACE\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:o :set statusline=\ O-PENDING\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:c :set statusline=\ COMMAND\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:t :set statusline=\ TERMINAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
   autocmd ModeChanged *:n :highlight StatusLine guibg=#116faf
   autocmd ModeChanged *:i :highlight StatusLine guibg=#588339
   autocmd ModeChanged *:[vV\x16]* :highlight StatusLine guibg=#86389d
