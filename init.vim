@@ -139,21 +139,21 @@ augroup BufDefault
   autocmd BufEnter *.c,*.cpp,*.rs
         \ :setlocal cindent
         \ cinoptions=:s,l1,b1,g0,(s,us,U1,Ws,m1,j1,J1
-        \ cinkeys+=*<ESC>,*<CR>,0=break;
-        \|:nnoremap <Leader>/ mq0i//<ESC>`q
-        \|:nnoremap <Leader>? mq^2xV=`q
-        \|:vnoremap <Leader>/ mq:normal! 0i//<CR>`q
-        \|:vnoremap <Leader>? mq:normal! ^2x<CR>gv=`q
+        \ cinkeys+=0=break;
+        \|:nnoremap <Leader>/ mqI// <ESC>`q
+        \|:nnoremap <Leader>? mq_3x`q
+        \|:vnoremap <Leader>/ mq:normal! I// <CR>`q
+        \|:vnoremap <Leader>? mq:normal! _3x<CR>`q
   autocmd BufEnter *.py
-        \ :nnoremap <Leader>/ mq0i#<ESC>`q
-        \|:nnoremap <Leader>? mq^xV=`q
-        \|:vnoremap <Leader>/ mq:normal! 0i#<CR>`q
-        \|:vnoremap <Leader>? mq:normal! ^x<CR>gv=`q
+        \ :nnoremap <Leader>/ mqI# <ESC>`q
+        \|:nnoremap <Leader>? mq_2x`q
+        \|:vnoremap <Leader>/ mq:normal! I# <CR>`q
+        \|:vnoremap <Leader>? mq:normal! _2x<CR>`q
   autocmd BufEnter *.vim
-        \ :nnoremap <Leader>/ mq0i"<ESC>`q
-        \|:nnoremap <Leader>? mq^xV=`q
-        \|:vnoremap <Leader>/ mq:normal! 0i"<CR>`q
-        \|:vnoremap <Leader>? mq:normal! ^x<CR>gv=`q
+        \ :nnoremap <Leader>/ mqI" <ESC>`q
+        \|:nnoremap <Leader>? mq_2x`q
+        \|:vnoremap <Leader>/ mq:normal! I" <CR>`q
+        \|:vnoremap <Leader>? mq:normal! _2x<CR>`q
 augroup end
 " }}}
 
