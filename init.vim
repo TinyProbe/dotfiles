@@ -171,12 +171,9 @@ endfunction
 " }}}
 
 " Key Mappings {{{
+mapclear
 let mapleader = " "
 let maplocalleader = "\\"
-
-mapclear
-" reload can't be functionalize
-nnoremap <Leader>cr :source ~/.config/nvim/init.vim<CR>
 
 call Mapping("nore", "<C-q>", "<NOP>", "")
 call Mapping("nore", "<Up>", "<NOP>", "")
@@ -186,6 +183,7 @@ call Mapping("nore", "<Right>", "<NOP>", "")
 call Mapping("nnore", "p", "<NOP>", "")
 call Mapping("nnore", "P", "<NOP>", "")
 
+call Mapping("nnore", "<Leader>cr", ":source ~/.config/nvim/init.vim<CR>", "reload config")
 call Mapping("nnore", "<Leader>co", ":edit ~/.config/nvim/init.vim<CR>", "open config")
 call Mapping("nnore", "<Leader>fe", ":edit .<CR>", "file explorer")
 call Mapping("nnore", "<Leader>bs", ":buffers<CR>", "buffer list")
