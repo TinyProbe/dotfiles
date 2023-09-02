@@ -147,7 +147,7 @@ augroup BufDefault
   autocmd BufEnter *.py
         \ let b:comment="#"
   autocmd BufEnter *.vim
-        \ let b:comment="\""
+        \ let b:comment='"'
 augroup end
 " }}}
 
@@ -176,13 +176,15 @@ let g:unit=5
 let mapleader=" "
 let maplocalleader='\'
 
-call Mapping("nore", "<C-q>", "<NOP>", "prevent useless key")
-call Mapping("nore", "<Up>", "<NOP>", "prevent useless key")
-call Mapping("nore", "<Down>", "<NOP>", "prevent useless key")
-call Mapping("nore", "<Left>", "<NOP>", "prevent useless key")
-call Mapping("nore", "<Right>", "<NOP>", "prevent useless key")
-call Mapping("nnore", "p", "<NOP>", "prevent useless key")
-call Mapping("nnore", "P", "<NOP>", "prevent useless key")
+call Mapping("nore", "<C-q>", "<NOP>", "prevent key")
+call Mapping("nore", "<Up>", "<NOP>", "prevent key")
+call Mapping("nore", "<Down>", "<NOP>", "prevent key")
+call Mapping("nore", "<Left>", "<NOP>", "prevent key")
+call Mapping("nore", "<Right>", "<NOP>", "prevent key")
+call Mapping("nore", "gg", "<NOP>", "prevent key")
+call Mapping("nore", "G", "<NOP>", "prevent key")
+call Mapping("nnore", "p", "<NOP>", "prevent key")
+call Mapping("nnore", "P", "<NOP>", "prevent key")
 
 call Mapping("nnore", "<Leader>cr", ":source ~/.config/nvim/init.vim<CR>", ":reload config")
 call Mapping("nnore", "<Leader>co", ":edit ~/.config/nvim/init.vim<CR>", ":open config")
