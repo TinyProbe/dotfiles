@@ -103,6 +103,7 @@ set list
 set listchars=tab:→·
 set fillchars=eob:\ 
 set foldmethod=marker
+set foldcolumn=auto
 
 syntax on
 colorscheme onehalfdark
@@ -138,151 +139,168 @@ augroup BufDefault
   autocmd BufNewFile * :write
   autocmd BufEnter *.c,*.cpp,*.rs
         \ :setlocal cindent
-        \ cinoptions=:s,l1,b1,g0,(s,us,U1,Ws,m1,j1,J1
-        \ cinkeys+=0=break;
-        \|:nnoremap <Leader>/ mqI// <ESC>`q
-        \|:nnoremap <Leader>? mq_3x`q
-        \|:vnoremap <Leader>/ mq:normal! I// <CR>`q
-        \|:vnoremap <Leader>? mq:normal! _3x<CR>`q
+        \|:setlocal cinkeys+=0=break;
+        \|:setlocal cinoptions=:s,l1,b1,g0,(s,us,U1,Ws,m1,j1,J1
+  " set comment keyword
+  autocmd BufEnter *.c,*.cpp,*.rs
+        \ let b:comment="//"
   autocmd BufEnter *.py
-        \ :nnoremap <Leader>/ mqI# <ESC>`q
-        \|:nnoremap <Leader>? mq_2x`q
-        \|:vnoremap <Leader>/ mq:normal! I# <CR>`q
-        \|:vnoremap <Leader>? mq:normal! _2x<CR>`q
+        \ let b:comment="#"
   autocmd BufEnter *.vim
-        \ :nnoremap <Leader>/ mqI" <ESC>`q
-        \|:nnoremap <Leader>? mq_2x`q
-        \|:vnoremap <Leader>/ mq:normal! I" <CR>`q
-        \|:vnoremap <Leader>? mq:normal! _2x<CR>`q
+        \ let b:comment="\""
 augroup end
 " }}}
 
+" Functions {{{
+function! CommentToggle()
+  let l:frontline=trim(getline(line('.')))[0:strlen(b:comment)-1]
+  if l:frontline == b:comment
+    execute "normal! _".(strlen(b:comment)+1)."x"
+  elseif strlen(l:frontline) != 0
+    execute "normal! I".b:comment." \<ESC>"
+  endif
+endfunction
+
+function! Mapping(mode, key, act, desc)
+  let l:echo_desc=""
+  if strlen(a:desc) && a:mode == "nnore"
+    let l:echo_desc=":echo '".a:desc."'<CR>"
+  endif
+  execute a:mode."map ".a:key." ".a:act.l:echo_desc
+endfunction
+" }}}
+
 " Key Mappings {{{
-mapclear
 let mapleader = " "
 let maplocalleader = "\\"
 
-noremap <C-q> <NOP>
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-nnoremap p <NOP>
-nnoremap P <NOP>
-
-nnoremap <Leader>co :edit ~/.config/nvim/init.vim<CR>
+mapclear
+" reload can't be functionalize
 nnoremap <Leader>cr :source ~/.config/nvim/init.vim<CR>
-nnoremap <Leader>fe :edit .<CR>
-nnoremap <Leader>bs :buffers<CR>
-nnoremap <Leader>bd :bdelete<CR>
-nnoremap <Leader>bn :bnext<CR>
-nnoremap <Leader>bp :bprevious<CR>
-nnoremap <Leader>bh :bfirst<CR>
-nnoremap <Leader>bl :blast<CR>
-nnoremap <Leader>ts :tabs<CR>
-nnoremap <Leader>tc :tabclose<CR>
-nnoremap <Leader>tn :tabnext<CR>
-nnoremap <Leader>tp :tabprevious<CR>
-nnoremap <Leader>th :tabfirst<CR>
-nnoremap <Leader>tl :tablast<CR>
 
-nnoremap < <<
-nnoremap > >>
-vnoremap < <gv
-vnoremap > >gv
-vnoremap H <gv
-vnoremap L >gv
+call Mapping("nore", "<C-q>", "<NOP>", "")
+call Mapping("nore", "<Up>", "<NOP>", "")
+call Mapping("nore", "<Down>", "<NOP>", "")
+call Mapping("nore", "<Left>", "<NOP>", "")
+call Mapping("nore", "<Right>", "<NOP>", "")
+call Mapping("nnore", "p", "<NOP>", "")
+call Mapping("nnore", "P", "<NOP>", "")
 
-nnoremap h <BackSpace>
-nnoremap l <Space>
-vnoremap h <BackSpace>
-vnoremap l <Space>
+call Mapping("nnore", "<Leader>co", ":edit ~/.config/nvim/init.vim<CR>", "open config")
+call Mapping("nnore", "<Leader>fe", ":edit .<CR>", "file explorer")
+call Mapping("nnore", "<Leader>bs", ":buffers<CR>", "buffer list")
+call Mapping("nnore", "<Leader>bd", ":bdelete<CR>", "delete buffer")
+call Mapping("nnore", "<Leader>bn", ":bnext<CR>", "next buffer")
+call Mapping("nnore", "<Leader>bp", ":bprevious<CR>", "previous buffer")
+call Mapping("nnore", "<Leader>bh", ":bfirst<CR>", "first buffer")
+call Mapping("nnore", "<Leader>bl", ":blast<CR>", "last buffer")
+call Mapping("nnore", "<Leader>ts", ":tabs<CR>", "tab list")
+call Mapping("nnore", "<Leader>tc", ":tabclose<CR>", "close tab")
+call Mapping("nnore", "<Leader>tn", ":tabnext<CR>", "next tab")
+call Mapping("nnore", "<Leader>tp", ":tabprevious<CR>", "previous tab")
+call Mapping("nnore", "<Leader>th", ":tabfirst<CR>", "first tab")
+call Mapping("nnore", "<Leader>tl", ":tablast<CR>", "last tab")
 
-nnoremap <C-q>q :xa<CR>
-nnoremap <C-q>c :qa!<CR>
-nnoremap <C-q>b :bdelete<CR>
-nnoremap <C-q>w <C-w>c
-nnoremap <C-q>t :tabclose<CR>
+call Mapping("nnore", "<", "<<", "outdent")
+call Mapping("nnore", ">", ">>", "indent")
+call Mapping("vnore", "<", "<gv", "outdent")
+call Mapping("vnore", ">", ">gv", "indent")
+call Mapping("vnore", "H", "<gv", "outdent")
+call Mapping("vnore", "L", ">gv", "indent")
 
-nnoremap gk gg0
-nnoremap gj G0zz<C-y>
-nnoremap gt H0
-nnoremap gc M0
-nnoremap gb L0
-nnoremap gs _
-nnoremap ge g_
-nnoremap gh 0
-nnoremap gl $
-nnoremap gm gM
-nnoremap gM gm
-nnoremap gn :bnext<CR>zz
-nnoremap gp :bprevious<CR>zz
-vnoremap gk gg0
-vnoremap gj G0zz<C-y>
-vnoremap gt H0
-vnoremap gc M0
-vnoremap gb L0
-vnoremap gs _
-vnoremap ge g_
-vnoremap gh 0
-vnoremap gl $
-vnoremap gm gM
-vnoremap gM gm
-vnoremap gn :bnext<CR>zz
-vnoremap gp :bprevious<CR>zz
+call Mapping("nnore", "h", "<BS>", "")
+call Mapping("nnore", "l", "<Space>", "")
+call Mapping("vnore", "h", "<BS>", "")
+call Mapping("vnore", "l", "<Space>", "")
 
-nmap <C-h> 3h
-nmap <C-l> 3l
-nnoremap <C-j> 3<C-e>
-nnoremap <C-k> 3<C-y>
-vmap <C-h> 3h
-vmap <C-l> 3l
-vnoremap <C-j> 3<C-e>
-vnoremap <C-k> 3<C-y>
+call Mapping("nnore", "<C-q>q", ":xa<CR>", "quit with save")
+call Mapping("nnore", "<C-q>c", ":qa!<CR>", "quit without save")
+call Mapping("nnore", "<C-q>b", ":bdelete<CR>", "delete buffer")
+call Mapping("nnore", "<C-q>w", "<C-w>c", "close window")
+call Mapping("nnore", "<C-q>t", ":tabclose<CR>", "close tab")
 
-nnoremap piw viwP
-nnoremap pp p
-nnoremap PP P
-vnoremap p P
-vnoremap P p
-vnoremap u <ESC>u
-vnoremap U <ESC>u
+call Mapping("nnore", "gk", "gg0", "goto top-line")
+call Mapping("nnore", "gj", "G0zz", "goto bottom-line")
+call Mapping("nnore", "gt", "H0", "goto top-screen")
+call Mapping("nnore", "gc", "M0", "goto center-screen")
+call Mapping("nnore", "gb", "L0", "goto bottom-screen")
+call Mapping("nnore", "gs", "_", "goto first character")
+call Mapping("nnore", "ge", "g_", "goto last character")
+call Mapping("nnore", "gh", "0", "goto first column")
+call Mapping("nnore", "gl", "$", "goto last column")
+call Mapping("nnore", "gm", "gM", "goto middle character")
+call Mapping("nnore", "gM", "gm", "goto ???")
+call Mapping("nnore", "gn", ":bnext<CR>zz", "goto next buffer")
+call Mapping("nnore", "gp", ":bprevious<CR>zz", "goto previous buffer")
+call Mapping("vnore", "gk", "gg0", "goto top-line")
+call Mapping("vnore", "gj", "G0zz", "goto bottom-line")
+call Mapping("vnore", "gt", "H0", "goto top-screen")
+call Mapping("vnore", "gc", "M0", "goto center-screen")
+call Mapping("vnore", "gb", "L0", "goto bottom-screen")
+call Mapping("vnore", "gs", "_", "goto first character")
+call Mapping("vnore", "ge", "g_", "goto last character")
+call Mapping("vnore", "gh", "0", "goto first column")
+call Mapping("vnore", "gl", "$", "goto last column")
+call Mapping("vnore", "gm", "gM", "goto middle character")
+call Mapping("vnore", "gM", "gm", "goto ???")
 
-nnoremap - <C-x>
-nnoremap = <C-a>
-nnoremap <C-a> GVgg
-nnoremap <C-s> :wa<CR>
-vnoremap J :m'>+<CR>gv
-vnoremap K :m-2<CR>gv
+call Mapping("n", "<C-h>", "3h", "")
+call Mapping("n", "<C-l>", "3l", "")
+call Mapping("nnore", "<C-j>", "3<C-e>", "")
+call Mapping("nnore", "<C-k>", "3<C-y>", "")
+call Mapping("v", "<C-h>", "3h", "")
+call Mapping("v", "<C-l>", "3l", "")
+call Mapping("vnore", "<C-j>", "3<C-e>", "")
+call Mapping("vnore", "<C-k>", "3<C-y>", "")
 
-onoremap i<Space> :<C-u>normal lBvE<CR>
-vnoremap i<Space> :<C-u>normal lBvE<CR>
-onoremap il :<C-u>normal _vg_<CR>
-vnoremap il :<C-u>normal _vg_<CR>
+call Mapping("n", "piw", "viwp", "paste inner word(ignored)")
+call Mapping("n", "Piw", "viwP", "paste inner word(yanked)")
+call Mapping("nnore", "pp", "p", "paste back")
+call Mapping("nnore", "PP", "P", "paste front")
+call Mapping("vnore", "p", "P", "paste to select(ignored)")
+call Mapping("vnore", "P", "p", "paste to select(yanked)")
+call Mapping("vnore", "u", "<ESC>u", "undo")
+call Mapping("vnore", "U", "<ESC>u", "undo")
 
-vnoremap ms( s()<ESC>hpl%
-vmap ms) ms(
-vnoremap ms{ s{}<ESC>hpl%
-vmap ms} ms{
-vnoremap ms[ s[]<ESC>hpl%
-vmap ms] ms[
-vnoremap ms< s<><ESC>hp
-vmap ms> ms<
-vnoremap ms' s''<ESC>hp
-vnoremap ms" s""<ESC>hp
-vnoremap ms<Space> s  <ESC>hp
+call Mapping("nnore", "-", "<C-x>", "decrease value")
+call Mapping("nnore", "=", "<C-a>", "increase value")
+call Mapping("nnore", "<C-a>", "GVgg", "select all")
+call Mapping("nnore", "<C-s>", ":wa<CR>", "save all")
+call Mapping("vnore", "J", ":m'>+<CR>gv", "selected line down")
+call Mapping("vnore", "K", ":m-2<CR>gv", "selected line up")
+call Mapping("nnore", "<Leader>/", "mq:call CommentToggle()<CR>`q", "toggle comment")
+call Mapping("vnore", "<Leader>/", "mq:call CommentToggle()<CR>`q", "toggle comment")
 
-nmap mr( di(v%pgvms
-nmap mr) mr(
-nmap mr{ di{v%pgvms
-nmap mr} mr{
-nmap mr[ di[v%pgvms
-nmap mr] mr[
-nmap mr< di<vhpgvms
-nmap mr> mr<
-nmap mr' di'vhpgvms
-nmap mr" di"vhpgvms
-nmap mr<Space> di<Space>vhpgvms
+call Mapping("onore", "i<Space>", ":<C-u>normal lBvhE<CR>", "inner from space")
+call Mapping("vnore", "i<Space>", ":<C-u>normal lBvhE<CR>", "inner from space")
+call Mapping("onore", "ic", ":<C-u>normal _vg_<CR>", "inner characters")
+call Mapping("vnore", "ic", ":<C-u>normal _vg_<CR>", "inner characters")
+call Mapping("onore", "il", ":<C-u>normal 0v$<CR>", "inner line")
+call Mapping("vnore", "il", ":<C-u>normal 0v$<CR>", "inner line")
+
+call Mapping("vnore", "ms(", "s()<ESC>hpl%", "match surround()")
+call Mapping("v", "ms)", "ms(", "match surround()")
+call Mapping("vnore", "ms{", "s{}<ESC>hpl%", "match surround{}")
+call Mapping("v", "ms}", "ms{", "match surround{}")
+call Mapping("vnore", "ms[", "s[]<ESC>hpl%", "match surround[]")
+call Mapping("v", "ms]", "ms[", "match surround[]")
+call Mapping("vnore", "ms<", "s<><ESC>hp", "match surround<>")
+call Mapping("v", "ms>", "ms<", "match surround<>")
+call Mapping("vnore", "ms'", "s''<ESC>hp", "match surround''")
+call Mapping("vnore", 'ms"', 's""<ESC>hp', 'match surround""')
+call Mapping("vnore", "ms<Space>", "s  <ESC>hp", "match surround__")
+
+call Mapping("n", "mr(", "di(v%pgvms", "match replace() => ??")
+call Mapping("n", "mr)", "mr(", "match replace() => ??")
+call Mapping("n", "mr{", "di{v%pgvms", "match replace{} => ??")
+call Mapping("n", "mr}", "mr{", "match replace{} => ??")
+call Mapping("n", "mr[", "di[v%pgvms", "match replace[] => ??")
+call Mapping("n", "mr]", "mr[", "match replace[] => ??")
+call Mapping("n", "mr<", "di<vhpgvms", "match replace<> => ??")
+call Mapping("n", "mr>", "mr<", "match replace<> => ??")
+call Mapping("n", "mr'", "di'vhpgvms", "match replace'' => ??")
+call Mapping("n", 'mr"', 'di"vhpgvms', 'match replace"" => ??')
+call Mapping("n", 'mr<Space>', 'di<Space>vhpgvms', 'match replace__ => ??')
 " }}}
 
 " Abbreviations {{{
