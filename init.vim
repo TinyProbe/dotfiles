@@ -172,16 +172,17 @@ endfunction
 
 " Key Mappings {{{
 mapclear
-let mapleader = " "
-let maplocalleader = "\\"
+let g:unit=5
+let mapleader=" "
+let maplocalleader='\'
 
-call Mapping("nore", "<C-q>", "<NOP>", "")
-call Mapping("nore", "<Up>", "<NOP>", "")
-call Mapping("nore", "<Down>", "<NOP>", "")
-call Mapping("nore", "<Left>", "<NOP>", "")
-call Mapping("nore", "<Right>", "<NOP>", "")
-call Mapping("nnore", "p", "<NOP>", "")
-call Mapping("nnore", "P", "<NOP>", "")
+call Mapping("nore", "<C-q>", "<NOP>", "prevent useless key")
+call Mapping("nore", "<Up>", "<NOP>", "prevent useless key")
+call Mapping("nore", "<Down>", "<NOP>", "prevent useless key")
+call Mapping("nore", "<Left>", "<NOP>", "prevent useless key")
+call Mapping("nore", "<Right>", "<NOP>", "prevent useless key")
+call Mapping("nnore", "p", "<NOP>", "prevent useless key")
+call Mapping("nnore", "P", "<NOP>", "prevent useless key")
 
 call Mapping("nnore", "<Leader>cr", ":source ~/.config/nvim/init.vim<CR>", ":reload config")
 call Mapping("nnore", "<Leader>co", ":edit ~/.config/nvim/init.vim<CR>", ":open config")
@@ -242,14 +243,14 @@ call Mapping("vnore", "gl", "$", "goto last column")
 call Mapping("vnore", "gm", "gM", "goto middle character")
 call Mapping("vnore", "gM", "gm", "goto ???")
 
-call Mapping("n", "<C-h>", "3h", "move left unit")
-call Mapping("n", "<C-l>", "3l", "move right unit")
-call Mapping("nnore", "<C-j>", "3<C-e>", ":move scroll down unit")
-call Mapping("nnore", "<C-k>", "3<C-y>", ":move scroll up unit")
-call Mapping("v", "<C-h>", "3h", "move left unit")
-call Mapping("v", "<C-l>", "3l", "move right unit")
-call Mapping("vnore", "<C-j>", "3<C-e>", "move scroll down unit")
-call Mapping("vnore", "<C-k>", "3<C-y>", "move scroll up unit")
+call Mapping("n", "<C-h>", g:unit."h", ":move left unit")
+call Mapping("n", "<C-l>", g:unit."l", ":move right unit")
+call Mapping("nnore", "<C-j>", g:unit."<C-e>", ":move scroll down unit")
+call Mapping("nnore", "<C-k>", g:unit."<C-y>", ":move scroll up unit")
+call Mapping("v", "<C-h>", g:unit."h", "move left unit")
+call Mapping("v", "<C-l>", g:unit."l", "move right unit")
+call Mapping("vnore", "<C-j>", g:unit."<C-e>", "move scroll down unit")
+call Mapping("vnore", "<C-k>", g:unit."<C-y>", "move scroll up unit")
 
 call Mapping("n", "piw", "viwp", "paste inner word(ignored)")
 call Mapping("n", "Piw", "viwP", "paste inner word(yanked)")
@@ -263,6 +264,7 @@ call Mapping("vnore", "U", "<ESC>u", ":undo")
 call Mapping("nnore", "-", "<C-x>", ":decrease value")
 call Mapping("nnore", "=", "<C-a>", ":increase value")
 call Mapping("nnore", "<C-a>", "GVgg", "select all")
+call Mapping("n", "<Leader>y", "mq<C-a>y`q", ":yank all")
 call Mapping("nnore", "<C-s>", ":wa<CR>", ":save all")
 call Mapping("vnore", "J", ":m'>+<CR>gv", "selected line down")
 call Mapping("vnore", "K", ":m-2<CR>gv", "selected line up")
