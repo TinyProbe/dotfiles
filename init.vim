@@ -139,7 +139,7 @@ augroup end
 augroup BufDefault
   autocmd!
   autocmd BufNewFile * :write
-  autocmd BufEnter *.c,*.cpp,*.rs,*.java,*.js
+  autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cs,*.rs,*.java,*.js,*.php,*.go,*.kt,*.kts
         \ :setlocal cindent
         \|:setlocal cinkeys+=0=break;
         \|:setlocal cinoptions=:s,l1,b1,g0,(s,us,U1,Ws,m1,j1,J1
@@ -148,7 +148,7 @@ augroup BufDefault
         \ let b:comment=";"
   autocmd BufEnter *.lua,*.mysql,*.sql
         \ let b:comment='--'
-  autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*cs,*.rs,*.java,*.js,*.php,*.go,*.kt,*.kts
+  autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cs,*.rs,*.java,*.js,*.php,*.go,*.kt,*.kts
         \ let b:comment="//"
   autocmd BufEnter *.sh,*.py,*.pl,*.rb,*.r,Makefile
         \ let b:comment="#"
