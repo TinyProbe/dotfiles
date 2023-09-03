@@ -72,9 +72,7 @@ endif
 
 " Options {{{
 set splitbelow splitright
-set ttimeoutlen=0
 set wildmenu
-set noshowmode
 set autoread
 set smartindent
 set autoindent
@@ -87,12 +85,13 @@ set colorcolumn=80
 set cursorline
 set cursorcolumn
 set mouse=a
+set noshowmode
 set nowrap
 set nobackup
+set noswapfile
 set undofile
 set undodir=~/.cache/nvim/undo
 set undolevels=4096
-set noswapfile
 set softtabstop=2
 set tabstop=2
 set shiftwidth=2
@@ -102,8 +101,12 @@ set termguicolors
 set list
 set listchars=tab:→·
 set fillchars=eob:\ 
-set foldmethod=marker
 set foldcolumn=auto
+set foldmethod=marker
+" set foldexpr=GetFold(v:lnum)
+set notimeout
+" set timeoutlen=10000
+" set ttimeoutlen=10000
 
 syntax on
 colorscheme onehalfdark
@@ -161,10 +164,10 @@ function! CommentToggle()
   endif
 endfunction
 
-" display description(if format is correctly)
-" "_:...", "...:_": '_' == {n|v|i}, a mode when just before echo(left: echo
-" before action, right: echo after action)
-function! Mapping(mode, key, act, desc)
+" mapping key with display description(if format is correctly)
+" "_:...", "...:_": what a mode when just before echo(_ == n|v|i) 
+" left: do echo before action, right: do echo after action
+function! Mapping(mode, option, key, act, desc)
   let l:command=""
   if a:desc[1:1]==":" && stridx("nvi", a:desc[0:0])!=-1
     let l:command=":echo '".a:desc[2:]."'<CR>"
@@ -185,7 +188,7 @@ function! Mapping(mode, key, act, desc)
   else
     let l:command=a:act
   endif
-  execute a:mode."map ".a:key." ".l:command
+  execute a:mode."map ".a:option." ".a:key." ".l:command
 endfunction
 " }}}
 
@@ -195,133 +198,135 @@ let g:unit=5
 let mapleader=" "
 let maplocalleader='\'
 
-call Mapping("nore", "<C-q>", "<NOP>", 'prevent key')
-call Mapping("nore", "<Up>", "<NOP>", 'prevent key')
-call Mapping("nore", "<Down>", "<NOP>", 'prevent key')
-call Mapping("nore", "<Left>", "<NOP>", 'prevent key')
-call Mapping("nore", "<Right>", "<NOP>", 'prevent key')
-call Mapping("nore", "gg", "<NOP>", 'prevent key')
-call Mapping("nore", "G", "<NOP>", 'prevent key')
-call Mapping("nnore", "p", "<NOP>", 'prevent key')
-call Mapping("nnore", "P", "<NOP>", 'prevent key')
+call Mapping("nore", "", "<C-q>", "<NOP>", 'prevent key')
+call Mapping("nore", "", "<Up>", "<NOP>", 'prevent key')
+call Mapping("nore", "", "<Down>", "<NOP>", 'prevent key')
+call Mapping("nore", "", "<Left>", "<NOP>", 'prevent key')
+call Mapping("nore", "", "<Right>", "<NOP>", 'prevent key')
+call Mapping("nore", "", "gg", "<NOP>", 'prevent key')
+call Mapping("nore", "", "G", "<NOP>", 'prevent key')
+call Mapping("nnore", "", "p", "<NOP>", 'prevent key')
+call Mapping("nnore", "", "P", "<NOP>", 'prevent key')
 
-call Mapping("nnore", "<Leader>co", ":edit ~/.config/nvim/init.vim<CR>", 'open config:n')
-call Mapping("nnore", "<Leader>cr", ":source ~/.config/nvim/init.vim<CR>", 'reload config:n')
-call Mapping("nnore", "<Leader>fe", ":edit .<CR>", 'file explorer:n')
-call Mapping("nnore", "<Leader>bs", ":buffers<CR>", 'buffer list:n')
-call Mapping("nnore", "<Leader>bd", ":bdelete<CR>", 'delete buffer:n')
-call Mapping("nnore", "<Leader>bn", ":bnext<CR>", 'next buffer:n')
-call Mapping("nnore", "<Leader>bp", ":bprevious<CR>", 'previous buffer:n')
-call Mapping("nnore", "<Leader>bh", ":bfirst<CR>", 'first buffer:n')
-call Mapping("nnore", "<Leader>bl", ":blast<CR>", 'last buffer:n')
-call Mapping("nnore", "<Leader>ts", ":tabs<CR>", 'tab list:n')
-call Mapping("nnore", "<Leader>tc", ":tabclose<CR>", 'close tab:n')
-call Mapping("nnore", "<Leader>tn", ":tabnext<CR>", 'next tab:n')
-call Mapping("nnore", "<Leader>tp", ":tabprevious<CR>", 'previous tab:n')
-call Mapping("nnore", "<Leader>th", ":tabfirst<CR>", 'first tab:n')
-call Mapping("nnore", "<Leader>tl", ":tablast<CR>", 'last tab:n')
+call Mapping("nnore", "<silent>", "<Leader>co", ":edit ~/.config/nvim/init.vim<CR>", 'open config:n')
+call Mapping("nnore", "<silent>", "<Leader>cr", ":source ~/.config/nvim/init.vim<CR>", 'reload config:n')
+call Mapping("nnore", "<silent>", "<Leader>fe", ":edit .<CR>", 'file explorer:n')
+call Mapping("nnore", "<silent>", "<Leader>bs", ":buffers<CR>", 'buffer list:n')
+call Mapping("nnore", "<silent>", "<Leader>bd", ":bdelete<CR>", 'delete buffer:n')
+call Mapping("nnore", "<silent>", "<Leader>bn", ":bnext<CR>", 'next buffer:n')
+call Mapping("nnore", "<silent>", "<Leader>bp", ":bprevious<CR>", 'previous buffer:n')
+call Mapping("nnore", "<silent>", "<Leader>bh", ":bfirst<CR>", 'first buffer:n')
+call Mapping("nnore", "<silent>", "<Leader>bl", ":blast<CR>", 'last buffer:n')
+call Mapping("nnore", "<silent>", "<Leader>ts", ":tabs<CR>", 'tab list:n')
+call Mapping("nnore", "<silent>", "<Leader>tc", ":tabclose<CR>", 'close tab:n')
+call Mapping("nnore", "<silent>", "<Leader>tn", ":tabnext<CR>", 'next tab:n')
+call Mapping("nnore", "<silent>", "<Leader>tp", ":tabprevious<CR>", 'previous tab:n')
+call Mapping("nnore", "<silent>", "<Leader>th", ":tabfirst<CR>", 'first tab:n')
+call Mapping("nnore", "<silent>", "<Leader>tl", ":tablast<CR>", 'last tab:n')
 
-call Mapping("nnore", "<", "<<", 'outdent:n')
-call Mapping("nnore", ">", ">>", 'indent:n')
-call Mapping("vnore", "<", "<gv", 'outdent-line')
-call Mapping("vnore", ">", ">gv", 'indent-line')
-call Mapping("vnore", "H", "<gv", 'outdent-line')
-call Mapping("vnore", "L", ">gv", 'indent-line')
+call Mapping("nnore", "", "<", "<<", 'outdent:n')
+call Mapping("nnore", "", ">", ">>", 'indent:n')
+call Mapping("vnore", "", "<", "<gv", 'outdent-line')
+call Mapping("vnore", "", ">", ">gv", 'indent-line')
+call Mapping("vnore", "", "H", "<gv", 'outdent-line')
+call Mapping("vnore", "", "L", ">gv", 'indent-line')
 
-call Mapping("nnore", "h", "<BS>", 'move left')
-call Mapping("nnore", "l", "<Space>", 'move right')
-call Mapping("vnore", "h", "<BS>", 'move left')
-call Mapping("vnore", "l", "<Space>", 'move right')
+call Mapping("nnore", "", "h", "<BS>", 'move left')
+call Mapping("nnore", "", "l", "<Space>", 'move right')
+call Mapping("vnore", "", "h", "<BS>", 'move left')
+call Mapping("vnore", "", "l", "<Space>", 'move right')
 
-call Mapping("nnore", "<C-q>q", ":xa<CR>", 'quit with save')
-call Mapping("nnore", "<C-q>c", ":qa!<CR>", 'quit without save')
-call Mapping("nnore", "<C-q>b", ":bdelete<CR>", 'delete buffer:n')
-call Mapping("nnore", "<C-q>w", "<C-w>c", 'close window:n')
-call Mapping("nnore", "<C-q>t", ":tabclose<CR>", 'close tab:n')
+call Mapping("nnore", "<silent>", "<C-q>q", ":xa<CR>", 'quit with save')
+call Mapping("nnore", "<silent>", "<C-q>c", ":qa!<CR>", 'quit without save')
+call Mapping("nnore", "<silent>", "<C-q>b", ":bdelete<CR>", 'delete buffer:n')
+call Mapping("nnore", "", "<C-q>w", "<C-w>c", 'close window:n')
+call Mapping("nnore", "<silent>", "<C-q>t", ":tabclose<CR>", 'close tab:n')
 
-call Mapping("nnore", "gk", "gg0", 'goto top-line:n')
-call Mapping("nnore", "gj", "G0zz", 'goto bottom-line:n')
-call Mapping("nnore", "gt", "H0", 'goto top-screen:n')
-call Mapping("nnore", "gc", "M0", 'goto center-screen:n')
-call Mapping("nnore", "gb", "L0", 'goto bottom-screen:n')
-call Mapping("nnore", "gs", "_", 'goto first character:n')
-call Mapping("nnore", "ge", "g_", 'goto last character:n')
-call Mapping("nnore", "gh", "0", 'goto first column:n')
-call Mapping("nnore", "gl", "$", 'goto last column:n')
-call Mapping("nnore", "gm", "gM", 'goto middle character:n')
-call Mapping("nnore", "gM", "gm", 'goto ???:n')
-call Mapping("nnore", "gn", ":bnext<CR>zz", 'goto next buffer:n')
-call Mapping("nnore", "gp", ":bprevious<CR>zz", 'goto previous buffer:n')
-call Mapping("vnore", "gk", "gg0", 'goto top-line:v')
-call Mapping("vnore", "gj", "G0zz", 'goto bottom-line:v')
-call Mapping("vnore", "gt", "H0", 'goto top-screen:v')
-call Mapping("vnore", "gc", "M0", 'goto center-screen:v')
-call Mapping("vnore", "gb", "L0", 'goto bottom-screen:v')
-call Mapping("vnore", "gs", "_", 'goto first character:v')
-call Mapping("vnore", "ge", "g_", 'goto last character:v')
-call Mapping("vnore", "gh", "0", 'goto first column:v')
-call Mapping("vnore", "gl", "$", 'goto last column:v')
-call Mapping("vnore", "gm", "gM", 'goto middle character:v')
-call Mapping("vnore", "gM", "gm", 'goto ???:v')
+call Mapping("nnore", "", "gk", "gg0", 'goto top-line:n')
+call Mapping("nnore", "", "gj", "G0zz", 'goto bottom-line:n')
+call Mapping("nnore", "", "gt", "H0", 'goto top-screen:n')
+call Mapping("nnore", "", "gc", "M0", 'goto center-screen:n')
+call Mapping("nnore", "", "gb", "L0", 'goto bottom-screen:n')
+call Mapping("nnore", "", "gs", "_", 'goto first character:n')
+call Mapping("nnore", "", "ge", "g_", 'goto last character:n')
+call Mapping("nnore", "", "gh", "0", 'goto first column:n')
+call Mapping("nnore", "", "gl", "$", 'goto last column:n')
+call Mapping("nnore", "", "gm", "gM", 'goto middle character:n')
+call Mapping("nnore", "", "gM", "gm", 'goto ???:n')
+call Mapping("nnore", "<silent>", "gn", ":bnext<CR>zz", 'goto next buffer:n')
+call Mapping("nnore", "<silent>", "gp", ":bprevious<CR>zz", 'goto previous buffer:n')
+call Mapping("vnore", "", "gk", "gg0", 'goto top-line:v')
+call Mapping("vnore", "", "gj", "G0zz", 'goto bottom-line:v')
+call Mapping("vnore", "", "gt", "H0", 'goto top-screen:v')
+call Mapping("vnore", "", "gc", "M0", 'goto center-screen:v')
+call Mapping("vnore", "", "gb", "L0", 'goto bottom-screen:v')
+call Mapping("vnore", "", "gs", "_", 'goto first character:v')
+call Mapping("vnore", "", "ge", "g_", 'goto last character:v')
+call Mapping("vnore", "", "gh", "0", 'goto first column:v')
+call Mapping("vnore", "", "gl", "$", 'goto last column:v')
+call Mapping("vnore", "", "gm", "gM", 'goto middle character:v')
+call Mapping("vnore", "", "gM", "gm", 'goto ???:v')
 
-call Mapping("n", "<C-h>", g:unit."h", 'move left unit:n')
-call Mapping("n", "<C-l>", g:unit."l", 'move right unit:n')
-call Mapping("nnore", "<C-j>", g:unit."<C-e>", 'move scroll down unit:n')
-call Mapping("nnore", "<C-k>", g:unit."<C-y>", 'move scroll up unit:n')
-call Mapping("v", "<C-h>", g:unit."h", 'move left unit')
-call Mapping("v", "<C-l>", g:unit."l", 'move right unit')
-call Mapping("vnore", "<C-j>", g:unit."<C-e>", 'move scroll down unit')
-call Mapping("vnore", "<C-k>", g:unit."<C-y>", 'move scroll up unit')
+call Mapping("n",     "", "<C-h>", g:unit."h", 'move left unit:n')
+call Mapping("n",     "", "<C-l>", g:unit."l", 'move right unit:n')
+call Mapping("nnore", "", "<C-j>", g:unit."<C-e>", 'move scroll down unit:n')
+call Mapping("nnore", "", "<C-k>", g:unit."<C-y>", 'move scroll up unit:n')
+call Mapping("v",     "", "<C-h>", g:unit."h", 'move left unit')
+call Mapping("v",     "", "<C-l>", g:unit."l", 'move right unit')
+call Mapping("vnore", "", "<C-j>", g:unit."<C-e>", 'move scroll down unit')
+call Mapping("vnore", "", "<C-k>", g:unit."<C-y>", 'move scroll up unit')
 
-call Mapping("n", "piw", "viwp", 'paste inner word(ignored)')
-call Mapping("n", "Piw", "viwP", 'paste inner word(yanked)')
-call Mapping("nnore", "pp", "p", 'paste back:n')
-call Mapping("nnore", "PP", "P", 'paste front:n')
-call Mapping("vnore", "p", "P", 'replace to select(ignored):n')
-call Mapping("vnore", "P", "p", 'replace to select(yanked):n')
-call Mapping("vnore", "u", "<ESC>u", 'undo:n')
-call Mapping("vnore", "U", "<ESC>u", 'undo:n')
+call Mapping("n", "", "piw", "viwp", 'paste inner word(ignored)')
+call Mapping("n", "", "Piw", "viwP", 'paste inner word(yanked)')
+call Mapping("nnore", "", "pp", "p", 'paste back:n')
+call Mapping("nnore", "", "PP", "P", 'paste front:n')
+call Mapping("vnore", "", "p", "P", 'replace to select(ignored):n')
+call Mapping("vnore", "", "P", "p", 'replace to select(yanked):n')
+call Mapping("vnore", "", "u", "<ESC>u", 'undo:n')
+call Mapping("vnore", "", "U", "<ESC>u", 'undo:n')
 
-call Mapping("nnore", "-", "<C-x>", 'decrease value:n')
-call Mapping("nnore", "=", "<C-a>", 'increase value:n')
-call Mapping("nnore", "<C-a>", "GVgg", 'n:select all')
-call Mapping("nnore", "<Leader>y", "mqGVggy`q", 'yank all:n')
-call Mapping("nnore", "<C-s>", ":wa<CR>", 'save all:n')
-call Mapping("vnore", "J", ":m'>+<CR>gv", 'selected line down')
-call Mapping("vnore", "K", ":m-2<CR>gv", 'selected line up')
-call Mapping("nnore", "<Leader>/", "mq:call CommentToggle()<CR>`q", 'toggle comment:n')
-call Mapping("vnore", "<Leader>/", "mq:call CommentToggle()<CR>`q", 'toggle comment:n')
+call Mapping("nnore", "", "-", "<C-x>", 'decrease value:n')
+call Mapping("nnore", "", "=", "<C-a>", 'increase value:n')
+call Mapping("nnore", "", "<C-a>", "GVgg", 'n:select all')
+call Mapping("nnore", "<silent>", "<C-s>", ":wa<CR>", 'save all:n')
+call Mapping("nnore", "", "<Leader>y", "mqGVggy`q", 'yank all:n')
+call Mapping("nnore", "", "<Leader>=", "mqGVgg=`q", 'indentation all:n')
+call Mapping("nnore", "", "<Leader>-", '/\<\><CR>', 'clear register')
+call Mapping("vnore", "<silent>", "J", ":m'>+<CR>gv", 'selected line down')
+call Mapping("vnore", "<silent>", "K", ":m-2<CR>gv", 'selected line up')
+call Mapping("nnore", "<silent>", "<Leader>/", "mq:call CommentToggle()<CR>`q", 'toggle comment:n')
+call Mapping("vnore", "<silent>", "<Leader>/", "mq:call CommentToggle()<CR>`q", 'toggle comment:n')
 
-call Mapping("onore", "i<Space>", ":<C-u>normal lBvhE<CR>", 'inner from space')
-call Mapping("vnore", "i<Space>", ":<C-u>normal lBvhE<CR>", 'inner from space')
-call Mapping("onore", "ic", ":<C-u>normal _vg_<CR>", 'inner characters')
-call Mapping("vnore", "ic", ":<C-u>normal _vg_<CR>", 'inner characters')
-call Mapping("onore", "il", ":<C-u>normal 0v$<CR>", 'inner line')
-call Mapping("vnore", "il", ":<C-u>normal 0v$<CR>", 'inner line')
+call Mapping("onore", "<silent>", "i<Space>", ":<C-u>normal lBvhE<CR>", 'inner from space')
+call Mapping("vnore", "<silent>", "i<Space>", ":<C-u>normal lBvhE<CR>", 'inner from space')
+call Mapping("onore", "<silent>", "ic", ":<C-u>normal _vg_<CR>", 'inner characters')
+call Mapping("vnore", "<silent>", "ic", ":<C-u>normal _vg_<CR>", 'inner characters')
+call Mapping("onore", "<silent>", "il", ":<C-u>normal 0v$<CR>", 'inner line')
+call Mapping("vnore", "<silent>", "il", ":<C-u>normal 0v$<CR>", 'inner line')
 
-call Mapping("vnore", "ms(", "s()<ESC>hpl%", 'match surround():n')
-call Mapping("v", "ms)", "ms(", 'match surround():n')
-call Mapping("vnore", "ms{", "s{}<ESC>hpl%", 'match surround{}:n')
-call Mapping("v", "ms}", "ms{", 'match surround{}:n')
-call Mapping("vnore", "ms[", "s[]<ESC>hpl%", 'match surround[]:n')
-call Mapping("v", "ms]", "ms[", 'match surround[]:n')
-call Mapping("vnore", "ms<", "s<><ESC>hp", 'match surround<>:n')
-call Mapping("v", "ms>", "ms<", 'match surround<>:n')
-call Mapping("vnore", "ms'", "s''<ESC>hp", "match surround'':n")
-call Mapping("vnore", 'ms"', 's""<ESC>hp', 'match surround"":n')
-call Mapping("vnore", "ms<Space>", "s  <ESC>hp", 'match surround__:n')
+call Mapping("vnore", "", "ms(", "s()<ESC>hpl%", 'match surround():n')
+call Mapping("v",     "", "ms)", "ms(", 'match surround():n')
+call Mapping("vnore", "", "ms{", "s{}<ESC>hpl%", 'match surround{}:n')
+call Mapping("v",     "", "ms}", "ms{", 'match surround{}:n')
+call Mapping("vnore", "", "ms[", "s[]<ESC>hpl%", 'match surround[]:n')
+call Mapping("v",     "", "ms]", "ms[", 'match surround[]:n')
+call Mapping("vnore", "", "ms<", "s<><ESC>hp", 'match surround<>:n')
+call Mapping("v",     "", "ms>", "ms<", 'match surround<>:n')
+call Mapping("vnore", "", "ms'", "s''<ESC>hp", "match surround'':n")
+call Mapping("vnore", "", 'ms"', 's""<ESC>hp', 'match surround"":n')
+call Mapping("vnore", "", "ms<Space>", "s  <ESC>hp", 'match surround__:n')
 
-call Mapping("n", "mr(", "di(v%pgvms", 'match replace() => ??')
-call Mapping("n", "mr)", "mr(", 'match replace() => ??')
-call Mapping("n", "mr{", "di{v%pgvms", 'match replace{} => ??')
-call Mapping("n", "mr}", "mr{", 'match replace{} => ??')
-call Mapping("n", "mr[", "di[v%pgvms", 'match replace[] => ??')
-call Mapping("n", "mr]", "mr[", 'match replace[] => ??')
-call Mapping("n", "mr<", "di<vhpgvms", 'match replace<> => ??')
-call Mapping("n", "mr>", "mr<", 'match replace<> => ??')
-call Mapping("n", "mr'", "di'vhpgvms", "match replace'' => ??")
-call Mapping("n", 'mr"', 'di"vhpgvms', 'match replace"" => ??')
-call Mapping("n", "mr<Space>", "di<Space>vhpgvms", 'match replace__ => ??')
+call Mapping("n", "", "mr(", "di(v%pgvms", 'match replace() => ??')
+call Mapping("n", "", "mr)", "mr(", 'match replace() => ??')
+call Mapping("n", "", "mr{", "di{v%pgvms", 'match replace{} => ??')
+call Mapping("n", "", "mr}", "mr{", 'match replace{} => ??')
+call Mapping("n", "", "mr[", "di[v%pgvms", 'match replace[] => ??')
+call Mapping("n", "", "mr]", "mr[", 'match replace[] => ??')
+call Mapping("n", "", "mr<", "di<vhpgvms", 'match replace<> => ??')
+call Mapping("n", "", "mr>", "mr<", 'match replace<> => ??')
+call Mapping("n", "", "mr'", "di'vhpgvms", "match replace'' => ??")
+call Mapping("n", "", 'mr"', 'di"vhpgvms', 'match replace"" => ??')
+call Mapping("n", "", "mr<Space>", "di<Space>vhpgvms", 'match replace__ => ??')
 " }}}
 
 " Abbreviations {{{
