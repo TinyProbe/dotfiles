@@ -87,6 +87,7 @@ set cursorcolumn
 set mouse=a
 set notimeout
 set noshowmode
+set showtabline
 set nowrap
 set nobackup
 set noswapfile
@@ -111,18 +112,18 @@ colorscheme onehalfdark
 " }}}
 
 " Status Line {{{
-set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
+set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%v\ \ %p%%\ \ %L\ \ %Y\ 
 highlight StatusLine guifg=#cbcbcd guibg=#116faf
 augroup StatusLineCmd
   autocmd!
-  autocmd ModeChanged *:n :set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
-  autocmd ModeChanged *:i :set statusline=\ INSERT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
-  autocmd ModeChanged *:[vV\x16]* :set statusline=\ VISUAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
-  autocmd ModeChanged *:s :set statusline=\ SELECT\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
-  autocmd ModeChanged *:R :set statusline=\ REPLACE\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
-  autocmd ModeChanged *:o :set statusline=\ O-PENDING\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
-  autocmd ModeChanged *:c :set statusline=\ COMMAND\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
-  autocmd ModeChanged *:t :set statusline=\ TERMINAL\ \ %n:\ %F%m\ %=\ %l:%c\ \ %P\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:n :set statusline=\ NORMAL\ \ %n:\ %F%m\ %=\ %l:%v\ \ %p%%\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:i :set statusline=\ INSERT\ \ %n:\ %F%m\ %=\ %l:%v\ \ %p%%\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:[vV\x16]* :set statusline=\ VISUAL\ \ %n:\ %F%m\ %=\ %l:%v\ \ %p%%\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:s :set statusline=\ SELECT\ \ %n:\ %F%m\ %=\ %l:%v\ \ %p%%\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:R :set statusline=\ REPLACE\ \ %n:\ %F%m\ %=\ %l:%v\ \ %p%%\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:o :set statusline=\ O-PENDING\ \ %n:\ %F%m\ %=\ %l:%v\ \ %p%%\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:c :set statusline=\ COMMAND\ \ %n:\ %F%m\ %=\ %l:%v\ \ %p%%\ \ %L\ \ %Y\ 
+  autocmd ModeChanged *:t :set statusline=\ TERMINAL\ \ %n:\ %F%m\ %=\ %l:%v\ \ %p%%\ \ %L\ \ %Y\ 
   autocmd ModeChanged *:n :highlight StatusLine guibg=#116faf
   autocmd ModeChanged *:i :highlight StatusLine guibg=#588339
   autocmd ModeChanged *:[vV\x16]* :highlight StatusLine guibg=#86389d
@@ -138,15 +139,21 @@ augroup end
 augroup BufDefault
   autocmd!
   autocmd BufNewFile * :write
-  autocmd BufEnter *.c,*.cpp,*.rs
+  autocmd BufEnter *.c,*.cpp,*.rs,*.java,*.js
         \ :setlocal cindent
         \|:setlocal cinkeys+=0=break;
         \|:setlocal cinoptions=:s,l1,b1,g0,(s,us,U1,Ws,m1,j1,J1
   " set comment keyword
-  autocmd BufEnter *.c,*.cpp,*.rs
+  autocmd BufEnter *.asm
+        \ let b:comment=";"
+  autocmd BufEnter *.lua,*.mysql,*.sql
+        \ let b:comment='--'
+  autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*cs,*.rs,*.java,*.js,*.php,*.go,*.kt,*.kts
         \ let b:comment="//"
-  autocmd BufEnter *.py
+  autocmd BufEnter *.sh,*.py,*.pl,*.rb,*.r,Makefile
         \ let b:comment="#"
+  autocmd BufEnter *.vb
+        \ let b:comment="'"
   autocmd BufEnter *.vim
         \ let b:comment='"'
 augroup end
@@ -328,22 +335,15 @@ call Mapping("n", "", "mr<Space>", "di<Space>vhpgvms", "match replace__ => ??")
 " }}}
 
 " Abbreviations {{{
-iabbrev $<tiny>
+abclear
+iabbrev $<cpp_random>
       \ template <class T>
-      \<NL>T const &min(T const &a, T const &b) {
-      \<NL>return (a<b ? a : b);
-      \<NL>}
-      \<NL>template <class T>
-      \<NL>T const &max(T const &a, T const &b) {
-      \<NL>return (a>b ? a : b);
-      \<NL>}
-      \<NL>template <class T>
       \<NL>T __rand(T mnm, T mxm) {
       \<NL>static std::mt19937 gen((std::random_device())());
       \<NL>return (std::uniform_int_distribution<T>(mnm, mxm))(gen);
       \<NL>}
 
-iabbrev $<html>
+iabbrev $<html_base>
       \ <!DOCTYPE html>
       \<NL><html>
       \<NL><head>
