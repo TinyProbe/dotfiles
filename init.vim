@@ -37,21 +37,21 @@ augroup end
 " When started as "evim", evim.vim will already have done these settings, bail
 " out.
 " if v:progname =~? "evim"
-  " finish
+" finish
 " endif
 
 " if has("vms")
-  " set nobackup                " do not keep a backup file, use versions instead
+" set nobackup                " do not keep a backup file, use versions instead
 " else
-  " set backup                  " keep a backup file (restore to previous version)
-  " if has('persistent_undo')
-    " set undofile              " keep an undo file (undo changes after closing)
-  " endif
+" set backup                  " keep a backup file (restore to previous version)
+" if has('persistent_undo')
+" set undofile              " keep an undo file (undo changes after closing)
+" endif
 " endif
 
 " if &t_Co > 2 || has("gui_running")
-  " Switch on highlighting the last used search pattern.
-  " set hlsearch
+" Switch on highlighting the last used search pattern.
+" set hlsearch
 " endif
 
 " Put these in an autocmd group, so that we can delete them easily.
@@ -66,7 +66,7 @@ augroup END
 " The ! means the package won't be loaded right away but when plugins are
 " loaded during initialization.
 " if has('syntax') && has('eval')
-  " packadd! matchit
+" packadd! matchit
 " endif
 " }}}
 
@@ -78,6 +78,7 @@ set smartindent
 set autoindent
 set smarttab
 set expandtab
+" set showtabline
 set title
 set number
 set relativenumber
@@ -87,7 +88,6 @@ set cursorcolumn
 set mouse=a
 set notimeout
 set noshowmode
-set showtabline
 set nowrap
 set nobackup
 set noswapfile
@@ -161,7 +161,7 @@ augroup end
 
 " Functions {{{
 function! CommentToggle()
-  let l:frontline=trim(getline(line('.')))[0:strlen(b:comment)-1]
+  let l:frontline = trim(getline(line('.')))[0:strlen(b:comment)-1]
   if l:frontline == b:comment
     execute "normal! _".(strlen(b:comment)+1)."x"
   elseif strlen(l:frontline) != 0
@@ -169,29 +169,27 @@ function! CommentToggle()
   endif
 endfunction
 
+
 " mapping key with display description(if format is correctly)
 " a:desc[ "_:..." | "...:_" ]: _[n|v|i]: what a mode when just before echo
 " left: do echo before action, right: do echo after action
 function! Mapping(mode, option, key, act, desc)
-  let l:command=""
-  if a:desc[1:1]==":" && stridx("nvi", a:desc[0:0])!=-1
-    let l:command=":echo '".a:desc[2:]."'<CR>"
-    if a:desc[0:0]=="v"
-      let l:command="<ESC>".l:command."gv"
-    elseif a:desc[0:0]=="i"
-      let l:command="<ESC>`^".l:command."i"
+  function! EchoInterpolation(desc, mode)
+    let l:command = ":echo '".a:desc."'<CR>"
+    if a:mode == "v"
+      let l:command = "<ESC>".l:command."gv"
+    elseif a:mode == "i"
+      let l:command = "<ESC>`^".l:command."i"
     endif
-    let l:command=l:command.a:act
-  elseif a:desc[-2:-2]==":" && stridx("nvi", a:desc[-1:-1])!=-1
-    let l:command=":echo '".a:desc[:-3]."'<CR>"
-    if a:desc[-1:-1]=="v"
-      let l:command="<ESC>".l:command."gv"
-    elseif a:desc[-1:-1]=="i"
-      let l:command="<ESC>`^".l:command."i"
-    endif
-    let l:command=a:act.l:command
+    return l:command
+  endfunction
+  let l:command = ""
+  if a:desc[1:1] == ":" && stridx("nvi", a:desc[0:0]) != -1
+    let l:command = EchoInterpolation(a:desc[2:], a:desc[0:0]).a:act
+  elseif a:desc[-2:-2] == ":" && stridx("nvi", a:desc[-1:-1]) != -1
+    let l:command = a:act.EchoInterpolation(a:desc[:-3], a:desc[-1:-1])
   else
-    let l:command=a:act
+    let l:command = a:act
   endif
   execute a:mode."map ".a:option." ".a:key." ".l:command
 endfunction
@@ -293,9 +291,9 @@ call Mapping("vnore", "", "U", "<ESC>u", 'undo:n')
 call Mapping("nnore", "", "-", "<C-x>", 'decrease value:n')
 call Mapping("nnore", "", "=", "<C-a>", 'increase value:n')
 call Mapping("nnore", "", "<C-a>", "GVgg", 'n:select all')
-call Mapping("nnore", "<silent>", "<C-s>", ":wa<CR>", 'save all:n')
-call Mapping("nnore", "", "<Leader>y", "mqGVggy`q", 'yank all:n')
-call Mapping("nnore", "", "<Leader>=", "mqGVgg=`q", 'indentation all:n')
+call Mapping("nnore", "<silent>", "<C-s>", ":wa<CR>", 'save all buffer:n')
+call Mapping("nnore", "", "<Leader>y", "mqGVggy`qzz", 'yank all:n')
+call Mapping("nnore", "", "<Leader>=", "mqGVgg=`qzz", 'indentation all:n')
 call Mapping("nnore", "", "<Leader>-", '/\<\><CR>', 'clear register')
 call Mapping("vnore", "<silent>", "J", ":m'>+<CR>gv", 'selected line down')
 call Mapping("vnore", "<silent>", "K", ":m-2<CR>gv", 'selected line up')
