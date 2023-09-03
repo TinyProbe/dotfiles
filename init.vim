@@ -28,7 +28,7 @@ set showmatch
 set hlsearch
 
 " Prevent backups when editing system files
-augroup PreventPrivate
+augroup PreventBackup
   autocmd!
   autocmd BufWrite /private/tmp/crontab.* set nowritebackup
   autocmd BufWrite /private/etc/pw.* set nowritebackup
@@ -36,23 +36,23 @@ augroup end
 
 " When started as "evim", evim.vim will already have done these settings, bail
 " out.
-if v:progname =~? "evim"
-  finish
-endif
+" if v:progname =~? "evim"
+  " finish
+" endif
 
-if has("vms")
-  set nobackup                " do not keep a backup file, use versions instead
-else
-  set backup                  " keep a backup file (restore to previous version)
-  if has('persistent_undo')
-    set undofile              " keep an undo file (undo changes after closing)
-  endif
-endif
+" if has("vms")
+  " set nobackup                " do not keep a backup file, use versions instead
+" else
+  " set backup                  " keep a backup file (restore to previous version)
+  " if has('persistent_undo')
+    " set undofile              " keep an undo file (undo changes after closing)
+  " endif
+" endif
 
-if &t_Co > 2 || has("gui_running")
+" if &t_Co > 2 || has("gui_running")
   " Switch on highlighting the last used search pattern.
-  set hlsearch
-endif
+  " set hlsearch
+" endif
 
 " Put these in an autocmd group, so that we can delete them easily.
 augroup vimrcEx
@@ -65,9 +65,9 @@ augroup END
 " compatible.
 " The ! means the package won't be loaded right away but when plugins are
 " loaded during initialization.
-if has('syntax') && has('eval')
-  packadd! matchit
-endif
+" if has('syntax') && has('eval')
+  " packadd! matchit
+" endif
 " }}}
 
 " Options {{{
@@ -85,6 +85,7 @@ set colorcolumn=80
 set cursorline
 set cursorcolumn
 set mouse=a
+set notimeout
 set noshowmode
 set nowrap
 set nobackup
@@ -104,9 +105,6 @@ set fillchars=eob:\
 set foldcolumn=auto
 set foldmethod=marker
 " set foldexpr=GetFold(v:lnum)
-set notimeout
-" set timeoutlen=10000
-" set ttimeoutlen=10000
 
 syntax on
 colorscheme onehalfdark
@@ -165,7 +163,7 @@ function! CommentToggle()
 endfunction
 
 " mapping key with display description(if format is correctly)
-" "_:...", "...:_": what a mode when just before echo(_ == n|v|i) 
+" a:desc[ "_:..." | "...:_" ]: _[n|v|i]: what a mode when just before echo
 " left: do echo before action, right: do echo after action
 function! Mapping(mode, option, key, act, desc)
   let l:command=""
@@ -314,7 +312,7 @@ call Mapping("vnore", "", "ms<", "s<><ESC>hp", 'match surround<>:n')
 call Mapping("v",     "", "ms>", "ms<", 'match surround<>:n')
 call Mapping("vnore", "", "ms'", "s''<ESC>hp", "match surround'':n")
 call Mapping("vnore", "", 'ms"', 's""<ESC>hp', 'match surround"":n')
-call Mapping("vnore", "", "ms<Space>", "s  <ESC>hp", 'match surround__:n')
+call Mapping("vnore", "", "ms<Space>", "s  <ESC>hp", "match surround__:n")
 
 call Mapping("n", "", "mr(", "di(v%pgvms", 'match replace() => ??')
 call Mapping("n", "", "mr)", "mr(", 'match replace() => ??')
@@ -326,7 +324,7 @@ call Mapping("n", "", "mr<", "di<vhpgvms", 'match replace<> => ??')
 call Mapping("n", "", "mr>", "mr<", 'match replace<> => ??')
 call Mapping("n", "", "mr'", "di'vhpgvms", "match replace'' => ??")
 call Mapping("n", "", 'mr"', 'di"vhpgvms', 'match replace"" => ??')
-call Mapping("n", "", "mr<Space>", "di<Space>vhpgvms", 'match replace__ => ??')
+call Mapping("n", "", "mr<Space>", "di<Space>vhpgvms", "match replace__ => ??")
 " }}}
 
 " Abbreviations {{{
