@@ -28,7 +28,7 @@ set showmatch
 set hlsearch
 
 " Prevent backups when editing system files
-augroup PreventBackup
+augroup PreventBackupPrivate
   autocmd!
   autocmd BufWrite /private/tmp/crontab.* set nowritebackup
   autocmd BufWrite /private/etc/pw.* set nowritebackup
@@ -78,14 +78,17 @@ set smartindent
 set autoindent
 set smarttab
 set expandtab
-" set showtabline
+" set guifont=
+" set guicursor=
 set title
 set number
+set numberwidth=2
 set relativenumber
 set colorcolumn=80
 set cursorline
 set cursorcolumn
 set mouse=a
+set updatetime=0
 set notimeout
 set noshowmode
 set nowrap
@@ -94,6 +97,8 @@ set noswapfile
 set undofile
 set undodir=~/.cache/nvim/undo
 set undolevels=4096
+set spell
+set spelllang=en
 set softtabstop=2
 set tabstop=2
 set shiftwidth=2
@@ -173,7 +178,7 @@ endfunction
 " mapping key with display description(if format is correctly)
 " a:desc[ "_:..." | "...:_" ]: _[n|v|i]: what a mode when just before echo
 " left: do echo before action, right: do echo after action
-function! Mapping(mode, option, key, act, desc)
+function! Mapping(mode, opt, key, act, desc)
   function! EchoInterpolation(desc, mode)
     let l:command = ":echo '".a:desc."'<CR>"
     if a:mode == "v"
@@ -191,7 +196,7 @@ function! Mapping(mode, option, key, act, desc)
   else
     let l:command = a:act
   endif
-  execute a:mode."map ".a:option." ".a:key." ".l:command
+  execute a:mode."map ".a:opt." ".a:key." ".l:command
 endfunction
 " }}}
 
@@ -245,11 +250,11 @@ call Mapping("nnore", "<silent>", "<C-q>b", ":bdelete<CR>", 'delete buffer:n')
 call Mapping("nnore", "", "<C-q>w", "<C-w>c", 'close window:n')
 call Mapping("nnore", "<silent>", "<C-q>t", ":tabclose<CR>", 'close tab:n')
 
-call Mapping("nnore", "", "gk", "gg0", 'goto top-line:n')
-call Mapping("nnore", "", "gj", "G0zz", 'goto bottom-line:n')
-call Mapping("nnore", "", "gt", "H0", 'goto top-screen:n')
-call Mapping("nnore", "", "gc", "M0", 'goto center-screen:n')
-call Mapping("nnore", "", "gb", "L0", 'goto bottom-screen:n')
+call Mapping("nnore", "", "gk", "gg0", 'goto nbr=0 line:n')
+call Mapping("nnore", "", "gj", "G0zz", 'goto last line:n')
+call Mapping("nnore", "", "gt", "H0", 'goto top screen:n')
+call Mapping("nnore", "", "gc", "M0", 'goto center screen:n')
+call Mapping("nnore", "", "gb", "L0", 'goto bottom screen:n')
 call Mapping("nnore", "", "gs", "_", 'goto first character:n')
 call Mapping("nnore", "", "ge", "g_", 'goto last character:n')
 call Mapping("nnore", "", "gh", "0", 'goto first column:n')
@@ -258,11 +263,11 @@ call Mapping("nnore", "", "gm", "gM", 'goto middle character:n')
 call Mapping("nnore", "", "gM", "gm", 'goto ???:n')
 call Mapping("nnore", "<silent>", "gn", ":bnext<CR>zz", 'goto next buffer:n')
 call Mapping("nnore", "<silent>", "gp", ":bprevious<CR>zz", 'goto previous buffer:n')
-call Mapping("vnore", "", "gk", "gg0", 'goto top-line:v')
-call Mapping("vnore", "", "gj", "G0zz", 'goto bottom-line:v')
-call Mapping("vnore", "", "gt", "H0", 'goto top-screen:v')
-call Mapping("vnore", "", "gc", "M0", 'goto center-screen:v')
-call Mapping("vnore", "", "gb", "L0", 'goto bottom-screen:v')
+call Mapping("vnore", "", "gk", "gg0", 'goto nbr=0 line:v')
+call Mapping("vnore", "", "gj", "G0zz", 'goto last line:v')
+call Mapping("vnore", "", "gt", "H0", 'goto top screen:v')
+call Mapping("vnore", "", "gc", "M0", 'goto center screen:v')
+call Mapping("vnore", "", "gb", "L0", 'goto bottom screen:v')
 call Mapping("vnore", "", "gs", "_", 'goto first character:v')
 call Mapping("vnore", "", "ge", "g_", 'goto last character:v')
 call Mapping("vnore", "", "gh", "0", 'goto first column:v')
