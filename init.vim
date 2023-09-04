@@ -10,7 +10,7 @@
 "  for MS-Windows:  $VIM\_vimrc
 "       for Haiku:  ~/config/settings/vim/vimrc
 "     for OpenVMS:  sys$login:.vimrc
-filetype off                          "Activate indentation
+filetype off                          " Activate indentation
 filetype plugin indent on
 set background=dark                   " Useful settings
 set clipboard=unnamed,unnamedplus
@@ -269,6 +269,8 @@ call Mapping("vnore", "", "gh", "0", 'goto first column:v')
 call Mapping("vnore", "", "gl", "$", 'goto last column:v')
 call Mapping("vnore", "", "gm", "gM", 'goto middle character:v')
 call Mapping("vnore", "", "gM", "gm", 'goto ???:v')
+call Mapping("vnore", "<silent>", "gn", "<ESC>:bnext<CR>zz", 'goto next buffer:n')
+call Mapping("vnore", "<silent>", "gp", "<ESC>:bprevious<CR>zz", 'goto previous buffer:n')
 
 call Mapping("n",     "", "<C-h>", g:unit."h", 'move left unit:n')
 call Mapping("n",     "", "<C-l>", g:unit."l", 'move right unit:n')
