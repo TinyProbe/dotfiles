@@ -21,8 +21,8 @@ vim.opt.smartindent = true
 vim.opt.autoindent = true
 vim.opt.smarttab = true
 vim.opt.expandtab = true
-vim.opt.guifont = ""
-vim.opt.guicursor = ""
+-- vim.opt.guifont = "SFMono Nerd Font:h16"
+-- vim.opt.guicursor = "a:block-blinkwait0"
 vim.opt.title = true
 vim.opt.number = true
 vim.opt.numberwidth = 2
@@ -55,11 +55,11 @@ vim.opt.fillchars = "eob: "
 vim.opt.foldcolumn = "auto"
 vim.opt.foldmethod = "marker"
 -- vim.opt.foldexpr=GetFold(v:lnum)
-
-vim.cmd("filetype off")
-vim.cmd("filetype plugin indent on")
-vim.cmd("syntax on")
-vim.cmd("colorscheme onehalfdark")
+vim.cmd([[
+syntax on
+filetype off
+filetype plugin indent on
+]])
 -- }}}
 
 -- Auto Commands {{{
