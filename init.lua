@@ -3,6 +3,7 @@ vim.opt.background = "dark"
 vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.backspace = "indent,eol,start"
 vim.opt.encoding = "utf-8"
+vim.opt.mousemoveevent = true
 vim.opt.modelines = 1
 vim.opt.laststatus = 2
 vim.opt.compatible = false
@@ -97,8 +98,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", }, {
   },
   callback = function()
     vim.opt_local.cindent = true
-    vim.opt_local.cinkeys:append("0=break")
-    vim.opt_local.cinoptions = ":s,l1,b1,g0,(s,us,U1,Ws,m1,j1,J1"
+    vim.opt_local.cinoptions = ":s,l1,g0,(s,us,U1,Ws,m1,j1,J1"
   end,
 })
 -- }}}
@@ -147,7 +147,7 @@ keyMapping("n", {}, "P", "<NOP>", 'prevent key')
 
 keyMapping("n", { silent=true }, "<Leader>co", ":edit ~/.config/nvim/init.lua<CR>", 'open config:n')
 keyMapping("n", { silent=true }, "<Leader>cr", ":source ~/.config/nvim/init.lua<CR>", 'reload config:n')
-keyMapping("n", { silent=true }, "<Leader>fe", ":edit .<CR>", 'file explorer:n')
+-- keyMapping("n", { silent=true }, "<Leader>fe", ":edit .<CR>", 'file explorer:n')
 keyMapping("n", { silent=true }, "<Leader>bs", ":buffers<CR>", 'buffer list:n')
 keyMapping("n", { silent=true }, "<Leader>bd", ":bdelete<CR>", 'delete buffer:n')
 keyMapping("n", { silent=true }, "<Leader>bn", ":bnext<CR>", 'next buffer:n')
@@ -163,10 +163,10 @@ keyMapping("n", { silent=true }, "<Leader>tl", ":tablast<CR>", 'last tab:n')
 
 keyMapping("n", {}, "<", "<<", 'outdent:n')
 keyMapping("n", {}, ">", ">>", 'indent:n')
-keyMapping("v", {}, "<", "<gv", 'outdent-line')
-keyMapping("v", {}, ">", ">gv", 'indent-line')
-keyMapping("v", {}, "H", "<gv", 'outdent-line')
-keyMapping("v", {}, "L", ">gv", 'indent-line')
+keyMapping("v", {}, "<", "<gv", 'outdent-line:v')
+keyMapping("v", {}, ">", ">gv", 'indent-line:v')
+keyMapping("v", {}, "H", "<gv", 'outdent-line:v')
+keyMapping("v", {}, "L", ">gv", 'indent-line:v')
 
 keyMapping("n", {}, "h", "<BS>", 'move left')
 keyMapping("n", {}, "l", "<Space>", 'move right')
@@ -231,8 +231,8 @@ keyMapping("n", { silent=true }, "<C-s>", ":wa<CR>", 'save all buffer:n')
 keyMapping("n", {}, "<Leader>y", "mqGVggy`qzz", 'yank all:n')
 keyMapping("n", {}, "<Leader>=", "mqGVgg=`qzz", 'reindention:n')
 keyMapping("n", {}, "<Leader>-", '/\\<\\><CR>', 'clear register')
-keyMapping("v", { silent=true }, "J", ":m'>+<CR>gv", 'selected line down')
-keyMapping("v", { silent=true }, "K", ":m-2<CR>gv", 'selected line up')
+keyMapping("v", { silent=true }, "J", ":m'>+<CR>gv", 'selected line down:v')
+keyMapping("v", { silent=true }, "K", ":m-2<CR>gv", 'selected line up:v')
 keyMapping("n", { silent=true }, "<Leader>/", "mq:call CommentToggle()<CR>`q", 'toggle comment:n')
 keyMapping("v", { silent=true }, "<Leader>/", "mq:call CommentToggle()<CR>`q", 'toggle comment:n')
 
@@ -255,44 +255,44 @@ keyMapping("v", {}, "ms'", "s''<ESC>hp", "match surround'':n")
 keyMapping("v", {}, 'ms"', 's""<ESC>hp', 'match surround"":n')
 keyMapping("v", {}, "ms<Space>", "s  <ESC>hp", "match surround__:n")
 
-keyMapping("n", {}, "mr(", "di(v%pgvms", 'match replace() => ??')
-keyMapping("n", {}, "mr)", "mr(", 'match replace() => ??')
-keyMapping("n", {}, "mr{", "di{v%pgvms", 'match replace{} => ??')
-keyMapping("n", {}, "mr}", "mr{", 'match replace{} => ??')
-keyMapping("n", {}, "mr[", "di[v%pgvms", 'match replace[] => ??')
-keyMapping("n", {}, "mr]", "mr[", 'match replace[] => ??')
-keyMapping("n", {}, "mr<", "di<vhpgvms", 'match replace<> => ??')
-keyMapping("n", {}, "mr>", "mr<", 'match replace<> => ??')
-keyMapping("n", {}, "mr'", "di'vhpgvms", "match replace'' => ??")
-keyMapping("n", {}, 'mr"', 'di"vhpgvms', 'match replace"" => ??')
-keyMapping("n", {}, "mr<Space>", "di<Space>vhpgvms", "match replace__ => ??")
+keyMapping("n", { remap=true }, "mr(", "di(v%pgvms", 'match replace() => ??')
+keyMapping("n", { remap=true }, "mr)", "mr(", 'match replace() => ??')
+keyMapping("n", { remap=true }, "mr{", "di{v%pgvms", 'match replace{} => ??')
+keyMapping("n", { remap=true }, "mr}", "mr{", 'match replace{} => ??')
+keyMapping("n", { remap=true }, "mr[", "di[v%pgvms", 'match replace[] => ??')
+keyMapping("n", { remap=true }, "mr]", "mr[", 'match replace[] => ??')
+keyMapping("n", { remap=true }, "mr<", "di<vhpgvms", 'match replace<> => ??')
+keyMapping("n", { remap=true }, "mr>", "mr<", 'match replace<> => ??')
+keyMapping("n", { remap=true }, "mr'", "di'vhpgvms", "match replace'' => ??")
+keyMapping("n", { remap=true }, 'mr"', 'di"vhpgvms', 'match replace"" => ??')
+keyMapping("n", { remap=true }, "mr<Space>", "di<Space>vhpgvms", "match replace__ => ??")
 -- }}}
 
 -- Abbreviations {{{
 vim.cmd([[
 abclear
 inoreabbrev $<cpp_random>
-      \ template <class T>
-      \<NL>T __rand(T mnm, T mxm) {
-      \<NL>static std::mt19937 gen((std::random_device())());
-      \<NL>return (std::uniform_int_distribution<T>(mnm, mxm))(gen);
-      \<NL>}
+\ template <class T>
+\<NL>T __rand(T mnm, T mxm) {
+\<NL>static std::mt19937 gen((std::random_device())());
+\<NL>return (std::uniform_int_distribution<T>(mnm, mxm))(gen);
+\<NL>}
 
 inoreabbrev $<html_base>
-      \ <!DOCTYPE html>
-      \<NL><html>
-      \<NL><head>
-      \<NL><charset="utf-8">
-      \<NL><title>Hello World!</title>
-      \<NL></head>
-      \<NL><body>
-      \<NL><h1>Hello World!</h1>
-      \<NL></body>
-      \<NL></html>
+\ <!DOCTYPE html>
+\<NL><html>
+\<NL><head>
+\<NL><charset="utf-8">
+\<NL><title>Hello World!</title>
+\<NL></head>
+\<NL><body>
+\<NL><h1>Hello World!</h1>
+\<NL></body>
+\<NL></html>
 ]])
 -- }}}
 
--- Plug-in {{{
+-- Plugins {{{
 -- lazy.nvim install
 local lazypath = vim.fn.stdpath("data").."/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -301,7 +301,7 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",  -- latest stable release
+    "--branch=stable",    -- latest stable release
     lazypath,
   })
 end
@@ -309,55 +309,108 @@ vim.opt.runtimepath:prepend(lazypath)
 
 -- plugin list
 require("lazy").setup({
-  { "catppuccin/nvim",           name = "catppuccin", priority = 1000 },
-  { "nvim-lualine/lualine.nvim", name = "lualine" },
+  {     -- =====================================================================
+    "catppuccin/nvim",                                  name =     "catppuccin",
+    priority = 1000,
+  }, {  -- =====================================================================
+    "akinsho/bufferline.nvim",                          name =     "bufferline",
+    version = "*",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  }, {  -- =====================================================================
+    "nvim-lualine/lualine.nvim",                        name =        "lualine",
+  }, {  -- =====================================================================
+    "nvim-neo-tree/neo-tree.nvim",                      name =       "neo-tree",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+  }, {  -- =====================================================================
+    "nvim-telescope/telescope.nvim",                    name =      "telescope",
+    tag = '0.1.2', -- or branch = '0.1.x',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  }, {  -- =====================================================================
+    "nvim-treesitter/nvim-treesitter",                  name =     "treesitter",
+    build = ":TSUpdate",
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
+  }, {  -- =====================================================================
+    "neovim/nvim-lspconfig",                            name =      "lspconfig",
+  }, {  -- =====================================================================
+    "numToStr/Comment.nvim",                            name =        "Comment",
+    lazy = false,
+  },    -- =====================================================================
 })
 
 -- catppuccin {{{
 require("catppuccin").setup({
-    flavour = "macchiato", -- latte, frappe, macchiato, mocha
-    background = { -- :h background
-        light = "latte",
-        dark = "macchiato",
-    },
-    transparent_background = false, -- disables setting the background color.
-    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-    term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
-    dim_inactive = {
-        enabled = false, -- dims the background color of inactive window
-        shade = "dark",
-        percentage = 0.15, -- percentage of the shade to apply to the inactive window
-    },
-    no_italic = false, -- Force no italic
-    no_bold = false, -- Force no bold
-    no_underline = true, -- Force no underline
-    styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-        comments = { "italic" }, -- Change the style of comments
-        conditionals = {},
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-    },
-    color_overrides = {},
-    custom_highlights = {},
-    integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        notify = false,
-        mini = false,
-        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-    },
+  flavour = "macchiato", -- latte, frappe, macchiato, mocha
+  background = { -- :h background
+    light = "latte",
+    dark = "macchiato",
+  },
+  transparent_background = false, -- disables setting the background color.
+  show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+  term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+  dim_inactive = {
+    enabled = false, -- dims the background color of inactive window
+    shade = "dark",
+    percentage = 0.15, -- percentage of the shade to apply to the inactive window
+  },
+  no_italic = false, -- Force no italic
+  no_bold = false, -- Force no bold
+  no_underline = false, -- Force no underline
+  styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+    comments = { "italic" }, -- Change the style of comments
+    conditionals = {},
+    loops = {},
+    functions = {},
+    keywords = {},
+    strings = {},
+    variables = {},
+    numbers = {},
+    booleans = {},
+    properties = {},
+    types = {},
+    operators = {},
+  },
+  color_overrides = {},
+  custom_highlights = {},
+  integrations = {
+    cmp = true,
+    gitsigns = true,
+    nvimtree = true,
+    treesitter = true,
+    notify = false,
+    mini = false,
+    -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+  },
 })
 vim.cmd("colorscheme catppuccin")
+-- }}}
+
+-- bufferline {{{
+local bufferline = require("bufferline")
+bufferline.setup({
+  options = {
+    mode = "buffers",
+    style_preset = {
+      bufferline.style_preset.no_italic,
+    },
+    right_mouse_command = nil,
+    middle_mouse_command = "bdelete! %d",
+    separator_style = "thick",
+    enforce_regular_tabs = true,
+    always_show_bufferline = true,
+    hover = {
+      enabled = true,
+      delay = 0,
+      reveal = { "close" }
+    },
+  },
+})
 -- }}}
 
 -- lualine {{{
@@ -400,6 +453,180 @@ require("lualine").setup({
   winbar = {},
   inactive_winbar = {},
   extensions = {}
+})
+-- }}}
+
+-- neo-tree {{{
+keyMapping("n", {}, "<Leader>fe", ":Neotree toggle right<CR>", "file explorer:n")
+require("neo-tree").setup({
+  close_if_last_window = true,
+  window = {
+    width = 30,
+    mappings = {
+      ["<Space>"] = "noop",
+      ["t"] = "toggle_node",
+      ["T"] = "open_tabnew",
+      ["l"] = "open",
+      ["L"] = "focus_preview",
+      ["C"] = "noop",
+      ["h"] = "close_node",
+    },
+  },
+  buffers = {
+    follow_current_file = { enabled = true },
+  },
+  filesystem = {
+    follow_current_file = { enabled = true },
+    filtered_items = {
+      hide_dotfiles = false,
+      hide_gitignored = false,
+      hide_by_name = { "node_modules" },
+      never_show = {
+        -- ".DS_Store",
+        -- "thumbs.db",
+      },
+    },
+  },
+  source_selector = {
+    winbar = true, -- toggle to show selector on winbar
+    statusline = true, -- toggle to show selector on statusline
+    show_scrolled_off_parent_node = true,                    -- boolean
+    sources = {                                               -- table
+      {
+        source = "filesystem",                                -- string
+        display_name = " 󰉓 Files "                            -- string | nil
+      }, {
+        source = "buffers",                                   -- string
+        display_name = " 󰈚 Buffers "                          -- string | nil
+      }, {
+        source = "git_status",                                -- string
+        display_name = " 󰊢 Git "                              -- string | nil
+      },
+    },
+    content_layout = "start",                                 -- string
+    tabs_layout = "equal",                                    -- string
+    truncation_character = "…",                               -- string
+    tabs_min_width = nil,                                     -- int | nil
+    tabs_max_width = nil,                                     -- int | nil
+    padding = 0,                                              -- int | { left: int, right: int }
+    separator = { left = "▏", right= "▕" },                   -- string | { left: string, right: string, override: string | nil }
+    separator_active = nil,                                   -- string | { left: string, right: string, override: string | nil } | nil
+    show_separator_on_edge = false,                           -- boolean
+    highlight_tab = "NeoTreeTabInactive",                     -- string
+    highlight_tab_active = "NeoTreeTabActive",                -- string
+    highlight_background = "NeoTreeTabInactive",              -- string
+    highlight_separator = "NeoTreeTabSeparatorInactive",      -- string
+    highlight_separator_active = "NeoTreeTabSeparatorActive", -- string
+  },
+})
+-- }}}
+
+-- telescope {{{
+local telescope_builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, {})
+require('telescope').setup({
+  pickers = {
+    find_files = { theme = "dropdown" },
+    live_grep = { theme = "dropdown" },
+    buffers = { theme = "dropdown" },
+    help_tags = { theme = "dropdown" },
+  },
+})
+-- }}}
+
+-- treesitter {{{
+require("nvim-treesitter.configs").setup({
+  -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  -- ensure_installed = { "c", "lua", "rust" },
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+  -- List of parsers to ignore installing (or "all")
+  ignore_install = {},
+  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+  highlight = {
+    enable = true,
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    -- disable = { "c", "rust" },
+    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+    -- disable = function(lang, buf)
+      -- local max_filesize = 100 * 1024 -- 100 KB
+      -- local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      -- if ok and stats and stats.size > max_filesize then
+        -- return true
+      -- end
+    -- end,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+  indent = { enable = true },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
+})
+-- }}}
+
+-- lspconfig {{{
+
+-- }}}
+
+-- Comment {{{
+require("Comment").setup({
+  pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+  ---Add a space b/w comment and the line
+  padding = true,
+  ---Whether the cursor should stay at its position
+  sticky = true,
+  ---Lines to be ignored while (un)comment
+  ignore = nil,
+  ---LHS of toggle mappings in NORMAL mode
+  toggler = {
+    ---Line-comment toggle keymap
+    line = "<Leader>/",
+    ---Block-comment toggle keymap
+    block = "<Leader>?",
+  },
+  ---LHS of operator-pending mappings in NORMAL and VISUAL mode
+  opleader = {
+    ---Line-comment keymap
+    line = '<Leader>/',
+    ---Block-comment keymap
+    block = '<Leader>?',
+  },
+  ---LHS of extra mappings
+  extra = {
+    ---Add comment on the line above
+    above = 'gcO',
+    ---Add comment on the line below
+    below = 'gco',
+    ---Add comment at the end of line
+    eol = 'gcA',
+  },
+  ---Enable keybindings
+  ---NOTE: If given `false` then the plugin won't create any mappings
+  mappings = {
+    ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
+    basic = true,
+    ---Extra mapping; `gco`, `gcO`, `gcA`
+    extra = true,
+  },
+  ---Function to call before (un)comment
+  pre_hook = nil,
+  ---Function to call after (un)comment
+  post_hook = nil,
 })
 -- }}}
 
