@@ -174,7 +174,6 @@ function! CommentToggle()
   endif
 endfunction
 
-
 " mapping key with display description(if format is correctly)
 " a:desc[ "_:..." | "...:_" ]: _[n|v|i]: what a mode when just before echo
 " left: do echo before action, right: do echo after action
