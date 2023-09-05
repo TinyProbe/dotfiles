@@ -131,9 +131,9 @@ end
 
 -- Key Mappings {{{
 vim.cmd('mapclear')
-local unit = 5
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+local unit = 5
 
 keyMapping("",  {}, "<C-q>", "<NOP>", 'prevent key')
 keyMapping("",  {}, "<Up>", "<NOP>", 'prevent key')
@@ -179,7 +179,7 @@ keyMapping("n", { silent=true }, "<C-q>b", ":bdelete<CR>", 'delete buffer:n')
 keyMapping("n", {}, "<C-q>w", "<C-w>c", 'close window:n')
 keyMapping("n", { silent=true }, "<C-q>t", ":tabclose<CR>", 'close tab:n')
 
-keyMapping("n", {}, "gk", "gg0", 'goto nbr=0 line:n')
+keyMapping("n", {}, "gk", "gg0", 'goto number[=1] line:n')
 keyMapping("n", {}, "gj", "G0zz", 'goto last line:n')
 keyMapping("n", {}, "gt", "H0", 'goto top screen:n')
 keyMapping("n", {}, "gc", "M0", 'goto center screen:n')
@@ -192,7 +192,7 @@ keyMapping("n", {}, "gm", "gM", 'goto middle character:n')
 keyMapping("n", {}, "gM", "gm", 'goto ???:n')
 keyMapping("n", { silent=true }, "gn", ":bnext<CR>zz", 'goto next buffer:n')
 keyMapping("n", { silent=true }, "gp", ":bprevious<CR>zz", 'goto previous buffer:n')
-keyMapping("v", {}, "gk", "gg0", 'goto nbr=0 line:v')
+keyMapping("v", {}, "gk", "gg0", 'goto number[=1] line:v')
 keyMapping("v", {}, "gj", "G0zz", 'goto last line:v')
 keyMapping("v", {}, "gt", "H0", 'goto top screen:v')
 keyMapping("v", {}, "gc", "M0", 'goto center screen:v')
@@ -206,12 +206,12 @@ keyMapping("v", {}, "gM", "gm", 'goto ???:v')
 keyMapping("v", { silent=true }, "gn", "<ESC>:bnext<CR>zz", 'goto next buffer:n')
 keyMapping("v", { silent=true }, "gp", "<ESC>:bprevious<CR>zz", 'goto previous buffer:n')
 
-keyMapping("n", { remap=true }, "<C-h>", unit.."h", 'move left unit:n')
-keyMapping("n", { remap=true }, "<C-l>", unit.."l", 'move right unit:n')
+keyMapping("n", {}, "<C-h>", unit.."<BS>", 'move left unit:n')
+keyMapping("n", {}, "<C-l>", unit.."<Space>", 'move right unit:n')
 keyMapping("n", {}, "<C-j>", unit.."<C-e>", 'move scroll down unit:n')
 keyMapping("n", {}, "<C-k>", unit.."<C-y>", 'move scroll up unit:n')
-keyMapping("v", { remap=true }, "<C-h>", unit.."h", 'move left unit')
-keyMapping("v", { remap=true }, "<C-l>", unit.."l", 'move right unit')
+keyMapping("v", {}, "<C-h>", unit.."<BS>", 'move left unit')
+keyMapping("v", {}, "<C-l>", unit.."<Space>", 'move right unit')
 keyMapping("v", {}, "<C-j>", unit.."<C-e>", 'move scroll down unit')
 keyMapping("v", {}, "<C-k>", unit.."<C-y>", 'move scroll up unit')
 
