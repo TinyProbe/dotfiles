@@ -592,25 +592,25 @@ require("Comment").setup({
   ---LHS of toggle mappings in NORMAL mode
   toggler = {
     ---Line-comment toggle keymap
-    line = "<Leader>/",
+    line = "<Leader>cl",
     ---Block-comment toggle keymap
-    block = "<Leader>?",
+    block = "<Leader>cb",
   },
   ---LHS of operator-pending mappings in NORMAL and VISUAL mode
   opleader = {
     ---Line-comment keymap
-    line = '<Leader>/',
+    line = "<Leader>cl",
     ---Block-comment keymap
-    block = '<Leader>?',
+    block = "<Leader>cb",
   },
   ---LHS of extra mappings
   extra = {
     ---Add comment on the line above
-    above = 'gcO',
+    above = "<Leader>cO",
     ---Add comment on the line below
-    below = 'gco',
+    below = "<Leader>co",
     ---Add comment at the end of line
-    eol = 'gcA',
+    eol = "<Leader>cA",
   },
   ---Enable keybindings
   ---NOTE: If given `false` then the plugin won't create any mappings
