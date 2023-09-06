@@ -670,6 +670,10 @@ require("Comment").setup({
 -- lspconfig {{{
 require("lspconfig").clangd.setup({
   on_attach = function(client, bufnr)
+    keyMapping("n", { buffer=bufnr }, "gD", vim.lsp.buf.declaration, "goto declaration")
+    keyMapping("n", { buffer=bufnr }, "gd", vim.lsp.buf.definition, "goto definition")
+    keyMapping("n", { buffer=bufnr }, "gK", vim.lsp.buf.hover, "show hover")
+    keyMapping("n", { buffer=bufnr }, "gr", vim.lsp.buf.rename, "rename identifier")
   end
 })
 require("lspconfig").pyright.setup({
