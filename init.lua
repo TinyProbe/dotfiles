@@ -133,7 +133,7 @@ end
 vim.cmd('mapclear')
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-local unit = 5
+local unit = 3
 
 keyMapping("",  {}, "<C-q>", "<NOP>", 'prevent key')
 keyMapping("",  {}, "<Up>", "<NOP>", 'prevent key')
@@ -145,8 +145,8 @@ keyMapping("",  {}, "G", "<NOP>", 'prevent key')
 keyMapping("n", {}, "p", "<NOP>", 'prevent key')
 keyMapping("n", {}, "P", "<NOP>", 'prevent key')
 
-keyMapping("n", { silent=true }, "<Leader>co", ":edit ~/.config/nvim/init.lua<CR>", 'open config:n')
-keyMapping("n", { silent=true }, "<Leader>cr", ":source ~/.config/nvim/init.lua<CR>", 'reload config:n')
+keyMapping("n", { silent=true }, "<Leader>io", ":edit ~/.config/nvim/init.lua<CR>", 'open config:n')
+keyMapping("n", { silent=true }, "<Leader>ir", ":source ~/.config/nvim/init.lua<CR>", 'reload config:n')
 keyMapping("n", { silent=true }, "<Leader>bs", ":buffers<CR>", 'buffer list:n')
 keyMapping("n", { silent=true }, "<Leader>bd", ":bdelete<CR>", 'delete buffer:n')
 keyMapping("n", { silent=true }, "<Leader>bn", ":bnext<CR>", 'next buffer:n')
@@ -207,12 +207,12 @@ keyMapping("v", { silent=true }, "gp", "<ESC>:bprevious<CR>zz", 'goto previous b
 
 keyMapping("n", {}, "<C-h>", unit.."<BS>", 'move left unit:n')
 keyMapping("n", {}, "<C-l>", unit.."<Space>", 'move right unit:n')
-keyMapping("n", {}, "<C-j>", unit.."<C-e>", 'move scroll down unit:n')
-keyMapping("n", {}, "<C-k>", unit.."<C-y>", 'move scroll up unit:n')
-keyMapping("v", {}, "<C-h>", unit.."<BS>", 'move left unit')
-keyMapping("v", {}, "<C-l>", unit.."<Space>", 'move right unit')
-keyMapping("v", {}, "<C-j>", unit.."<C-e>", 'move scroll down unit')
-keyMapping("v", {}, "<C-k>", unit.."<C-y>", 'move scroll up unit')
+-- keyMapping("n", {}, "<C-e>", unit.."<C-e>", 'move scroll down unit:n')
+-- keyMapping("n", {}, "<C-y>", unit.."<C-y>", 'move scroll up unit:n')
+keyMapping("v", {}, "<C-h>", unit.."<BS>", 'move left unit:v')
+keyMapping("v", {}, "<C-l>", unit.."<Space>", 'move right unit:v')
+-- keyMapping("v", {}, "<C-e>", unit.."<C-e>", 'move scroll down unit:v')
+-- keyMapping("v", {}, "<C-y>", unit.."<C-y>", 'move scroll up unit:v')
 
 keyMapping("n", {}, "piw", "viwp", 'paste inner word(ignored):n')
 keyMapping("n", {}, "Piw", "viwP", 'paste inner word(yanked):n')
@@ -334,10 +334,24 @@ require("lazy").setup({
       "JoosepAlviste/nvim-ts-context-commentstring",
     },
   }, {  -- =====================================================================
-    "neovim/nvim-lspconfig",                            name =      "lspconfig",
-  }, {  -- =====================================================================
     "numToStr/Comment.nvim",                            name =        "Comment",
     lazy = false,
+  }, {  -- =====================================================================
+    "neovim/nvim-lspconfig",                            name =      "lspconfig",
+  -- }, {  -- =====================================================================
+    -- "", name = "",
+  }, {  -- =====================================================================
+    "Pocco81/auto-save.nvim",                           name =      "auto-save",
+  }, {  -- =====================================================================
+    "karb94/neoscroll.nvim",                            name =      "neoscroll",
+  }, {  -- =====================================================================
+    "norcalli/nvim-colorizer.lua",                      name =      "colorizer",
+    config = function()
+      -- example: rgb(30%,40%,80%), #958293, #ad9
+      -- activate display all color_expr in every filetypes
+      -- need to restart neovim after edit config
+      require("colorizer").setup(nil, { css = true; })
+    end,
   },    -- =====================================================================
 })
 
@@ -556,11 +570,11 @@ require("nvim-treesitter.configs").setup({
     -- disable = { "c", "rust" },
     -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
     -- disable = function(lang, buf)
-      -- local max_filesize = 100 * 1024 -- 100 KB
-      -- local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-      -- if ok and stats and stats.size > max_filesize then
-        -- return true
-      -- end
+    -- local max_filesize = 100 * 1024 -- 100 KB
+    -- local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+    -- if ok and stats and stats.size > max_filesize then
+    -- return true
+    -- end
     -- end,
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -576,10 +590,6 @@ require("nvim-treesitter.configs").setup({
 })
 -- }}}
 
--- lspconfig {{{
-
--- }}}
-
 -- Comment {{{
 require("Comment").setup({
   pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
@@ -592,25 +602,25 @@ require("Comment").setup({
   ---LHS of toggle mappings in NORMAL mode
   toggler = {
     ---Line-comment toggle keymap
-    line = "<Leader>/l",
+    line = "<Leader>cl",
     ---Block-comment toggle keymap
-    block = "<Leader>/b",
+    block = "<Leader>cb",
   },
   ---LHS of operator-pending mappings in NORMAL and VISUAL mode
   opleader = {
     ---Line-comment keymap
-    line = "<Leader>/l",
+    line = "<Leader>cl",
     ---Block-comment keymap
-    block = "<Leader>/b",
+    block = "<Leader>cb",
   },
   ---LHS of extra mappings
   extra = {
     ---Add comment on the line above
-    above = "<Leader>/O",
+    above = "<Leader>cO",
     ---Add comment on the line below
-    below = "<Leader>/o",
+    below = "<Leader>co",
     ---Add comment at the end of line
-    eol = "<Leader>/A",
+    eol = "<Leader>cA",
   },
   ---Enable keybindings
   ---NOTE: If given `false` then the plugin won't create any mappings
@@ -627,4 +637,73 @@ require("Comment").setup({
 })
 -- }}}
 
+-- lspconfig {{{
+-- require("lspconfig").?.setup({})
 -- }}}
+
+-- auto-save {{{
+require("auto-save").setup({
+  enabled = true, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
+  execution_message = {
+    message = function() -- message to print on save
+      return "AutoSave : "..vim.fn.strftime("%H:%M:%S")
+    end,
+    dim = 0.18, -- dim the color of `message`
+    cleaning_interval = 500, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
+  },
+  trigger_events = {"InsertLeave", "TextChanged"}, -- vim events that trigger auto-save. See :h events
+  -- function that determines whether to save the current buffer or not
+  -- return true: if buffer is ok to be saved
+  -- return false: if it's not ok to be saved
+  condition = function(buf)
+    local utils = require("auto-save.utils.data")
+    if vim.fn.getbufvar(buf, "&modifiable")==1 and
+    utils.not_in(vim.fn.getbufvar(buf, "&filetype"), {}) then
+      return true -- met condition(s), can save
+    end
+    return false -- can't save
+  end,
+  write_all_buffers = false, -- write all buffers when the current one meets `condition`
+  debounce_delay = 0, -- saves the file at most every `debounce_delay` milliseconds
+  callbacks = { -- functions to be executed at different intervals
+    enabling = nil, -- ran when enabling auto-save
+    disabling = nil, -- ran when disabling auto-save
+    before_asserting_save = nil, -- ran before checking `condition`
+    before_saving = nil, -- ran before doing the actual save
+    after_saving = nil -- ran after doing the actual save
+  }
+})
+-- }}}
+
+-- neoscroll {{{
+require("neoscroll").setup({
+  -- All these keys will be mapped to their corresponding default scrolling animation
+  mappings = {
+    "<C-u>", "<C-d>",
+    "<C-b>", "<C-f>",
+    "<C-k>", "<C-j>",
+    "zt", "zz", "zb",
+  },
+  hide_cursor = false,         -- Hide cursor while scrolling
+  stop_eof = false,            -- Stop at <EOF> when scrolling downwards
+  respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+  cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+  easing_function = nil,       -- Default easing function
+  pre_hook = nil,              -- Function to run before the scrolling animation starts
+  post_hook = nil,             -- Function to run after the scrolling animation ends
+  performance_mode = false,    -- Disable "Performance Mode" on all buffers.
+})
+require("neoscroll.config").set_mappings({
+  ['<C-u>'] = {'scroll', {'-vim.wo.scroll', 'false', '50'}},
+  ['<C-d>'] = {'scroll', { 'vim.wo.scroll', 'false', '50'}},
+  ['<C-b>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'false', '100'}},
+  ['<C-f>'] = {'scroll', { 'vim.api.nvim_win_get_height(0)', 'false', '100'}},
+  ['<C-k>'] = {'scroll', {'-0.1', 'false', '25'}},
+  ['<C-j>'] = {'scroll', { '0.1', 'false', '25'}},
+  ['zt']    = {'zt', {'50'}},
+  ['zz']    = {'zz', {'50'}},
+  ['zb']    = {'zb', {'50'}},
+})
+-- }}}
+
+-- }}} Plugins
