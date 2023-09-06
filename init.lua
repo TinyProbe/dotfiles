@@ -24,6 +24,7 @@ vim.opt.smarttab = true
 vim.opt.expandtab = true
 -- vim.opt.guifont = "SFMono Nerd Font:h16"
 -- vim.opt.guicursor = "a:block-blinkwait0"
+vim.opt.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 vim.opt.title = true
 vim.opt.number = true
 vim.opt.numberwidth = 2
@@ -83,11 +84,14 @@ vim.api.nvim_create_autocmd({ "BufWrite", }, {
 })
 
 vim.api.nvim_create_augroup("BufDefault", {})
-vim.api.nvim_create_autocmd({ "BufNewFile", }, {
+vim.api.nvim_create_autocmd({ "BufNewFile", "InsertLeave", "TextChanged", }, {
   group = "BufDefault",
-  pattern = { "*", },
+  pattern = { "*.*", },
   callback = function()
-    vim.cmd("write")
+    if vim.fn.getbufvar(vim.fn.expand("%"), "&modifiable") == 1 then
+      vim.cmd("write")
+      print("autosave "..vim.fn.strftime("%H:%M:%S"));
+    end
   end,
 })
 vim.api.nvim_create_autocmd({ "BufEnter", }, {
@@ -338,10 +342,19 @@ require("lazy").setup({
     lazy = false,
   }, {  -- =====================================================================
     "neovim/nvim-lspconfig",                            name =      "lspconfig",
-  -- }, {  -- =====================================================================
-    -- "", name = "",
   }, {  -- =====================================================================
-    "Pocco81/auto-save.nvim",                           name =      "auto-save",
+    "williamboman/mason.nvim",                          name =          "mason",
+  }, {  -- =====================================================================
+    "williamboman/mason-lspconfig.nvim",                name ="mason-lspconfig",
+  }, {  -- =====================================================================
+    "hrsh7th/nvim-cmp",                                 name =       "nvim-cmp",
+  }, {  -- =====================================================================
+    "hrsh7th/cmp-nvim-lsp",                             name =   "cmp-nvim-lsp",
+  }, {  -- =====================================================================
+    "jose-elias-alvarez/null-ls.nvim",                  name =        "null-ls",
+  }, {  -- =====================================================================
+    "SmiteshP/nvim-navic",                              name =     "nvim-navic",
+    dependencies = { "neovim/nvim-lspconfig" },
   }, {  -- =====================================================================
     "karb94/neoscroll.nvim",                            name =      "neoscroll",
   }, {  -- =====================================================================
@@ -349,9 +362,15 @@ require("lazy").setup({
     config = function()
       -- example: rgb(30%,40%,80%), #958293, #ad9
       -- activate display all color_expr in every filetypes
-      -- need to restart neovim after edit config
+      -- this plugin need to restart nvim after reload config
       require("colorizer").setup(nil, { css = true; })
     end,
+  }, {  -- =====================================================================
+    "windwp/nvim-autopairs",                            name =      "autopairs",
+    event = "InsertEnter",
+  }, {  -- =====================================================================
+    -- "folke/which-key.nvim",                             name =      "which-key",
+    -- event = "VeryLazy",
   },    -- =====================================================================
 })
 
@@ -399,7 +418,7 @@ require("catppuccin").setup({
     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   },
 })
-vim.cmd("colorscheme catppuccin")
+vim.cmd.colorscheme("catppuccin")
 -- }}}
 
 -- bufferline {{{
@@ -638,40 +657,77 @@ require("Comment").setup({
 -- }}}
 
 -- lspconfig {{{
--- require("lspconfig").?.setup({})
+require("lspconfig").clangd.setup({
+  on_attach = function(client, bufnr)
+    navic.attach(client, bufnr)
+  end
+})
+require("lspconfig").pyright.setup({
+  on_attach = function(client, bufnr)
+    keyMapping("n", { buffer=bufnr }, "gD", vim.lsp.buf.declaration, "goto declaration")
+    keyMapping("n", { buffer=bufnr }, "gd", vim.lsp.buf.definition, "goto definition")
+    keyMapping("n", { buffer=bufnr }, "gK", vim.lsp.buf.hover, "show hover")
+    keyMapping("n", { buffer=bufnr }, "gr", vim.lsp.buf.rename, "rename identifier")
+  end,
+})
 -- }}}
 
--- auto-save {{{
-require("auto-save").setup({
-  enabled = true, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
-  execution_message = {
-    message = function() -- message to print on save
-      return "AutoSave : "..vim.fn.strftime("%H:%M:%S")
-    end,
-    dim = 0.18, -- dim the color of `message`
-    cleaning_interval = 500, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
+-- mason {{{
+-- }}}
+
+-- mason-lspconfig {{{
+-- }}}
+
+-- nvim-cmp {{{
+-- }}}
+
+-- cmp-nvim-lsp {{{
+-- }}}
+
+-- null-ls {{{
+-- }}}
+
+-- nvim-navic {{{
+require("nvim-navic").setup({
+  icons = {
+    File          = "󰈙 ",
+    Module        = " ",
+    Namespace     = "󰌗 ",
+    Package       = " ",
+    Class         = "󰌗 ",
+    Method        = "󰆧 ",
+    Property      = " ",
+    Field         = " ",
+    Constructor   = " ",
+    Enum          = "󰕘",
+    Interface     = "󰕘",
+    Function      = "󰊕 ",
+    Variable      = "󰆧 ",
+    Constant      = "󰏿 ",
+    String        = "󰀬 ",
+    Number        = "󰎠 ",
+    Boolean       = "◩ ",
+    Array         = "󰅪 ",
+    Object        = "󰅩 ",
+    Key           = "󰌋 ",
+    Null          = "󰟢 ",
+    EnumMember    = " ",
+    Struct        = "󰌗 ",
+    Event         = " ",
+    Operator      = "󰆕 ",
+    TypeParameter = "󰊄 ",
   },
-  trigger_events = {"InsertLeave", "TextChanged"}, -- vim events that trigger auto-save. See :h events
-  -- function that determines whether to save the current buffer or not
-  -- return true: if buffer is ok to be saved
-  -- return false: if it's not ok to be saved
-  condition = function(buf)
-    local utils = require("auto-save.utils.data")
-    if vim.fn.getbufvar(buf, "&modifiable")==1 and
-    utils.not_in(vim.fn.getbufvar(buf, "&filetype"), {}) then
-      return true -- met condition(s), can save
-    end
-    return false -- can't save
-  end,
-  write_all_buffers = false, -- write all buffers when the current one meets `condition`
-  debounce_delay = 0, -- saves the file at most every `debounce_delay` milliseconds
-  callbacks = { -- functions to be executed at different intervals
-    enabling = nil, -- ran when enabling auto-save
-    disabling = nil, -- ran when disabling auto-save
-    before_asserting_save = nil, -- ran before checking `condition`
-    before_saving = nil, -- ran before doing the actual save
-    after_saving = nil -- ran after doing the actual save
-  }
+  lsp = {
+    auto_attach = true,
+    preference = nil,
+  },
+  highlight = false,
+  separator = " > ",
+  depth_limit = 0,
+  depth_limit_indicator = "..",
+  safe_output = true,
+  lazy_update_context = false,
+  click = false
 })
 -- }}}
 
@@ -704,6 +760,118 @@ require("neoscroll.config").set_mappings({
   ['zz']    = {'zz', {'50'}},
   ['zb']    = {'zb', {'50'}},
 })
+-- }}}
+
+-- autopairs {{{
+require("nvim-autopairs").setup({
+  disable_filetype = { "TelescopePrompt", "spectre_panel" },
+  disable_in_macro = true,          -- disable when recording or executing a macro
+  disable_in_visualblock = false,   -- disable when insert after visual block mode
+  disable_in_replace_mode = true,
+  ignored_next_char = [=[[%w%%%'%[%"%.%`%$]]=],
+  enable_moveright = true,
+  enable_afterquote = true,         -- add bracket pairs after quote
+  enable_check_bracket_line = true, -- check bracket in same line
+  enable_bracket_in_quote = true,
+  enable_abbr = false,              -- trigger abbreviation
+  break_undo = true,                -- switch for basic rule break undo sequence
+  check_ts = false,
+  map_cr = true,
+  map_bs = true,                    -- map the <BS> key
+  map_c_h = false,                  -- Map the <C-h> key to delete a pair
+  map_c_w = false,                  -- map <c-w> to delete a pair if possible
+})
+-- }}}
+
+-- which-key {{{
+-- require("which-key").setup({
+--   plugins = {
+--     marks = true, -- shows a list of your marks on ' and `
+--     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+--     -- the presets plugin, adds help for a bunch of default keybindings in Neovim
+--     -- No actual key bindings are created
+--     spelling = {
+--       enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+--       suggestions = 20, -- how many suggestions should be shown in the list?
+--     },
+--     presets = {
+--       operators = true, -- adds help for operators like d, y, ...
+--       motions = true, -- adds help for motions
+--       text_objects = true, -- help for text objects triggered after entering an operator
+--       windows = true, -- default bindings on <c-w>
+--       nav = true, -- misc bindings to work with windows
+--       z = true, -- bindings for folds, spelling and others prefixed with z
+--       g = true, -- bindings for prefixed with g
+--     },
+--   },
+--   -- add operators that will trigger motion and text object completion
+--   -- to enable all native operators, set the preset / operators plugin above
+--   operators = { gc = "Comments" },
+--   key_labels = {
+--     -- override the label used to display some keys. It doesn't effect WK in any other way.
+--     -- For example:
+--     -- ["<space>"] = "SPC",
+--     -- ["<cr>"] = "RET",
+--     -- ["<tab>"] = "TAB",
+--   },
+--   motions = {
+--     count = true,
+--   },
+--   icons = {
+--     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+--     separator = "➜", -- symbol used between a key and it's label
+--     group = "+", -- symbol prepended to a group
+--   },
+--   popup_mappings = {
+--     scroll_down = "<c-d>", -- binding to scroll down inside the popup
+--     scroll_up = "<c-u>", -- binding to scroll up inside the popup
+--   },
+--   window = {
+--     border = "none", -- none, single, double, shadow
+--     position = "bottom", -- bottom, top
+--     margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
+--     padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
+--     winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+--     zindex = 1000, -- positive value to position WhichKey above other floating windows.
+--   },
+--   layout = {
+--     height = { min = 4, max = 25 }, -- min and max height of the columns
+--     width = { min = 20, max = 50 }, -- min and max width of the columns
+--     spacing = 3, -- spacing between columns
+--     align = "left", -- align columns left, center or right
+--   },
+--   ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
+--   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "^:", "^ ", "^call ", "^lua " }, -- hide mapping boilerplate
+--   show_help = true, -- show a help message in the command line for using WhichKey
+--   show_keys = true, -- show the currently pressed key and its label as a message in the command line
+--   triggers = "auto", -- automatically setup triggers
+--   -- triggers = {"<leader>"} -- or specifiy a list manually
+--   -- list of triggers, where WhichKey should not wait for timeoutlen and show immediately
+--   triggers_nowait = {
+--     -- marks
+--     "`",
+--     "'",
+--     "g`",
+--     "g'",
+--     -- registers
+--     '"',
+--     "<c-r>",
+--     -- spelling
+--     "z=",
+--   },
+--   triggers_blacklist = {
+--     -- list of mode / prefixes that should never be hooked by WhichKey
+--     -- this is mostly relevant for keymaps that start with a native binding
+--     i = { "j", "k" },
+--     v = { "j", "k" },
+--   },
+--   -- disable the WhichKey popup for certain buf types and file types.
+--   -- Disabled by default for Telescope
+--   disable = {
+--     buftypes = {},
+--     filetypes = {},
+--   },
+-- })
 -- }}}
 
 -- }}} Plugins
