@@ -24,7 +24,6 @@ vim.opt.smarttab = true
 vim.opt.expandtab = true
 -- vim.opt.guifont = "SFMono Nerd Font:h16"
 -- vim.opt.guicursor = "a:block-blinkwait0"
-vim.opt.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 vim.opt.title = true
 vim.opt.number = true
 vim.opt.numberwidth = 2
@@ -431,7 +430,7 @@ bufferline.setup({
     },
     right_mouse_command = nil,
     middle_mouse_command = "bdelete! %d",
-    separator_style = "thick",
+    separator_style = "slant",
     enforce_regular_tabs = true,
     always_show_bufferline = true,
     hover = {
@@ -444,6 +443,7 @@ bufferline.setup({
 -- }}}
 
 -- lualine {{{
+local navic = require("nvim-navic") -- for regist navic to other plugin
 require("lualine").setup({
   options = {
     icons_enabled = true,
@@ -480,7 +480,18 @@ require("lualine").setup({
     lualine_z = {}
   },
   tabline = {},
-  winbar = {},
+  winbar = {
+    lualine_c = {
+      {
+        function()
+          return navic.get_location()
+        end,
+        cond = function()
+          return navic.is_available()
+        end,
+      },
+    },
+  },
   inactive_winbar = {},
   extensions = {}
 })
@@ -659,7 +670,6 @@ require("Comment").setup({
 -- lspconfig {{{
 require("lspconfig").clangd.setup({
   on_attach = function(client, bufnr)
-    navic.attach(client, bufnr)
   end
 })
 require("lspconfig").pyright.setup({
@@ -688,7 +698,7 @@ require("lspconfig").pyright.setup({
 -- }}}
 
 -- nvim-navic {{{
-require("nvim-navic").setup({
+navic.setup({
   icons = {
     File          = "󰈙 ",
     Module        = " ",
