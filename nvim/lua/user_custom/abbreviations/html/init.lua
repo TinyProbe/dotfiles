@@ -3,7 +3,7 @@ inoreabbrev $<html_base>
 \ <!DOCTYPE html>
 \<NL><html>
 \<NL><head>
-\<NL><charset="utf-8">
+\<NL><meta charset="utf-8">
 \<NL><title>Hello World!</title>
 \<NL></head>
 \<NL><body>
