@@ -35,12 +35,12 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",                    name =      "telescope",
     tag = '0.1.2', -- or branch = '0.1.x',
     dependencies = { "nvim-lua/plenary.nvim" },
-  }, {  -- =====================================================================
-    "nvim-telescope/telescope-file-browser.nvim",       name =      "tfbrowser",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-    }
+  -- }, {  -- =====================================================================
+  --   "nvim-telescope/telescope-file-browser.nvim",       name =      "tfbrowser",
+  --   dependencies = {
+  --     "nvim-telescope/telescope.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --   }
   }, {  -- =====================================================================
     "nvim-treesitter/nvim-treesitter",                  name =     "treesitter",
     build = ":TSUpdate",
@@ -61,9 +61,9 @@ require("lazy").setup({
     "akinsho/toggleterm.nvim",                          name =     "toggleterm",
     version = "*",
     config = true,
-  -- }, {  -- =====================================================================
-  --   "folke/which-key.nvim",                             name =      "which-key",
-  --   event = "VeryLazy",
+  }, {  -- =====================================================================
+    "folke/which-key.nvim",                             name =      "which-key",
+    event = "VeryLazy",
   -- }, {  -- =====================================================================
   --   "neovim/nvim-lspconfig",                            name =      "lspconfig",
   -- }, {  -- =====================================================================
@@ -90,19 +90,19 @@ require("lazy").setup({
   },    -- =====================================================================
 })
 
-require("plug_in.catppuccin")
-require("plug_in.bufferline")
-require("plug_in.lualine")
-require("plug_in.neo_tree")
-require("plug_in.telescope")
-require("plug_in.tfbrowser")
-require("plug_in.treesitter")
-require("plug_in.comment")
-require("plug_in.neoscroll")
-require("plug_in.colorizer")
-require("plug_in.autopairs")
-require("plug_in.toggleterm")
-require("plug_in.which_key")
+require("plugins.catppuccin")
+require("plugins.bufferline")
+require("plugins.lualine")
+require("plugins.neo_tree")
+require("plugins.telescope")
+-- require("plugins.telescopefb")
+require("plugins.treesitter")
+require("plugins.comment")
+require("plugins.neoscroll")
+require("plugins.colorizer")
+require("plugins.autopairs")
+require("plugins.toggleterm")
+require("plugins.which_key")
 
 -- lspconfig {{{
 -- require("lspconfig").clangd.setup({
@@ -121,34 +121,4 @@ require("plug_in.which_key")
 --     displayKeymap("n", {buffer=bufnr, desc="rename identifier"}, "gr", vim.lsp.buf.rename)
 --   end,
 -- })
--- }}}
-
--- mason {{{
--- }}}
-
--- mason-lspconfig {{{
--- }}}
-
--- nvim-cmp {{{
--- }}}
-
--- cmp-buffer {{{
--- }}}
-
--- cmp-nvim-lsp {{{
--- }}}
-
--- null-ls {{{
--- }}}
-
--- coc {{{
--- }}}
-
--- lspkind {{{
--- }}}
-
--- lspsaga {{{
--- }}}
-
--- prettier {{{
 -- }}}
