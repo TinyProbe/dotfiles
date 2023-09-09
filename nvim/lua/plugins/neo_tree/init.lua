@@ -1,4 +1,4 @@
-displayKeymap("n", {desc="File explorer"}, "<leader>fe", "<cmd>Neotree toggle right<cr>")
+displayKeymap("n", {desc="File explorer"}, "<leader>fe", "<cmd>Neotree toggle<cr>")
 require("neo-tree").setup({
   close_if_last_window = true,
   window = {
