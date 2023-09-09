@@ -45,7 +45,7 @@ require("neo-tree").setup({
         display_name = " 󰊢 Git "                              -- string | nil
       }, {
         source = "document_symbols",                          -- string
-        display_name = " 󰊢 Symbols "                          -- string | nil
+        display_name = " 󰅩 Symbols "                          -- string | nil
       },
     },
     content_layout = "start",                                 -- string
