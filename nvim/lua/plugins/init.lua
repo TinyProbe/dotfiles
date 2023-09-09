@@ -18,7 +18,7 @@ require("lazy").setup({
     "catppuccin/nvim",                                  name =     "catppuccin",
     priority = 1000,
   }, {  -- =====================================================================
-    "akinsho/bufferline.nvim",                          name =     "bufferline", -- separetor color?
+    "akinsho/bufferline.nvim",                          name =     "bufferline",
     version = "*",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   }, {  -- =====================================================================
