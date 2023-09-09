@@ -102,9 +102,7 @@ require("plug_in.neoscroll")
 require("plug_in.colorizer")
 require("plug_in.autopairs")
 require("plug_in.toggleterm")
-
--- which-key {{{
--- }}}
+require("plug_in.which_key")
 
 -- lspconfig {{{
 -- require("lspconfig").clangd.setup({
