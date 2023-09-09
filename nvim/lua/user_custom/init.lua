@@ -1,5 +1,5 @@
 require("user_custom.options")
-require("user_custom.auto_commands")
+require("user_custom.autocmds")
 require("user_custom.functions")
-require("user_custom.key_mappings")
-require("user_custom.abbreviations")
+require("user_custom.keymaps")
+require("user_custom.abbrevs")
