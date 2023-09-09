@@ -1,2 +1,2 @@
-require("user_custom")
-require("plug_in")
+require("customs")
+require("plugins")
