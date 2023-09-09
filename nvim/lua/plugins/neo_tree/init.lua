@@ -1,8 +1,9 @@
-displayKeymap("n", {desc="File explorer:n"}, "<leader>fe", "<cmd>Neotree toggle right<cr>")
+displayKeymap("n", {desc="File explorer"}, "<leader>fe", "<cmd>Neotree toggle right<cr>")
 require("neo-tree").setup({
   close_if_last_window = true,
   window = {
-    width = 30,
+    position = "right",
+    width = 32,
     mappings = {
       ["<Space>"] = "noop",
       ["t"] = "toggle_node",
@@ -42,6 +43,9 @@ require("neo-tree").setup({
       }, {
         source = "git_status",                                -- string
         display_name = " 󰊢 Git "                              -- string | nil
+      }, {
+        source = "document_symbols",                          -- string
+        display_name = " 󰊢 Symbols "                          -- string | nil
       },
     },
     content_layout = "start",                                 -- string
