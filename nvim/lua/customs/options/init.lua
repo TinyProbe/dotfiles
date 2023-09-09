@@ -21,8 +21,6 @@ vim.opt.smartindent = true
 vim.opt.autoindent = true
 vim.opt.smarttab = true
 vim.opt.expandtab = true
--- vim.opt.guifont = "Liga SFMono Nerd Font:h16"
--- vim.opt.guicursor = "a:block-blinkwait0"
 vim.opt.title = true
 vim.opt.number = true
 vim.opt.numberwidth = 2
@@ -32,7 +30,8 @@ vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 vim.opt.mouse = "a"
 vim.opt.updatetime = 0
-vim.opt.timeout = false
+vim.opt.timeout = true  -- for which-key
+vim.opt.timeoutlen = 0  -- for which-key
 vim.opt.showmode = false
 vim.opt.showtabline = 1
 vim.opt.wrap = false
@@ -54,7 +53,7 @@ vim.opt.listchars = "tab:→·"
 vim.opt.fillchars = "eob: "
 vim.opt.foldcolumn = "auto"
 vim.opt.foldmethod = "marker"
--- vim.opt.foldexpr=GetFold(v:lnum)
+
 vim.cmd([[
 syntax on
 filetype off
