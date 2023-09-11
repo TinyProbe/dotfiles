@@ -2,6 +2,8 @@ return {
   "folke/which-key.nvim", name = "which-key",
   event = "VeryLazy",
   config = function()
+    vim.opt.timeout = true
+    vim.opt.timeoutlen = 0
     local which_key = require("which-key")
     which_key.register({
       ["<leader>"] = { name = "global keymaps" },
