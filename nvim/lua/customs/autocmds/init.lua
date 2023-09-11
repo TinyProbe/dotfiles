@@ -1,7 +1,7 @@
 vim.api.nvim_create_augroup("vimrcEx", {})
 vim.api.nvim_create_autocmd({ "FileType", }, {
   group = "vimrcEx",
-  pattern = { "text", },
+  pattern = { "text" },
   callback = function()
     vim.opt_local.textwidth = 78
   end,
@@ -17,14 +17,11 @@ vim.api.nvim_create_autocmd({ "BufWrite", }, {
 })
 
 vim.api.nvim_create_augroup("BufDefault", {})
-vim.api.nvim_create_autocmd({ "BufNewFile", "InsertLeave", "TextChanged", }, {
+vim.api.nvim_create_autocmd({ "BufNewFile" }, {
   group = "BufDefault",
-  pattern = { "*.*", },
+  pattern = { "*" },
   callback = function()
-    if vim.fn.getbufvar(vim.fn.expand("%"), "&modifiable") == 1 then
-      vim.cmd("write")
-      print("autosave "..vim.fn.strftime("%H:%M:%S"));
-    end
+    vim.cmd("write")
   end,
 })
 vim.api.nvim_create_autocmd({ "BufEnter", }, {
