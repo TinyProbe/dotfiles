@@ -35,12 +35,6 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",                    name =      "telescope",
     tag = '0.1.2', -- or branch = '0.1.x',
     dependencies = { "nvim-lua/plenary.nvim" },
-  -- }, {  -- =====================================================================
-  --   "nvim-telescope/telescope-file-browser.nvim",       name =      "tfbrowser",
-  --   dependencies = {
-  --     "nvim-telescope/telescope.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --   }
   }, {  -- =====================================================================
     "nvim-treesitter/nvim-treesitter",                  name =     "treesitter",
     build = ":TSUpdate",
@@ -57,6 +51,8 @@ require("lazy").setup({
   }, {  -- =====================================================================
     "windwp/nvim-autopairs",                            name =      "autopairs",
     event = "InsertEnter",
+  }, {  -- =====================================================================
+    "0x00-ketsu/autosave.nvim",                         name =       "autosave",
   }, {  -- =====================================================================
     "akinsho/toggleterm.nvim",                          name =     "toggleterm",
     version = "*",
@@ -95,12 +91,12 @@ require("plugins.bufferline")
 require("plugins.lualine")
 require("plugins.neo_tree")
 require("plugins.telescope")
--- require("plugins.telescopefb")
 require("plugins.treesitter")
 require("plugins.comment")
 require("plugins.neoscroll")
 require("plugins.colorizer")
 require("plugins.autopairs")
+require("plugins.autosave")
 require("plugins.toggleterm")
 require("plugins.which_key")
 
