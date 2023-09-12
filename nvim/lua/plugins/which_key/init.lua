@@ -8,6 +8,7 @@ return {
     which_key.register({
       ["<leader>"] = { name = "global keymaps" },
       ["<leader>b"] = { name = "buffer" },
+      ["<leader>t"] = { name = "toggle" },
       ["<leader><tab>"] = { name = "tab" },
       ["<leader>f"] = { name = "file" },
       ["<leader>c"] = { name = "comment" },
