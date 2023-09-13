@@ -8,11 +8,13 @@ vim.api.nvim_create_autocmd({ "FileType", }, {
 })
 
 vim.api.nvim_create_augroup("PreventBackupPrivate", {})
-vim.api.nvim_create_autocmd({ "BufWrite", }, {
-  group = "PreventBackupPrivate",
-  pattern = { "/private/tmp/crontab.*", "/private/etc/pw.*", },
+vim.api.nvim_create_autocmd({ "BufNewFile" }, {
+  group = "BufDefault",
+  pattern = { "*" },
   callback = function()
-    vim.opt_local.writebackup = false
+    if vim.fn.getbufvar(vim.fn.expand("%"), "&modifiable") == 1 then
+      vim.cmd("write")
+    end
   end,
 })
 
