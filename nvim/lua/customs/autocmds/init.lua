@@ -17,15 +17,6 @@ vim.api.nvim_create_autocmd({ "BufWrite", }, {
 })
 
 vim.api.nvim_create_augroup("BufDefault", {})
-vim.api.nvim_create_autocmd({ "BufNewFile" }, {
-  group = "BufDefault",
-  pattern = { "*" },
-  callback = function()
-    if vim.fn.getbufvar(vim.fn.expand("%"), "&modifiable") == 1 then
-      vim.cmd("write")
-    end
-  end,
-})
 vim.api.nvim_create_autocmd({ "BufEnter", }, {
   group = "BufDefault",
   pattern = {
