@@ -16,10 +16,10 @@ function displayKeymap(mode, opt, key, act)
   if opt.desc == nil then
     cmd = act
   elseif string.sub(opt.desc, 2, 2) == ":" and
-    string.find("nvi", string.sub(opt.desc, 1, 1)) ~= nil then
+  string.find("nvi", string.sub(opt.desc, 1, 1)) ~= nil then
     cmd = printCmd(string.sub(opt.desc, 1, 1), string.sub(opt.desc, 3, -1))..act
   elseif string.sub(opt.desc, -2, -2) == ":" and
-    string.find("nvi", string.sub(opt.desc, -1, -1)) ~= nil then
+  string.find("nvi", string.sub(opt.desc, -1, -1)) ~= nil then
     cmd = act..printCmd(string.sub(opt.desc, -1, -1), string.sub(opt.desc, 1, -3))
   else
     cmd = act
