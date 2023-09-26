@@ -9,6 +9,7 @@ return {
       ["<leader>"] = { name = "global keymaps" },
       ["<leader>b"] = { name = "buffer" },
       ["<leader>t"] = { name = "toggle" },
+      ["<leader>w"] = { name = "window" },
       ["<leader><tab>"] = { name = "tab" },
       ["<leader>f"] = { name = "file" },
       ["<leader>c"] = { name = "comment" },
