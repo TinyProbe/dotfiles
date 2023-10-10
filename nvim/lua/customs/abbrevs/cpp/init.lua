@@ -2,31 +2,30 @@ vim.cmd([[
 
 iabbrev $<cpp_random>
 \ template <class T>
-\<nl>T __rand(T mnm, T mxm) {
+\<nl>T __random(T mnm, T mxm) {
 \<nl>  static std::mt19937 gen((std::random_device())());
 \<nl>  return (std::uniform_int_distribution<T>(mnm, mxm))(gen);
 \<nl>}
 \<esc><space>=
 
 iabbrev $<cpp_class_template>
-\ #pragma once
-\<nl>#ifndef CLASSNAME_HPP
-\<nl>#define CLASSNAME_HPP
+\ #ifndef CLASSNAME_H_
+\<nl>#define CLASSNAME_H_
 \<nl>
 \<nl>class ClassName {
+\<nl> public:
+\<nl>  ClassName();
+\<nl>  ClassName(ClassName const &rhs);
+\<nl>  virtual ClassName &operator=(ClassName const &rhs);
+\<nl>  virtual ~ClassName();
 \<nl>
-\<nl>public:
-\<nl>  ClassName() {}
-\<nl>  ClassName(ClassName const &rhs) { *this = rhs; }
-\<nl>  virtual ClassName &operator=(ClassName const &rhs) {
-\<nl>    if (this == &rhs) { return *this; }
-\<nl>    return *this;
-\<nl>  }
-\<nl>  virtual ~ClassName() {}
+\<nl> protected:
 \<nl>
-\<nl>};
+\<nl> private:
 \<nl>
-\<nl>#endif
+\<nl>}; // ClassName
+\<nl>
+\<nl>#endif // CLASSNAME_H_
 \<esc><space>=
 
 ]])
