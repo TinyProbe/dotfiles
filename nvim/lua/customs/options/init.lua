@@ -53,6 +53,8 @@ vim.opt.fillchars = "eob: "
 vim.opt.foldcolumn = "auto"
 vim.opt.foldmethod = "marker"
 
+vim.g.rust_recommended_style = false
+
 vim.cmd([[
 syntax on
 filetype off
