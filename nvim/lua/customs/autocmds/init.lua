@@ -20,8 +20,7 @@ vim.api.nvim_create_augroup("BufDefault", {})
 vim.api.nvim_create_autocmd({ "BufEnter", }, {
   group = "BufDefault",
   pattern = {
-    "*.c", "*.h", "*.cpp", "*.hpp", "*.cs", "*.rs", "*.java", "*.js",
-    "*.php", "*.go", "*.kt", "*.kts",
+    "*.c", "*.h", "*.cpp", "*.hpp",
   },
   callback = function()
     vim.opt_local.cindent = true
