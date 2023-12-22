@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd({ "BufWrite", }, {
   end,
 })
 
--- this convection is google style.
+-- this convection is google style. shiftwidth: 2
 --
 -- vim.api.nvim_create_augroup("BufDefault", {})
 -- vim.api.nvim_create_autocmd({ "BufEnter", }, {
@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd({ "BufWrite", }, {
 --   end,
 -- })
 
--- this convection is microsoft style.
+-- this convection is microsoft style. shiftwidth: 4
 --
 vim.api.nvim_create_augroup("BufDefault", {})
 vim.api.nvim_create_autocmd({ "BufEnter", }, {
