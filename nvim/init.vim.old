@@ -113,7 +113,7 @@ set foldmethod=marker
 " set foldexpr=GetFold(v:lnum)
 
 syntax on
-colorscheme onehalfdark
+colorscheme blue
 " }}}
 
 " Status Line {{{
@@ -262,7 +262,7 @@ call Mapping("nnore", "", "gm", "gM", 'goto middle character:n')
 call Mapping("nnore", "", "gM", "gm", 'goto ???:n')
 call Mapping("nnore", "<silent>", "gn", ":bnext<CR>zz", 'goto next buffer:n')
 call Mapping("nnore", "<silent>", "gp", ":bprevious<CR>zz", 'goto previous buffer:n')
-call Mapping("vnore", "", "gk", "gg0", 'goto nbr=0 line:v')
+call Mapping("vnore", "", "gk", "gg0", 'goto first line:v')
 call Mapping("vnore", "", "gj", "G0zz", 'goto last line:v')
 call Mapping("vnore", "", "gt", "H0", 'goto top screen:v')
 call Mapping("vnore", "", "gc", "M0", 'goto center screen:v')
