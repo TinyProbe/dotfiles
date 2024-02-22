@@ -28,6 +28,7 @@ vim.opt.relativenumber = true
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
+vim.opt.guicursor = "a:hor25-Cursor-blinkon300-blinkoff300"
 vim.opt.mouse = "a"
 vim.opt.updatetime = 0
 vim.opt.timeout = false
