@@ -6,15 +6,23 @@ LF10='#222222'
 LB10='#eeee44'
 LF01='#222222'
 LB01='#44ee44'
+LEFT0="%K{$LB10}%F{$LF10}%B$L10%b%f%k"
+LEFT1="%K{$LB01}%F{$LB10}$LD%f%k"
+LEFT2="%K{$LB01}%F{$LF01}$L01%f%k"
+LEFT3="%K{$BACK}%F{$LB01}$LD%f%k"
 RD=''
 R10=' %D{%Y-%m-%d(%a)} '
-R01=' %D{%I:%M:%S%p} '
+R01=' %D{%I:%M %p} '
 RF10='#222222'
 RB10='#44ee44'
 RF01='#222222'
 RB01='#eeee44'
-PROMPT="%K{$LB10}%F{$LF10}%B$L10%b%f%k%K{$LB01}%F{$LB10}$LD%f%k%K{$LB01}%F{$LF01}$L01%f%k%K{$BACK}%F{$LB01}$LD%f%k "
-RPROMPT="%K{$BACK}%F{$RB10}$RD%f%k%K{$RB10}%F{$RF10}$R10%f%k%K{$RB10}%F{$RB01}$RD%f%k%K{$RB01}%F{$RF01}$R01%f%k"
+RIGHT3="%K{$BACK}%F{$RB10}$RD%f%k"
+RIGHT2="%K{$RB10}%F{$RF10}$R10%f%k"
+RIGHT1="%K{$RB10}%F{$RB01}$RD%f%k"
+RIGHT0="%K{$RB01}%F{$RF01}$R01%f%k"
+PROMPT="$LEFT0$LEFT1$LEFT2$LEFT3 "
+RPROMPT="$RIGHT3$RIGHT2$RIGHT1$RIGHT0"
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
