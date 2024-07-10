@@ -84,8 +84,12 @@ displayKeymap("v", {silent=true, desc='Go to previous buffer'}, "gp", "<esc>:bpr
 
 displayKeymap("n", {desc='Move left unit' }, "<C-h>", unit.."<backspace>")
 displayKeymap("n", {desc='Move right unit'}, "<C-l>", unit.."<space>")
+displayKeymap("n", {desc='Move left unit' }, "<C-j>", unit.."<C-e>")
+displayKeymap("n", {desc='Move right unit'}, "<C-k>", unit.."<C-y>")
 displayKeymap("v", {desc='Move left unit' }, "<C-h>", unit.."<backspace>")
 displayKeymap("v", {desc='Move right unit'}, "<C-l>", unit.."<space>")
+displayKeymap("v", {desc='Move left unit' }, "<C-j>", unit.."<C-e>")
+displayKeymap("v", {desc='Move right unit'}, "<C-k>", unit.."<C-y>")
 
 displayKeymap("n", {desc='Paste inner word(ignored)'}, "piw", "viwP")
 displayKeymap("n", {desc='Paste inner word(yanked)' }, "Piw", "viwp")
