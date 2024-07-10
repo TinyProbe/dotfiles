@@ -1,9 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter", name = "treesitter",
   build = ":TSUpdate",
-  dependencies = {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-  },
   config = function()
     require("nvim-treesitter.configs").setup({
       -- A list of parser names, or "all" (the five listed parsers should always be installed)
@@ -39,10 +36,6 @@ return {
         additional_vim_regex_highlighting = false,
       },
       indent = { enable = false },
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-      },
     })
   end,
 }
