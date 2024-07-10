@@ -1,12 +1,12 @@
 -- lazy.nvim install
-local lazypath = vim.fn.stdpath("data").."/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",    -- latest stable release
+    "--branch=stable", -- latest stable release
     lazypath,
   })
 end
@@ -20,12 +20,10 @@ require("lazy").setup({
   require("plugins.neo_tree"),
   require("plugins.telescope"),
   require("plugins.treesitter"),
-  require("plugins.comment"),
-  require("plugins.neoscroll"),
   require("plugins.colorizer"),
-  require("plugins.autopairs"),
+  require("plugins.comment"),
+  -- require("plugins.autopairs"),
   require("plugins.autosave"),
-  require("plugins.toggleterm"),
   require("plugins.which_key"),
 })
 
