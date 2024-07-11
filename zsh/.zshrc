@@ -6,7 +6,7 @@ LF10='#111111'
 LB10='#eeee44'
 LF01='#111111'
 LB01='#44ee44'
-LEFT0="%K{$LB10}%F{$LF10}%B$L10%b%f%k"
+LEFT0="%K{$LB10}%F{$LF10}$L10%b%f%k"
 LEFT1="%K{$LB01}%F{$LB10}$LD%f%k"
 LEFT2="%K{$LB01}%F{$LF01}$L01%f%k"
 LEFT3="%K{$BACK}%F{$LB01}$LD%f%k"
@@ -24,15 +24,18 @@ RIGHT0="%K{$RB01}%F{$RF01}$R01%f%k"
 PROMPT="$LEFT0$LEFT1$LEFT2$LEFT3 "
 RPROMPT="$RIGHT3$RIGHT2$RIGHT1$RIGHT0"
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 bindkey '^X^T' _
 
-export PATH="$PATH:/opt/homebrew/bin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:~/.local/bin"
+export PATH="$PATH:~/.cargo/bin"
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias open='nautilus'
 alias l='ls -alF'
-alias nv='nvim'
+alias vi='nvim'
 
 # export USER="tkong"
 # export MAIL="$USER@student.42seoul.kr"
