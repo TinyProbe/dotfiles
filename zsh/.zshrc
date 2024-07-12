@@ -31,9 +31,10 @@ bindkey '^X^T' _
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:~/.local/bin"
 export PATH="$PATH:~/.cargo/bin"
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias open='nautilus'
+alias open='xdg-open'
 alias l='ls -alF'
 alias vi='nvim'
 
