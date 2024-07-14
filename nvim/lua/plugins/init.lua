@@ -17,14 +17,15 @@ require("lazy").setup({
   require("plugins.catppuccin"),
   require("plugins.bufferline"),
   require("plugins.lualine"),
+  require("plugins.mini_icons"),
   require("plugins.neo_tree"),
   require("plugins.telescope"),
   require("plugins.treesitter"),
   require("plugins.colorizer"),
   require("plugins.comment"),
-  -- require("plugins.autopairs"),
   require("plugins.autosave"),
-  require("plugins.which_key"),
+  -- require("plugins.which_key"),
+  -- require("plugins.autopairs"),
 })
 
 -- ==============================================================================
