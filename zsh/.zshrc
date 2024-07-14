@@ -28,9 +28,9 @@ source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highl
 
 bindkey '^X^T' _
 
-export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-export PATH="$PATH:~/.local/bin"
-export PATH="$PATH:~/.cargo/bin"
+export PATH="$PATH:$HOME/../linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
