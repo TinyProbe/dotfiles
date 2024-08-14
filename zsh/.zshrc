@@ -1,4 +1,4 @@
-BACK='#000000'
+BACK='#00000000'
 LD=''
 L10=' %n '
 L01=' %1~ '
@@ -26,7 +26,7 @@ RPROMPT="$RIGHT3$RIGHT2$RIGHT1$RIGHT0"
 
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-bindkey '^X^T' _
+# bindkey '^X^T' _
 
 export PATH="$PATH:$HOME/../linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:$HOME/.local/bin"
@@ -34,11 +34,5 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias open='xdg-open'
 alias l='ls -alF'
 alias vi='nvim'
-
-# export USER="tkong"
-# export MAIL="$USER@student.42seoul.kr"
-# alias ccw='cc --std=c98 -Wall -Wextra -Werror -g2'
-# alias c++w='c++ --std=c++98 -Wall -Wextra -Werror -g2'
