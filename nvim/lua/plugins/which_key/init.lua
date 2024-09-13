@@ -18,6 +18,7 @@ return {
       { "<leader>q", group = "Quit" },
       { "<leader><tab>", group = "Tab" },
       { "g", group = "Goto" },
+      { "vm", group = "Match" },
       { "m", group = "Match" },
       { "ms", mode = "v", group = "Surround" },
       { "mr", mode = "n", group = "Replace" },
