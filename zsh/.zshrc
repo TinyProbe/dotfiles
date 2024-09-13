@@ -1,4 +1,7 @@
+
 # The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :compinstall filename '/home/tiny/.zshrc'
 
 autoload -Uz compinit
@@ -46,8 +49,13 @@ export PATH="$PATH:$HOME/../linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$PATH:$BUN_INSTALL/bin"
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias l='ls -alF'
+alias l='ls -lhAF'
+alias packup='sudo echo "$(apt update -y && apt upgrade -y && apt autoremove -y)" && brew update && brew upgrade && rustup update'
 
 # End of lines added by compinstall
