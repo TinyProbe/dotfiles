@@ -22,9 +22,12 @@ vim.api.nvim_create_augroup("BufDefault", {})
 vim.api.nvim_create_autocmd({ "BufEnter", }, {
   group = "BufDefault",
   pattern = {
-    "*.c", "*.cc", "*.h", "*.cpp", "*.hpp",
+    "*.c", "*.cc", "*.h", "*.cpp", "*.hpp", "*.md",
   },
   callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.shiftwidth = 2
     vim.opt_local.cindent = true
     vim.opt_local.cinkeys = "0{,0},0),0],:,0#,!^F,o,O,e";
     vim.opt_local.cinoptions = [[
@@ -61,22 +64,3 @@ vim.api.nvim_create_autocmd({ "BufEnter", }, {
     -- ]]
   -- end,
 -- })
-
--- vim.cmd([[
--- " set comment keyword
--- augroup BufCommentDefault
-  -- autocmd!
-  -- autocmd BufEnter *.asm
-        -- \ let b:comment=";"
-  -- autocmd BufEnter *.lua,*.mysql,*.sql
-        -- \ let b:comment='--'
-  -- autocmd BufEnter *.c,*.h,*.cpp,*.hpp,*.cc,*.cs,*.rs,*.java,*.js,*.php,*.go,*.kt,*.kts,*.dart
-        -- \ let b:comment="//"
-  -- autocmd BufEnter *.sh,*.py,*.pl,*.rb,*.r,Makefile
-        -- \ let b:comment="#"
-  -- autocmd BufEnter *.vb
-        -- \ let b:comment="'"
-  -- autocmd BufEnter *.vim
-        -- \ let b:comment='"'
--- augroup end
--- ]])
