@@ -24,48 +24,6 @@ require("lazy").setup({
   require("plugins.colorizer"),
   require("plugins.comment"),
   require("plugins.autosave"),
-  -- require("plugins.which_key"),
+  require("plugins.which_key"),
   -- require("plugins.autopairs"),
 })
-
--- ==============================================================================
--- "neovim/nvim-lspconfig", name = "lspconfig",
--- config = function()
---   require("lspconfig").clangd.setup({
---     on_attach = function(client, bufnr)
---       displayKeymap("n", {buffer=bufnr, desc="goto declaration"}, "gD", vim.lsp.buf.declaration)
---       displayKeymap("n", {buffer=bufnr, desc="goto definition"}, "gd", vim.lsp.buf.definition)
---       displayKeymap("n", {buffer=bufnr, desc="show hover"}, "gK", vim.lsp.buf.hover)
---       displayKeymap("n", {buffer=bufnr, desc="rename identifier"}, "gr", vim.lsp.buf.rename)
---     end
---   })
---   require("lspconfig").pyright.setup({
---     on_attach = function(client, bufnr)
---       displayKeymap("n", {buffer=bufnr, desc="goto declaration"}, "gD", vim.lsp.buf.declaration)
---       displayKeymap("n", {buffer=bufnr, desc="goto definition"}, "gd", vim.lsp.buf.definition)
---       displayKeymap("n", {buffer=bufnr, desc="show hover"}, "gK", vim.lsp.buf.hover)
---       displayKeymap("n", {buffer=bufnr, desc="rename identifier"}, "gr", vim.lsp.buf.rename)
---     end,
---   })
--- end,
--- ==============================================================================
---   "williamboman/mason.nvim",                          name =          "mason",
--- ==============================================================================
---   "williamboman/mason-lspconfig.nvim",                name ="mason-lspconfig",
--- ==============================================================================
---   "hrsh7th/nvim-cmp",                                 name =       "nvim-cmp",
--- ==============================================================================
---   "hrsh7th/cmp-buffer",                               name =     "cmp-buffer",
--- ==============================================================================
---   "hrsh7th/cmp-nvim-lsp",                             name =   "cmp-nvim-lsp",
--- ==============================================================================
---   "jose-elias-alvarez/null-ls.nvim",                  name =        "null-ls",
--- ==============================================================================
---   "neoclide/coc.nvim",                                name =            "coc",
---   version = "*",
--- ==============================================================================
---   "onsails/lspkind.nvim",                             name =        "lspkind",
--- ==============================================================================
---   "nvimdev/lspsaga.nvim",                             name =        "lspsage",
--- ==============================================================================
---   "MunifTanjim/prettier.nvim",                        name =       "prettier",
