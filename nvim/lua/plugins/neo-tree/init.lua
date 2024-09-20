@@ -1,5 +1,5 @@
 return {
-  "nvim-neo-tree/neo-tree.nvim", name = "neo-tree",
+  "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
@@ -8,10 +8,10 @@ return {
   },
   config = function()
     require("neo-tree").setup({
-      close_if_last_window = true,
+      close_if_last_window = false,
       window = {
         position = "right",
-        width = 30,
+        width = 32,
         mappings = {
           ["<Space>"] = "noop",
           ["t"] = "toggle_node",
