@@ -4,11 +4,11 @@
 -- if matched display format, act can only be string
 function displayKeymap(mode, opt, key, act)
   local printCmd = function(mode, desc)
-    local cmd = "<cmd>lua print('"..desc.."')<cr>"
+    local cmd = "<cmd>lua print('" .. desc .. "')<cr>"
     if mode == "v" then
-      cmd = "<esc>"..cmd.."gv"
+      cmd = "<esc>" .. cmd .. "gv"
     elseif mode == "i" then
-      cmd = "<esc>`^"..cmd.."i"
+      cmd = "<esc>`^" .. cmd .. "i"
     end
     return cmd
   end
@@ -16,11 +16,11 @@ function displayKeymap(mode, opt, key, act)
   if opt.desc == nil then
     cmd = act
   elseif string.sub(opt.desc, 2, 2) == ":" and
-  string.find("nvi", string.sub(opt.desc, 1, 1)) ~= nil then
-    cmd = printCmd(string.sub(opt.desc, 1, 1), string.sub(opt.desc, 3, -1))..act
+      string.find("nvi", string.sub(opt.desc, 1, 1)) ~= nil then
+    cmd = printCmd(string.sub(opt.desc, 1, 1), string.sub(opt.desc, 3, -1)) .. act
   elseif string.sub(opt.desc, -2, -2) == ":" and
-  string.find("nvi", string.sub(opt.desc, -1, -1)) ~= nil then
-    cmd = act..printCmd(string.sub(opt.desc, -1, -1), string.sub(opt.desc, 1, -3))
+      string.find("nvi", string.sub(opt.desc, -1, -1)) ~= nil then
+    cmd = act .. printCmd(string.sub(opt.desc, -1, -1), string.sub(opt.desc, 1, -3))
   else
     cmd = act
   end
