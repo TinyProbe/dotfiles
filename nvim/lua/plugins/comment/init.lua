@@ -11,11 +11,11 @@ return {
       },
       toggler = {
         line = '<leader>cc',
-        block = '<leader>bc',
+        block = '<leader>cb',
       },
       opleader = {
-        line = '<leader>c',
-        block = '<leader>b',
+        line = '<leader>cc',
+        block = '<leader>cb',
       },
       extra = {
         above = '<leader>cO',
