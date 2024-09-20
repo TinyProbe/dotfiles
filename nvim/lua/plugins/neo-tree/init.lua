@@ -10,7 +10,7 @@ return {
     require("neo-tree").setup({
       close_if_last_window = false,
       window = {
-        position = "left",
+        position = "right",
         width = 32,
         mappings = {
           ["<Space>"] = "noop",
