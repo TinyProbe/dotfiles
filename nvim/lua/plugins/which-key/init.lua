@@ -14,7 +14,7 @@ return {
       { "<leader>w", group = "Window" },
       { "<leader>f", group = "File" },
       { "<leader>c", group = "Comment" },
-      { "<leader>i", group = "Init" },
+      { "<leader>l", group = "Lazy" },
       { "<leader>q", group = "Quit" },
       { "<leader><tab>", group = "Tab" },
       { "g", group = "Goto" },
