@@ -8,6 +8,6 @@ return {
     -- There is no default value.
     vim.cmd.highlight('IndentLine guifg=#444466')
     -- Current indent line highlight
-    vim.cmd.highlight('IndentLineCurrent guifg=#8888aa')
+    vim.cmd.highlight('IndentLineCurrent guifg=#dd9966')
   end,
 }
