@@ -14,32 +14,30 @@ SAVEHIST=1000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
-BACK="#00000000"
-LD=""
-L10=" %n "
-L01=" %1~ "
-LF10="#ddff88"
-LB10="#000001"
-LF01="#000001"
-LB01="#ddff88"
-LEFT0="%K{$LB10}%F{$LF10}$L10%b%f%k"
-LEFT1="%K{$LB01}%F{$LB10}$LD%f%k"
-LEFT2="%K{$LB01}%F{$LF01}$L01%f%k"
-LEFT3="%K{$BACK}%F{$LB01}$LD%f%k"
-PROMPT="$LEFT0$LEFT1$LEFT2$LEFT3 "
+#              
+L=""
+R=""
+S=""
+L1="%n "
+L2=" %1~"
+LF10="#000000"
+LB10="#babaee"
+LF01="#000000"
+LB01="#ccff99"
+LOPEN="%K{$LF10}%F{$LB10}$L%f%k"
+L1="%K{$LB10}%F{$LF10}$L1%f%k"
+LSEPAR="%K{$LB10}%F{$LB01}$S%f%k"
+L2="%K{$LB01}%F{$LF01}$L2%f%k"
+LCLOSE="%K{$LF01}%F{$LB01}$R%f%k"
+PROMPT="$LOPEN$L1$LSEPAR$L2$LCLOSE "
 
-RD=""
-R10=" %D{%y.%m.%d(%a)} "
-R01=" %D{%I:%M %p} "
-RF10="#000001"
-RB10="#000000"
-RF01="#ddff88"
-RB01="#000001"
-# RIGHT3="%K{$BACK}%F{$RB10}$RD%f%k"
-# RIGHT2="%K{$RB10}%F{$RF10}$R10%f%k"
-RIGHT1="%K{$RB10}%F{$RB01}$RD%f%k"
-RIGHT0="%K{$RB01}%F{$RF01}$R01%f%k"
-RPROMPT="$RIGHT1$RIGHT0"
+R1="%D{%H:%M:%S}"
+RF1="#000000"
+RB1="#babaee"
+ROPEN="%K{$RF1}%F{$RB1}$L%f%k"
+RVALUE="%K{$RB1}%F{$RF1}$R1%f%k"
+RCLOSE="%K{$RF1}%F{$RB1}$R%f%k"
+RPROMPT="$ROPEN$RVALUE$RCLOSE"
 
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -54,8 +52,9 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$PATH:$BUN_INSTALL/bin"
 
 alias ls='ls --color=auto'
-alias grep='grep --color=auto'
 alias l='ls -lhAF'
-alias packup='sudo echo "$(apt update -y && apt upgrade -y && apt autoremove -y)" && brew update && brew upgrade && rustup update'
+alias grep='grep --color=auto'
+alias packup='apt update -y && apt upgrade -y && apt autoremove -y && brew update && brew upgrade && rustup update'
+alias nvim-config='nvim ~/.config/nvim'
 
 # End of lines added by compinstall
