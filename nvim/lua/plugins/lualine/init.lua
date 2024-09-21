@@ -70,7 +70,7 @@ return {
         },
         lualine_y = { 'progress' },
         lualine_z = {
-          { 'datetime', style = '%H:%M' }
+          { 'datetime', style = '%H:%M:%S' }
         },
       },
       inactive_sections = {
