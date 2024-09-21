@@ -17,7 +17,7 @@ return {
         middle_mouse_command = "bdelete! %d",
         right_mouse_command = nil,
         indicator = {
-          icon = '▎', -- this should be omitted if indicator style is not 'icon'
+          icon = '▌', -- this should be omitted if indicator style is not 'icon'
           style = 'icon', -- 'icon' | 'underline' | 'none'
         },
         buffer_close_icon = '󰅖',
@@ -62,7 +62,7 @@ return {
         move_wraps_at_ends = false, -- whether or not the move command "wraps" at the first or last position
         -- can also be a table containing 2 custom separators
         -- [focused and unfocused]. eg: { '|', '|' }
-        separator_style = "slant", -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' }
+        separator_style = "thin", -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' }
         enforce_regular_tabs = true, -- false | true
         always_show_bufferline = true, -- true | false
         auto_toggle_bufferline = true, -- true | false
