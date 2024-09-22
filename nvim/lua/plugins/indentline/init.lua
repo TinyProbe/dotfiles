@@ -18,7 +18,7 @@ return {
   ---@module "ibl"
   ---@type ibl.config
   config = function()
-    indentline = {
+    local indentline = {
       "IndentLine",
     }
     local hooks = require "ibl.hooks"
