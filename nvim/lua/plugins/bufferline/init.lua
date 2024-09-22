@@ -9,7 +9,9 @@ return {
     bufferline.setup({
       options = {
         mode = "buffers",
-        style_preset = bufferline.style_preset.no_italic,
+        style_preset = {
+          bufferline.style_preset.no_italic,
+        },
         themeable = true,
         numbers = "none", -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string
         close_command = "bdelete! %d",
