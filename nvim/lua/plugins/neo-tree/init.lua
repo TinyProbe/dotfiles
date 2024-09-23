@@ -71,6 +71,43 @@ return {
         highlight_separator = "NeoTreeTabSeparatorInactive",      -- string
         highlight_separator_active = "NeoTreeTabSeparatorActive", -- string
       },
+      default_component_configs = {
+        git_status = {
+          symbols = {
+            -- Change type
+            added     = "✚",
+            deleted   = "✖",
+            modified  = "",
+            renamed   = "󰁕",
+            -- Status type
+            untracked = "",
+            ignored   = "",
+            unstaged  = "󰄱",
+            staged    = "",
+            conflict  = "",
+          }
+        },
+        diagnostics = {
+          symbols = {
+            hint = "󰌵",
+            info = " ",
+            warn = " ",
+            error = " ",
+          },
+          highlights = {
+            hint = "DiagnosticSignHint",
+            info = "DiagnosticSignInfo",
+            warn = "DiagnosticSignWarn",
+            error = "DiagnosticSignError",
+          },
+        },
+        indent = {
+          with_expanders = true,
+          expander_collapsed = "",
+          expander_expanded = "",
+          expander_highlight = "NeoTreeExpander",
+        },
+      },
     })
     displayKeymap("n", {desc="File explorer"}, "<leader>fe", "<cmd>Neotree toggle<cr>")
   end,
