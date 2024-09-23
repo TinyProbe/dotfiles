@@ -46,10 +46,14 @@ source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highl
 export PATH="$PATH:$HOME/../linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH" # language server
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$PATH:$BUN_INSTALL/bin"
+
+# c++ search path
+export CPLUS_INCLUDE_PATH="/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11"
 
 alias ls='ls --color=auto'
 alias l='ls -lhAF'
