@@ -25,6 +25,10 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+        "clangd",
+        "rust_analyzer",
+        "gopls",
+        "zls",
       },
       automatic_installation = true,
     })
