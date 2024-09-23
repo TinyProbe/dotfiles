@@ -14,7 +14,7 @@ return {
       local keymap = vim.keymap
       local opts = { noremap = true, silent = true, }
       opts.buffer = bufnr
-      opts.desc = "Show LSP references"
+      opts.desc = "Go to LSP references"
       keymap.set("n", "<leader>gR", "<cmd>Telescope lsp_references<cr>", opts)
       opts.desc = "Go to declaration"
       keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, opts)
@@ -43,7 +43,9 @@ return {
     end
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
-    local signs = { Error = " ", Warn = " ", Info = " ", Hint = "", }
+
+    -- local signs = { Error = " ", Warn = " ", Info = " ", Hint = " ", }
+    local signs = { Error = "", Warn = "", Info = "", Hint = "", }
     for type,icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "", })
