@@ -10,9 +10,9 @@ return {
   config = function()
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
-    local keymap = vim.keymap
-    local opts = { noremap = true, silent = true, }
     local on_attach = function(client, bufnr)
+      local keymap = vim.keymap
+      local opts = { noremap = true, silent = true, }
       opts.buffer = bufnr
       opts.desc = "Show LSP references"
       keymap.set("n", "<leader>gR", "<cmd>Telescope lsp_references<cr>", opts)
@@ -103,6 +103,22 @@ return {
       on_attach = on_attach,
     })
     lspconfig["pyright"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["clangd"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["rust_analyzer"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["gopls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["zls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
