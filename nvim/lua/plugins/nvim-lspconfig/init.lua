@@ -40,6 +40,7 @@ return {
       keymap.set("n", "K", vim.lsp.buf.hover, opts)
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", "<cmd>LspRestart<cr>", opts)
+      client.server_capabilities.semanticTokensProvider = nil
     end
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -51,23 +52,7 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "", })
     end
 
-    lspconfig["ts_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-    lspconfig["html"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-    lspconfig["cssls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-    lspconfig["tailwindcss"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-    lspconfig["svelte"].setup({
+    lspconfig["vimls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
@@ -88,23 +73,19 @@ return {
         },
       },
     })
-    lspconfig["graphql"].setup({
+    lspconfig["html"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
-    lspconfig["emmet_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = {
-        "html", "typescriptreact", "javascriptreact",
-        "css", "sass", "scss", "less", "svelte",
-      },
-    })
-    lspconfig["prismals"].setup({
+    lspconfig["cssls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
-    lspconfig["pyright"].setup({
+    lspconfig["tailwindcss"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["ts_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
@@ -123,6 +104,41 @@ return {
     lspconfig["zls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+    })
+    lspconfig["pyright"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["csharp_ls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["jdtls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["kotlin_language_server"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+    lspconfig["dartls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      cmd = { "dart", "language-server", "--protocol=lsp" },
+      filetypes = { "dart" },
+      init_options = {
+        outline = true,
+        closingLabels = true,
+        flutterOutline = true,
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = true,
+      },
+      settings = {
+        dart = {
+          completeFunctionCalls = true,
+          showTodos = true,
+        },
+      },
     })
   end,
 }
