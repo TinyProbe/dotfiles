@@ -13,10 +13,10 @@ return {
       file_status = true, -- displays file status (readonly status, modified status)
       path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
       symbols = {
-        modified = '',     -- Text to show when the file is modified.
-        readonly = '',     -- Text to show when the file is non-modifiable or readonly.
-        unnamed = '',      -- Text to show for unnamed buffers.
-        newfile = '',      -- Text to show for newly created file before first write
+        modified = ' ',     -- Text to show when the file is modified.
+        readonly = ' ',     -- Text to show when the file is non-modifiable or readonly.
+        unnamed = ' ',      -- Text to show for unnamed buffers.
+        newfile = ' ',      -- Text to show for newly created file before first write
       }
     }
     local hide_in_width = function()
@@ -26,7 +26,7 @@ return {
       'diagnostics',
       sources = { 'nvim_diagnostic' },
       sections = { 'error', 'warn' },
-      symbols = { error = '', warn = '', info = '', hint = '' },
+      symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
       colored = true,
       update_in_insert = false,
       always_visible = false,
@@ -35,7 +35,7 @@ return {
     local diff = {
       'diff',
       colored = false,
-      symbols = { added = '', modified = '', removed = '' }, -- changes diff symbols
+      symbols = { added = ' ', modified = ' ', removed = ' ' }, -- changes diff symbols
       -- cond = hide_in_width,
     }
     require('lualine').setup({
@@ -55,9 +55,9 @@ return {
         always_divide_middle = true,
         globalstatus = true,
         refresh = {
-          statusline = 1000,
-          tabline = 1000,
-          winbar = 1000,
+          statusline = 100,
+          tabline = 100,
+          winbar = 100,
         }
       },
       sections = {
@@ -69,9 +69,7 @@ return {
           { 'fileformat', cond = hide_in_width }, 'filetype',
         },
         lualine_y = { 'progress' },
-        lualine_z = {
-          { 'datetime', style = '%H:%M:%S' }
-        },
+        lualine_z = { 'location' },
       },
       inactive_sections = {
         lualine_a = {},
