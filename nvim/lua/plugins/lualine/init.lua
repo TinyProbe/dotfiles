@@ -55,9 +55,9 @@ return {
         always_divide_middle = true,
         globalstatus = true,
         refresh = {
-          statusline = 100,
-          tabline = 100,
-          winbar = 100,
+          statusline = 1,
+          tabline = 1,
+          winbar = 1,
         }
       },
       sections = {
