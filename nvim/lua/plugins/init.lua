@@ -25,7 +25,7 @@ require("lazy").setup({
   require("plugins.mason"),
   require("plugins.mini-icons"),
   require("plugins.neo-tree"),
-  require("plugins.noice"),
+  -- require("plugins.noice"), -- disturbed when display every popup message.
   require("plugins.nvim-cmp"),
   require("plugins.nvim-lspconfig"),
   require("plugins.render-markdown"),
