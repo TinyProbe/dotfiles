@@ -17,6 +17,6 @@ return {
       write_all_buffers = false,
       debounce_delay = 0
     })
-    displayKeymap("n", {silent=true, desc='Toggle autosave'}, "<leader>ts", "<cmd>ASToggle<cr>")
+    displayKeymap("n", {silent=true, desc='Toggle Autosave'}, "<leader>ta", "<cmd>ASToggle<cr>")
   end,
 }
