@@ -1,12 +1,15 @@
 return {
-  "0x00-ketsu/autosave.nvim", name = "autosave",
+  "0x00-ketsu/autosave.nvim",
   config = function()
     require("autosave").setup({
       enable = true,
-      prompt_style = 'stdout',
-      prompt_message = function()
-        return 'autosave '..vim.fn.strftime('%H:%M:%S')
-      end,
+      prompt = {
+        enable = true,
+        style = 'stdout',
+        message = function()
+          return 'autosave ' .. vim.fn.strftime('%H:%M:%S')
+        end,
+      },
       events = {'InsertLeave', 'TextChanged'},
       conditions = {
         exists = true,
