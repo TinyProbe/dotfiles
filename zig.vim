@@ -45,7 +45,7 @@ setlocal softtabstop=2
 setlocal shiftwidth=2 " choice your tab size.
 setlocal cindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=L0,:0.5s,=0.5s,l1,b1,g0.5s,h0.5s,N-s,E-s,i2s,+2s,(0,U1,w1,W2s,k2s,m1,M0,j1,J1
+setlocal cinoptions=:0,=s,l1,g0,N-s,E-s,i2s,+2s,(0,U1,W2s,k2s,m1,j1,J1
 " --------------------------------
 
 function! GetZigIndent(lnum)
