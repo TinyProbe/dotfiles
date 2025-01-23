@@ -33,4 +33,7 @@ require("lazy").setup({
   require("plugins.todo-comments"),
   require("plugins.treesitter"),
   require("plugins.which-key"),
+
+  -- vim plugins
+  'dart-lang/dart-vim-plugin',
 })
