@@ -35,7 +35,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", }, {
     ]]
   end,
 })
-vim.api.nvim_create_augroup("BufDefault", {})
 vim.api.nvim_create_autocmd({ "BufEnter", }, {
   group = "BufDefault",
   pattern = { "*.dart" },
