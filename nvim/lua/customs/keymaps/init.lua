@@ -138,3 +138,6 @@ displayKeymap("n", {remap=true, desc='Match replace<> => ?'}, "mr>", "mr<")
 displayKeymap("n", {remap=true, desc="Match replace'' => ?"}, "mr'", "di'vhpgvms")
 displayKeymap("n", {remap=true, desc='Match replace"" => ?'}, 'mr"', 'di"vhpgvms')
 displayKeymap("n", {remap=true, desc='Match replace__ => ?'}, "mr ", "di vhpgvms")
+
+-- dart
+displayKeymap("n", {desc='Dart auto formatting'}, "<leader>af", ":!dart format lib<cr>")
