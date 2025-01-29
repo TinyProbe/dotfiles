@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", }, {
     vim.opt_local.cindent = true
     vim.opt_local.cinkeys = "0{,0},0),0],:,0#,!^F,o,O,e";
     vim.opt_local.cinoptions = [[
-    :0,l1,g0,i2s,+0,(0,U1,Ws,ks,m1,j1,J1
+    :0,l1,g0,i2s,+2s,(0,U1,Ws,ks,m1,j1,J1
     ]]
   end,
 })
