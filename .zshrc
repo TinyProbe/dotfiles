@@ -60,6 +60,6 @@ alias l='ls -lhAF'
 alias rg='rg --color=auto'
 alias packup='apt update -y && apt upgrade -y && apt autoremove -y && brew update && brew upgrade && rustup update stable'
 alias nvim_config='nvim ~/.config/nvim'
-alias clipdb='xclip -selection clipboard'
+alias clipbd='xclip -selection clipboard'
 
 # End of lines added by compinstall
