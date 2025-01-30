@@ -57,8 +57,9 @@ export CPLUS_INCLUDE_PATH="/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++
 
 alias ls='ls --color=auto'
 alias l='ls -lhAF'
-alias grep='grep --color=auto'
+alias rg='rg --color=auto'
 alias packup='apt update -y && apt upgrade -y && apt autoremove -y && brew update && brew upgrade && rustup update stable'
-alias nvim-config='nvim ~/.config/nvim'
+alias nvim_config='nvim ~/.config/nvim'
+alias clipdb='xclip -selection clipboard'
 
 # End of lines added by compinstall
