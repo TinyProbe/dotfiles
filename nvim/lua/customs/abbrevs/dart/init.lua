@@ -11,11 +11,14 @@ iabbrev $<startApp>
 \<nl>  Widget build(BuildContext context) {
 \<nl>    return MaterialApp(
 \<nl>      debugShowCheckedModeBanner: false,
-\<nl>      home: Scaffold(),
+\<nl>      initialRoute: '/',
+\<nl>      routes: {
+\<nl>        '/': (context) => Initial();
+\<nl>      },
 \<nl>    );
 \<nl>  }
 \<nl>}
-\<esc>v13k=
+\<esc>v16k=
 
 iabbrev $<stateless>
 \ class name extends StatelessWidget {
