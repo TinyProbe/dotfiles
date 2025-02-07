@@ -3,7 +3,9 @@ vim.cmd([[
 iabbrev $<startApp>
 \ import 'package:flutter/material.dart';
 \<nl>
-\<nl>void main() => runApp(const App());
+\<nl>void main() {
+\<nl>  runApp(const App());
+\<nl>}
 \<nl>
 \<nl>class App extends StatelessWidget {
 \<nl>  const App({super.key});
@@ -11,14 +13,14 @@ iabbrev $<startApp>
 \<nl>  Widget build(BuildContext context) {
 \<nl>    return MaterialApp(
 \<nl>      debugShowCheckedModeBanner: false,
-\<nl>      initialRoute: '/',
+\<nl>      initialRoute: '/initial',
 \<nl>      routes: {
-\<nl>        '/': (context) => Initial();
+\<nl>        '/initial': (context) => Initial();
 \<nl>      },
 \<nl>    );
 \<nl>  }
 \<nl>}
-\<esc>v16k=
+\<esc>v18k=
 
 iabbrev $<stateless>
 \ class name extends StatelessWidget {
