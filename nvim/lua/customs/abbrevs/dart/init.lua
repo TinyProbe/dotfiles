@@ -15,7 +15,7 @@ iabbrev $<startApp>
 \<nl>      debugShowCheckedModeBanner: false,
 \<nl>      initialRoute: '/initial',
 \<nl>      routes: {
-\<nl>        '/initial': (context) => Initial();
+\<nl>        '/initial': (context) => Initial(),
 \<nl>      },
 \<nl>    );
 \<nl>  }
