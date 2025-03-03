@@ -55,11 +55,12 @@ export PATH="$PATH:$BUN_INSTALL/bin"
 # c++ search path
 export CPLUS_INCLUDE_PATH="/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11"
 
+alias rg='rg --color=auto'
 alias ls='ls --color=auto'
 alias l='ls -lhAF'
-alias rg='rg --color=auto'
 alias packup='apt update -y && apt upgrade -y && apt autoremove -y && brew update && brew upgrade && rustup update stable'
 alias nvim_config='nvim ~/.config/nvim'
 alias clipbd='xclip -selection clipboard'
+alias vm_android='flutter emulators --launch Medium_Phone_API_35'
 
 # End of lines added by compinstall
