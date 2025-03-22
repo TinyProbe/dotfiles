@@ -43,9 +43,10 @@ source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highl
 
 # bindkey '^X^T' _
 
-export PATH="$PATH:$HOME/../linuxbrew/.linuxbrew/bin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/../linuxbrew/.linuxbrew/bin" # brew apps
+export PATH="$PATH:$HOME/.local/bin" # local applications
+export PATH="$PATH:$HOME/.cargo/bin" # installed by cargo
+export PATH="$PATH:$HOME/go/bin" # go Fyne library config
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH" # language server
 
 # bun
