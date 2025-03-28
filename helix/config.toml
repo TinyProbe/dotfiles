@@ -5,31 +5,31 @@ theme = "catppuccin_macchiato"
 scrolloff = 6
 mouse = true
 middle-click-paste = true
-scroll-lines = 3
+scroll-lines = 5
 shell = [ "sh", "-c" ]
 line-number = "absolute"
 cursorline = true
-cursorcolumn = false
+cursorcolumn = true
 gutters = [ "diff", "line-numbers", "spacer", ]
 auto-completion = true
-auto-format = true
-auto-save = false
+auto-format = false
+auto-save = true
 idle-timeout = 0
 completion-trigger-len = 2
 auto-info = true
 true-color = true
-rulers = []
-bufferline = "always"
 color-modes = true
 auto-pairs = true
+bufferline = "always"
+text-width = 80
+rulers = []
 
 [editor.statusline]
 left = [ "mode", "file-name", "separator", "spacer", "diagnostics", ]
 center = []
-right = [
-  "position", "separator",  "spacer", "position-percentage", "spacer", "separator", 
-  "total-line-numbers", "separator",  "file-line-ending", "separator",  "file-type", ]
-separator = "\uE0B3"
+right = [ "position", "separator",  "spacer", "position-percentage", "spacer", "separator", 
+    "total-line-numbers", "separator",  "file-line-ending", "separator",  "file-type", ]
+separator = ""
 mode.normal = "NORMAL"
 mode.select = "SELECT"
 mode.insert = "INSERT"
@@ -39,10 +39,10 @@ display-messages = false
 auto-signature-help = true
 display-signature-help-docs = true
 
-# [editor.cursor-shape]
-# insert = "underline"
-# normal = "underline"
-# select = "underline"
+[editor.cursor-shape]
+insert = "underline"
+normal = "underline"
+select = "underline"
 
 [editor.file-picker]
 hidden = false
@@ -59,7 +59,7 @@ tabpad = "·" # Tabs will look like "→···" (depending on tab width)
 
 [editor.indent-guides]
 render = false
-character = "│"
+character = "▎"
 skip-levels = 0
 
 # Key Remapping
@@ -67,21 +67,28 @@ skip-levels = 0
 "\\"."c"."o" = [ ":config-open", ]
 "\\"."c"."r" = [ ":config-reload", ]
 # "esc" = [ "keep_primary_selection", ]
-"C-s" = [ ":wa", ]
-"C-q"."q" = [ ":xa", ]
-"C-q"."b" = [ ":w", ":bc", ]
-"C-q"."w" = [ ":w", "wclose", ]
-"C-q"."c" = [ ":qa!" ]
+"esc" = [ "normal_mode", "move_char_left", "move_char_right", ]
+"space"."q"."q" = [ ":xa", ]
+"space"."q"."b" = [ ":w", ":bc", ]
+"space"."q"."w" = [ ":w", "wclose", ]
+"space"."q"."c" = [ ":qa!" ]
 "C-e" = [ "scroll_down", ]
 "C-y" = [ "scroll_up", ]
-"C-j" = [ "scroll_down", "scroll_down", "scroll_down", ]
-"C-k" = [ "scroll_up", "scroll_up", "scroll_up", ]
+"C-j" = [ "scroll_down", "scroll_down", "scroll_down", "scroll_down", "scroll_down", ]
+"C-k" = [ "scroll_up", "scroll_up", "scroll_up", "scroll_up", "scroll_up", ]
 "C-r" = [ "redo", ]
+"C-s" = [ ":wa", ]
 "C-a" = [ "select_all", "select_mode", ]
-"$" = [ "goto_line_end", ]
-"^" = [ "goto_first_nonwhitespace", ]
-"0" = [ "goto_line_start", ]
-"G" = [ "goto_last_line", ]
+"A-j" = [ "ensure_selections_forward", "extend_to_line_bounds", "extend_char_right", "extend_char_left", "delete_selection",
+    "add_newline_below", "move_line_down", "replace_with_yanked", ]
+"A-k" = [ "ensure_selections_forward", "extend_to_line_bounds", "extend_char_right", "extend_char_left", "delete_selection",
+    "move_line_up", "add_newline_above", "move_line_up", "replace_with_yanked", ]
+"A-h" = [ "unindent", ]
+"A-l" = [ "indent", ]
+"g"."g" = []
+"g"."e" = []
+"g"."k" = [ "goto_file_start", ]
+"g"."j" = [ "goto_last_line", ]
 "M" = [ "goto_window_center", ]
 "V" = [ "extend_to_line_bounds", "select_mode", ]
 "D" = [ "select_mode", "goto_line_end", "yank_main_selection_to_clipboard", "delete_selection", ]
@@ -105,28 +112,29 @@ skip-levels = 0
 "\\"."c"."o" = [ ":config-open", ]
 "\\"."c"."r" = [ ":config-reload", ]
 "esc" = [ "normal_mode", "move_char_left", "move_char_right", ]
+"space"."q"."q" = [ ":xa", ]
+"space"."q"."b" = [ ":w", ":bc", ]
+"space"."q"."w" = [ ":w", "wclose", ]
+"space"."q"."c" = [ ":qa!" ]
 "C-s" = [ ":wa", ]
-"C-q"."q" = [ ":xa", ]
-"C-q"."b" = [ ":w", ":bc", ]
-"C-q"."w" = [ ":w", "wclose", ]
-"C-q"."c" = [ ":qa!" ]
 "C-e" = [ "scroll_down", ]
 "C-y" = [ "scroll_up", ]
 "C-r" = [ "redo", "normal_mode", ]
-"J" = [
-  "ensure_selections_forward", "extend_to_line_bounds", "extend_char_right", "extend_char_left", "delete_selection",
-  "add_newline_below", "move_line_down", "replace_with_yanked", "select_mode", ]
-"K" = [
-  "ensure_selections_forward", "extend_to_line_bounds", "extend_char_right", "extend_char_left", "delete_selection",
-  "move_line_up", "add_newline_above", "move_line_up", "replace_with_yanked", "select_mode", ]
-"H" = [ "unindent", ]
-"L" = [ "indent", ]
-"C-j" = [ "scroll_down", "scroll_down", "scroll_down", ]
-"C-k" = [ "scroll_up", "scroll_up", "scroll_up", ]
+"A-j" = [ "ensure_selections_forward", "extend_to_line_bounds", "extend_char_right", "extend_char_left", "delete_selection",
+    "add_newline_below", "move_line_down", "replace_with_yanked", "select_mode", ]
+"A-k" = [ "ensure_selections_forward", "extend_to_line_bounds", "extend_char_right", "extend_char_left", "delete_selection",
+    "move_line_up", "add_newline_above", "move_line_up", "replace_with_yanked", "select_mode", ]
+"A-h" = [ "unindent", "select_mode", ]
+"A-l" = [ "indent", "select_mode", ]
+"C-j" = [ "scroll_down", "scroll_down", "scroll_down", "scroll_down", "scroll_down", ]
+"C-k" = [ "scroll_up", "scroll_up", "scroll_up", "scroll_up", "scroll_up", ]
 "$" = [ "goto_line_end", ]
 "^" = [ "goto_first_nonwhitespace", ]
 "0" = [ "goto_line_start", ]
-"G" = [ "goto_last_line", ]
+"g"."g" = []
+"g"."e" = []
+"g"."k" = [ "goto_file_start", ]
+"g"."j" = [ "goto_last_line", ]
 "M" = [ "goto_window_center", ]
 "V" = [ "extend_to_line_bounds", "select_mode", ]
 "x" = [ "yank_main_selection_to_clipboard", "delete_selection", ]
