@@ -40,9 +40,9 @@ let b:undo_indent = "setlocal cindent< cinkeys< cinoptions< indentexpr<"
 " additional customizing by tiny.
 " edit this what ever you want.
 " --------------------------------
-setlocal tabstop=2
-setlocal softtabstop=2
-setlocal shiftwidth=2 " choice your tab size.
+setlocal tabstop=4
+setlocal softtabstop=4
+setlocal shiftwidth=4 " choice your tab size.
 setlocal cindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=:0,=s,l1,g0,N-s,E-s,i2s,+2s,(0,U1,W2s,k2s,m1,j1,J1
