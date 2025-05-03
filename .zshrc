@@ -59,9 +59,23 @@ export CPLUS_INCLUDE_PATH="/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++
 alias rg='rg --color=auto'
 alias ls='ls --color=auto'
 alias l='ls -lhAF'
-alias packup='apt update -y && apt upgrade -y && apt autoremove -y && brew update && brew upgrade && rustup update stable'
 alias nvim_config='nvim ~/.config/nvim'
-alias clipbd='xclip -selection clipboard'
+alias clipboard='xclip -selection clipboard'
 alias vm_android='flutter emulators --launch Medium_Phone_API_35'
+
+packup() {
+  apt update -y
+  apt upgrade -y
+  apt autoremove -y
+  brew update
+  brew upgrade
+  rustup update stable
+}
+
+gitup() {
+  git add *
+  git commit -m "Update Changes"
+  git push origin main
+}
 
 # End of lines added by compinstall
