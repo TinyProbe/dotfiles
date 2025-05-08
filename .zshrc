@@ -1,4 +1,3 @@
-
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
@@ -59,7 +58,7 @@ export CPLUS_INCLUDE_PATH="/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++
 alias rg='rg --color=auto'
 alias ls='ls --color=auto'
 alias l='ls -lhAF'
-alias nvim_config='nvim ~/.config/nvim'
+alias vim_config='vim ~/.config/vim'
 alias clipboard='xclip -selection clipboard'
 alias vm_android='flutter emulators --launch Medium_Phone_API_35'
 
