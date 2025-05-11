@@ -63,18 +63,18 @@ alias clipboard='xclip -selection clipboard'
 alias vm_android='flutter emulators --launch Medium_Phone_API_35'
 
 packup() {
-  apt update -y
-  apt upgrade -y
-  apt autoremove -y
-  brew update
-  brew upgrade
-  rustup update stable
+    apt update -y
+    apt upgrade -y
+    apt autoremove -y
+    brew update
+    brew upgrade
+    rustup update stable
 }
 
 gitup() {
-  git add *
-  git commit -m "Update Changes"
-  git push origin main
+    git add *
+    git commit -m "Update Changes"
+    git push origin main
 }
 
 # End of lines added by compinstall
