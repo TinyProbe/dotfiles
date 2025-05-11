@@ -38,7 +38,7 @@ RVALUE="%K{$RB1}%F{$RF1}$R1%f%k"
 # RCLOSE="%K{$RF1}%F{$RB1}$R%f%k"
 RPROMPT="$ROPEN$RVALUE$RCLOSE"
 
-source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # bindkey '^X^T' _
 
