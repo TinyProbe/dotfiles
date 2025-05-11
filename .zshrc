@@ -59,6 +59,7 @@ alias rg='rg --color=auto'
 alias ls='ls --color=auto'
 alias l='ls -lhAF'
 alias vim_config='vim ~/.config/vim'
+alias nvim_config='nvim ~/.config/nvim'
 alias clipboard='xclip -selection clipboard'
 alias vm_android='flutter emulators --launch Medium_Phone_API_35'
 
