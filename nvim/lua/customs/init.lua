@@ -1,5 +1,0 @@
-require("customs.options")
-require("customs.autocmds")
-require("customs.functions")
-require("customs.keymaps")
-require("customs.abbrevs")
