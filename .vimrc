@@ -1,1 +1,1 @@
-source 
+source ~/.config/vim/init.vim
